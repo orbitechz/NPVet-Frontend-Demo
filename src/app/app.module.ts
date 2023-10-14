@@ -7,8 +7,13 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MenuComponent } from './core/menu/menu.component';
 import { LoginComponent } from './core/login/login.component';
 import { ErrorsComponent } from './core/errors/errors.component';
-import { ListComponent } from './views/usuario/list/list.component';
-import { DetailsComponent } from './views/usuario/details/details.component';
+import { TutorListComponent } from './views/tutor/tutor-list/tutor-list.component';
+import { TutorDetailsComponent } from './views/tutor/tutor-details/tutor-details.component';
+import { ListComponent } from './views/animal/list/list.component';
+import { DetailsComponent } from './views/animal/details/details.component';
+import { UsuarioDetailsComponent } from './views/usuario/usuario-details/usuario-details.component';
+import { UsuarioListComponent } from './views/usuario/usuario-list/usuario-list.component';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +23,11 @@ import { DetailsComponent } from './views/usuario/details/details.component';
     LoginComponent,
     ErrorsComponent,
     ListComponent,
-    DetailsComponent
+    DetailsComponent,
+    TutorListComponent,
+    TutorDetailsComponent,
+    UsuarioDetailsComponent,
+    UsuarioListComponent,
   ],
   imports: [
     BrowserModule,
