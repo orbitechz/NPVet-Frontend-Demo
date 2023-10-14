@@ -1,1 +1,9 @@
-<p>animal-list works!</p>
+<table>
+    <tbody>
+        <tr *ngFor="let animal of lista; let i = index">
+            <td>{{animal.nome}}</td>
+            <td>Tutor: {{animal.tutorId.nome}}</td>
+            <td>Espécie: {{animal.especie}}</td>
+        </tr>
+    </tbody>
+</table>

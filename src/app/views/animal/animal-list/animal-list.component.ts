@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Animal } from 'src/app/models/animal/animal';
 import { AnimalService } from 'src/app/services/animal/animal.service';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -14,7 +14,7 @@ export class AnimalListComponent {
   lista: Animal[] = [];
 
   service = inject(AnimalService);
-  modelService = inject(NgbModule)
+  modalService = inject(NgbModal)
 
 
   animalSelecionadoParaEdicao: Animal = new Animal();
@@ -30,16 +30,40 @@ export class AnimalListComponent {
   listAll() {
 
     this.animalSelecionadoParaEdicao = new Animal();
-    this.service.getAll().subscribe({
-      next: lista => { 
-        this.lista = lista;
-      },
-      error: erro => {
-        alert('Observe o erro no console!');
-        console.error(erro);
-      }
-    });
+    this.service.getAll().subscribe();
 
 }
+
+/*  abrirModal(modal: any){
+    this.modalService.open((modal, {size: 'lg'}))
+  }
+*/
+  close(){
+    this.modalService.dismissAll();
+  }
+
+  editar(modal: any, animal: Animal, id: number) {
+    this.animalSelecionadoParaEdicao = Object.assign({}, animal);
+    
+    this.idSelecionadoParaEdicao = id;
+  
+    this.modalService.open(modal, { size: 'sm' });
+  }
+
+  deletar(id: number){
+
+    this.lista = this.lista.filter(item => item.id !== id);
+    this.service.delete(id).subscribe();
+
+  }
+
+  addOuEditarPessoa(animal: Animal){
+
+    this.listAll();
+
+    this.modalService.dismissAll();
+  }
+
+
 
 }
