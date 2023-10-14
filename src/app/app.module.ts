@@ -15,6 +15,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DetailsComponent } from './views/animal/details/details.component';
 import { UsuarioDetailsComponent } from './views/usuario/usuario-details/usuario-details.component';
 import { UsuarioListComponent } from './views/usuario/usuario-list/usuario-list.component';
+import { UsuarioService } from './services/usuario/usuario.service';
 
 
 @NgModule({
@@ -24,7 +25,6 @@ import { UsuarioListComponent } from './views/usuario/usuario-list/usuario-list.
     MenuComponent,
     LoginComponent,
     ErrorsComponent,
-    ListComponent,
     DetailsComponent,
     TutorListComponent,
     TutorDetailsComponent,
@@ -39,7 +39,7 @@ import { UsuarioListComponent } from './views/usuario/usuario-list/usuario-list.
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [UsuarioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
