@@ -7,9 +7,11 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MenuComponent } from './core/menu/menu.component';
 import { LoginComponent } from './core/login/login.component';
 import { ErrorsComponent } from './core/errors/errors.component';
-import { UsuarioComponent } from './views/usuario/usuario.component';
 import { ListComponent } from './views/usuario/list/list.component';
 import { DetailsComponent } from './views/usuario/details/details.component';
+import { TutorListComponent } from './views/tutor/tutor-list/tutor-list.component';
+import { TutorDetailsComponent } from './views/tutor/tutor-details/tutor-details.component';
+
 
 @NgModule({
   declarations: [
@@ -18,9 +20,10 @@ import { DetailsComponent } from './views/usuario/details/details.component';
     MenuComponent,
     LoginComponent,
     ErrorsComponent,
-    UsuarioComponent,
     ListComponent,
-    DetailsComponent
+    DetailsComponent,
+    TutorListComponent,
+    TutorDetailsComponent,
   ],
   imports: [
     BrowserModule,
