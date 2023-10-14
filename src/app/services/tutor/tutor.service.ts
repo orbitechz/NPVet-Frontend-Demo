@@ -1,13 +1,13 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import 'dotenv/config';
 import { Observable } from 'rxjs';
+import { Tutor } from 'src/app/models/tutor/tutor';
 
 @Injectable({
   providedIn: 'root',
 })
-export class Tutor {
-  API: string = process.env['BACKEND_URL'] as string;
+export class TutorService {
+  API: string = 'http://localhost:8080/tutor' ;
   http = inject(HttpClient);
   constructor() {}
   getById(id: number): Observable<Tutor> {
