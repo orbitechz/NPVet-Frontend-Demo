@@ -9,6 +9,9 @@ import { LoginComponent } from './core/login/login.component';
 import { ErrorsComponent } from './core/errors/errors.component';
 import { ListComponent } from './views/usuario/list/list.component';
 import { DetailsComponent } from './views/usuario/details/details.component';
+import { TutorListComponent } from './views/tutor/tutor-list/tutor-list.component';
+import { TutorDetailsComponent } from './views/tutor/tutor-details/tutor-details.component';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { DetailsComponent } from './views/usuario/details/details.component';
     LoginComponent,
     ErrorsComponent,
     ListComponent,
-    DetailsComponent
+    DetailsComponent,
+    TutorListComponent,
+    TutorDetailsComponent,
   ],
   imports: [
     BrowserModule,
