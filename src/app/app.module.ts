@@ -16,6 +16,7 @@ import { DetailsComponent } from './views/animal/details/details.component';
 import { UsuarioDetailsComponent } from './views/usuario/usuario-details/usuario-details.component';
 import { UsuarioListComponent } from './views/usuario/usuario-list/usuario-list.component';
 import { UsuarioService } from './services/usuario/usuario.service';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { UsuarioService } from './services/usuario/usuario.service';
     TutorDetailsComponent,
     UsuarioDetailsComponent,
     UsuarioListComponent,
+    SearchBarComponent,
   ],
   imports: [
     BrowserModule,
