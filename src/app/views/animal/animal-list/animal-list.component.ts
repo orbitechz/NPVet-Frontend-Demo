@@ -1,6 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { Animal } from 'src/app/models/animal/animal';
 import { AnimalService } from 'src/app/services/animal/animal.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-animal-list',
@@ -12,6 +14,7 @@ export class AnimalListComponent {
   lista: Animal[] = [];
 
   service = inject(AnimalService);
+  modelService = inject(NgbModule)
 
 
   animalSelecionadoParaEdicao: Animal = new Animal();
@@ -36,7 +39,6 @@ export class AnimalListComponent {
         console.error(erro);
       }
     });
-
 
 }
 
