@@ -1,0 +1,49 @@
+.list-usuario {
+    background: #F0F0F0;
+    width: 100%;
+    height: 100vh;
+    padding: 20px;
+}
+
+.page-header h1 {
+    color: #00003D;
+    text-align: center;
+    font-family: 'Inter';
+    font-size: 22px;
+    font-weight: 400;
+}
+
+
+.action-register i {
+    width: 30px;
+    height: 30px;
+    background-color: #00003D;
+    color: #F0F0F0;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.action-register i::before {
+    margin-left: 6.7px;
+    padding-top: 7px;
+}
+
+.action-register a {
+    text-decoration: none;
+    color: #1E1E1E;
+    font-family: 'Inter';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.table-title {
+    color: #00003D;
+    font-family: 'Inter';
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+

@@ -1,1 +1,15 @@
-<p>usuario-list works!</p>
+<div class="list-usuario d-flex flex-column align-items-start gap-4">
+  <div class="page-header w-100 d-flex justify-content-between align-items-center">
+    <p class="align-self-start">LOGO</p>
+    <h1 class="text-center flex-grow-1">Usuários</h1>
+</div>
+  <div class="action-register d-flex align-items-center gap-2" routerLink="/usuario/register">
+    <i class="bi bi-plus"></i>
+    <a href="usuario/register">Cadastrar novo Usuário</a>
+  </div>
+  <app-search-bar (searchEvent)="filterData($event)"></app-search-bar>
+  <div class="table-container">
+    <p class="table-title">Usuários Cadastrados</p>
+    <table></table>
+  </div>
+</div>
