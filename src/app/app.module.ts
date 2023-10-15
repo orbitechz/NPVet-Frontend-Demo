@@ -12,7 +12,6 @@ import { TutorListComponent } from './views/tutor/tutor-list/tutor-list.componen
 import { TutorDetailsComponent } from './views/tutor/tutor-details/tutor-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { DetailsComponent } from './views/animal/details/details.component';
 import { UsuarioDetailsComponent } from './views/usuario/usuario-details/usuario-details.component';
 import { UsuarioListComponent } from './views/usuario/usuario-list/usuario-list.component';
 import { UsuarioService } from './services/usuario/usuario.service';
@@ -26,7 +25,6 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     MenuComponent,
     LoginComponent,
     ErrorsComponent,
-    DetailsComponent,
     TutorListComponent,
     TutorDetailsComponent,
     UsuarioDetailsComponent,
