@@ -14,8 +14,6 @@ export class AnimalListComponent {
   lista: Animal[] = [];
 
   service = inject(AnimalService);
-  modalService = inject(NgbModal)
-
 
   animalSelecionadoParaEdicao: Animal = new Animal();
   idSelecionadoParaEdicao!: number;
@@ -30,40 +28,16 @@ export class AnimalListComponent {
   listAll() {
 
     this.animalSelecionadoParaEdicao = new Animal();
-    this.service.getAll().subscribe();
-
-}
-
-/*  abrirModal(modal: any){
-    this.modalService.open((modal, {size: 'lg'}))
+    this.service.getAll().subscribe({
+      next: (lista: any) => {
+      this.lista = lista;
+      console.log(lista)
+    },
+    error: (erro: any) => {
+      alert(erro.error);
+    },
+  });
   }
-*/
-  close(){
-    this.modalService.dismissAll();
-  }
-
-  editar(modal: any, animal: Animal, id: number) {
-    this.animalSelecionadoParaEdicao = Object.assign({}, animal);
-    
-    this.idSelecionadoParaEdicao = id;
-  
-    this.modalService.open(modal, { size: 'sm' });
-  }
-
-  deletar(id: number){
-
-    this.lista = this.lista.filter(item => item.id !== id);
-    this.service.delete(id).subscribe();
-
-  }
-
-  addOuEditarPessoa(animal: Animal){
-
-    this.listAll();
-
-    this.modalService.dismissAll();
-  }
-
 
 
 }

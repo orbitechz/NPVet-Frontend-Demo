@@ -1,9 +1,11 @@
 <table>
-    <tbody>
-        <tr *ngFor="let animal of lista; let i = index">
-            <td>{{animal.nome}}</td>
-            <td>Tutor: {{animal.tutorId.nome}}</td>
-            <td>Espécie: {{animal.especie}}</td>
-        </tr>
+
+    <tbody >
+        <tr *ngFor="let animal of lista; index as i">
+			<th scope="row">{{ animal.nome }}</th>
+            <th scope="row">Tutor: {{ animal.tutorId.nome }}</th>
+			<th scope="row">Espécie: {{ animal.especie }}</th>
+      </tr>
     </tbody>
-</table>
+  </table>
+  
