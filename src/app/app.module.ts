@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MenuComponent } from './core/menu/menu.component';
@@ -16,6 +15,8 @@ import { UsuarioDetailsComponent } from './views/usuario/usuario-details/usuario
 import { UsuarioListComponent } from './views/usuario/usuario-list/usuario-list.component';
 import { AnimalListComponent } from './views/animal/animal-list/animal-list.component';
 import { AnimalDetailsComponent } from './views/animal/animal-details/animal-details.component';
+import { UsuarioService } from './services/usuario/usuario.service';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { AnimalDetailsComponent } from './views/animal/animal-details/animal-det
     UsuarioDetailsComponent,
     UsuarioListComponent,
     AnimalListComponent,
-    AnimalDetailsComponent
+    AnimalDetailsComponent,
+    SearchBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,7 @@ import { AnimalDetailsComponent } from './views/animal/animal-details/animal-det
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [UsuarioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
