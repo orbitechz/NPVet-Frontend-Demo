@@ -2,3 +2,35 @@
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+@font-face {
+    font-family: 'Arista';
+    src: url('assets/fonts/arista-2.0/Arista2.0.ttf');
+}
+@font-face {
+    font-family: 'Gotham';
+    src: url('assets/fonts/Gotham-Font/GothamMedium.ttf');
+}
+@font-face {
+    font-family: 'Gotham-Bold';
+    src: url('assets/fonts/Gotham-Font/GothamBold.ttf');
+}
+@font-face {
+    font-family: 'Gotham-Light';
+    src: url('assets/fonts/Gotham-Font/GothamLight.ttf');
+}
+@font-face {
+    font-family: 'Gotham-Bold-Italic';
+    src: url('assets/fonts/Gotham-Font/GothamBoldItalic.ttf');
+}
+@font-face {
+    font-family: 'SimplyRounded';
+    src: url('assets/fonts/simply-rounded/Simply Rounded.ttf');
+}
+@font-face {
+    font-family: 'Simply Rounded Bold';
+    src: url('assets/fonts/simply-rounded/Simply Rounded Bold.ttf');
+}
+@font-face {
+    font-family: 'Simply Rounded Bold';
+    src: url('assets/fonts/simply-rounded/Simply Rounded Bold.ttf');
+}

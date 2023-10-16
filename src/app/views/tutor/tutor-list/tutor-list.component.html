@@ -1,5 +1,10 @@
-<h1>funciona</h1>
 <table>
-    
+    <tbody>
+        <tr>
+            <td>icone</td>
+        </tr>
+        <tr *ngFor="let tutor of tutores">
+            <td>{{tutor.nome}}</td>
+        </tr>
+    </tbody>
 </table>
-<h1 *[ngFor]="let pessoa of pessoas">{{pessoa.nome}}</h1>
