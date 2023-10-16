@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Animal } from 'src/app/models/animal/animal';
 import { AnimalService } from 'src/app/services/animal/animal.service';
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 
 @Component({
@@ -13,6 +14,8 @@ export class AnimalListComponent {
 
   lista: Animal[] = [];
 
+
+  route = inject(ActivatedRoute)
   service = inject(AnimalService);
   modalService = inject(NgbModal);
 
@@ -49,9 +52,8 @@ export class AnimalListComponent {
   }
 
   
-  editar(modal: any, animal: Animal, id: number) {
+  editar(animal: Animal, id: number) {
     this.animalSelecionadoParaEdicao = Object.assign({}, animal);
-    
     this.idSelecionadoParaEdicao = id;
   }
 
