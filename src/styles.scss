@@ -1,7 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
-
-/* Importing Bootstrap SCSS file. */
+/* ====================== IMPORT BOOTSTRAP ====================== */
 @import 'bootstrap/scss/bootstrap';
+
+// ====================== IMPORT FONTS ======================
 @font-face {
     font-family: 'Arista';
     src: url('assets/fonts/arista-2.0/Arista2.0.ttf');
@@ -33,4 +33,29 @@
 @font-face {
     font-family: 'Simply Rounded Bold';
     src: url('assets/fonts/simply-rounded/Simply Rounded Bold.ttf');
+}
+
+// body{
+//     background-color: #F0F0F0;
+// }
+
+// ====================== ESTILIZACAO DE TABELAS ==========================
+.tabela td{
+    display: table-cell;
+    vertical-align: inherit;
+    width: auto;
+}   
+
+.tabela {
+    border-radius: 20px;
+    background: linear-gradient(0deg, #F0F0F0 0.37%, #D1D1D1 128.43%) !important;
+    vertical-align: top;
+    display: table;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 2px;
+}
+
+.w-80 {
+    width: 80%;
 }
