@@ -112,3 +112,12 @@
     right: 6%;
     margin-bottom: 20px;
   }
+
+  .is-invalid {
+    border: 1px solid #dc3545;
+  }
+  
+  .invalid-feedback {
+    color: #dc3545;
+  }
+  
