@@ -17,6 +17,7 @@ import { UsuarioListComponent } from './views/usuario/usuario-list/usuario-list.
 import { UsuarioService } from './services/usuario/usuario.service';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { UsuarioEditComponent } from './views/usuario/usuario-edit/usuario-edit.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     UsuarioDetailsComponent,
     UsuarioListComponent,
     SearchBarComponent,
+    UsuarioEditComponent,
   ],
   imports: [
     BrowserModule,
