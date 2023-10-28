@@ -20,6 +20,9 @@ export class UsuarioDetailsComponent implements OnInit{
   uService = inject(UsuarioService);
   router = inject(Router);
 
+  hide = true;
+  hide2 = true;
+
   @Input() isErro: boolean = true;
   @Input() mensagem: string = '';
 
