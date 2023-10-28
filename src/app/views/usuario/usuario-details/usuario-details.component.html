@@ -1,24 +1,22 @@
-<div class="register-usuario">
-  <div
-    class="page-header w-100 d-flex justify-content-between align-items-center"
-  >
-    <p class="align-self-start">LOGO</p>
-    <h1 class="text-center flex-grow-1">Cadastro dos Usuários</h1>
+<div class="register-usuario container">
+  <div class="page-header">
+    <div class="header-content">
+      <p>npvet</p>
+      <h1>Cadastro dos Usuários</h1>
+      <div class="action-register">
+        <a href="usuario/register"><i class="bi bi-arrow-left"></i></a>
+      </div>
+    </div>
   </div>
+
   <div class="registerForm">
     <form
       action=""
-      class="mt-4"
       class="needs-validation"
       #usuarioForm="ngForm"
       (ngSubmit)="submitForm(usuarioForm)"
     >
-    <div [ngClass]="{
-      'alert alert-success':'!isErro',
-      'alert alert-danger':'isErro'}" *ngIf="mensagem" role="alert">
-      {{mensagem}}
-    </div>
-      <div class="row">
+      <div class="row mb-3">
         <div class="col-md-4">
           <div class="form-group">
             <label for="nome" class="mb-1">Nome</label>
@@ -33,15 +31,6 @@
           </div>
         </div>
         <div class="col-md-4">
-            <div class="form-group">
-              <label for="tipoUsuario" class="mb-1">Tipo de Usuário</label>
-              <select id="tipoUsuario" class="form-select" name="tipoUsuario" [(ngModel)]="usuario.tipoUsuario" required>
-                <option [ngValue]="null" disabled selected>Selecione um tipo</option>
-                <option *ngFor="let tipo of tipoUsuarioEnum | keyvalue" [ngValue]="tipo.key">{{ tipo.value }}</option>
-              </select>
-            </div>
-          </div>          
-        <div class="col-md-4">
           <div class="form-group">
             <label for="cpf" class="mb-1">CPF</label>
             <input
@@ -54,8 +43,30 @@
             />
           </div>
         </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="tipoUsuario" class="mb-1">Tipo do Usuário</label>
+            <select
+              id="tipoUsuario"
+              class="form-select"
+              name="tipoUsuario"
+              [(ngModel)]="usuario.tipoUsuario"
+              required
+            >
+              <option [ngValue]="null" disabled selected>
+                Selecione um tipo
+              </option>
+              <option
+                *ngFor="let tipo of tipoUsuarioEnum | keyvalue"
+                [ngValue]="tipo.key"
+              >
+                {{ tipo.value }}
+              </option>
+            </select>
+          </div>
+        </div>
       </div>
-      <div class="row">
+      <div class="row mb-3">
         <div class="col-md-4">
           <div class="form-group">
             <label for="username" class="mb-1">Username</label>
@@ -85,11 +96,20 @@
         <div class="col-md-4">
           <div class="form-group">
             <label for="confirmarSenha" class="mb-1">Confirmar Senha</label>
-            <input type="password" id="confirmarSenha" class="form-control" name="confirmarSenha" [(ngModel)]="confirmarSenha" required />
+            <input
+              type="password"
+              id="confirmarSenha"
+              class="form-control"
+              name="confirmarSenha"
+              [(ngModel)]="confirmarSenha"
+              required
+            />
           </div>
-        </div>               
+        </div>
       </div>
-      <button type="submit" class="btn btn-rounded mt-3">Cadastrar</button>
+      <div class="text-center">
+        <button type="submit" class="btn btn-sm btn-primary align-self-center">Cadastrar</button>
+      </div>
     </form>
   </div>
 </div>
