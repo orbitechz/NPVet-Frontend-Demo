@@ -17,6 +17,10 @@ import { UsuarioListComponent } from './views/usuario/usuario-list/usuario-list.
 import { MensagemComponent } from './components/mensagem/mensagem.component';
 import { IconsModule } from './modules/icons.module';
 import { TableComponent } from './components/table/table.component';
+import { UsuarioService } from './services/usuario/usuario.service';
+import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { UsuarioEditComponent } from './views/usuario/usuario-edit/usuario-edit.component';
 
 
 @NgModule({
@@ -30,8 +34,13 @@ import { TableComponent } from './components/table/table.component';
     TutorDetailsComponent,
     UsuarioDetailsComponent,
     UsuarioListComponent,
+<<<<<<< HEAD
     MensagemComponent,
     TableComponent
+=======
+    SearchBarComponent,
+    UsuarioEditComponent,
+>>>>>>> dfab39acb70d8ff0e0f87ba280c7088d808c9e8e
   ],
   imports: [
     BrowserModule,
@@ -40,9 +49,13 @@ import { TableComponent } from './components/table/table.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+<<<<<<< HEAD
     IconsModule
+=======
+    NgxMaskDirective, NgxMaskPipe
+>>>>>>> dfab39acb70d8ff0e0f87ba280c7088d808c9e8e
   ],
-  providers: [],
+  providers: [UsuarioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

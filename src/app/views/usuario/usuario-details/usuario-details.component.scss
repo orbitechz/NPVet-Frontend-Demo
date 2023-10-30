@@ -1,0 +1,123 @@
+.register-usuario {
+    background: #F0F0F0;
+    min-width: 100vw;
+    height: 100vh;
+    padding: 20px;
+    margin: 0;
+  }
+  
+  .page-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .header-content p {
+    color: #00003D;
+    font-family: Arista Pro Trial;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  
+  .action-register a {
+    text-decoration: none;
+    color: #000;
+  }
+  
+  .action-register i {
+    font-size: 24px;
+  }
+  
+  .page-header h1 {
+    color: #00003D;
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .registerForm {
+    background: #FFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  input, select {
+    width: calc(100% - 20px);
+    height: 45px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    background: #FFF;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  label {
+    color: #00003D;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  .btn {
+    width: 237px;
+    height: 38px;
+    border: none;
+    border-radius: 25px;
+    background: #00003D;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .pass{
+    flex: 90%;
+    position: relative;
+  }
+
+  .eye{
+    background: transparent;
+    border: none;
+    position: absolute;
+    right: 38%;
+    margin-bottom: 20px;
+  }
+
+  .eye2{
+    background: transparent;
+    border: none;
+    position: absolute;
+    right: 6%;
+    margin-bottom: 20px;
+  }
+
+  .is-invalid {
+    border: 1px solid #dc3545;
+  }
+  
+  .invalid-feedback {
+    color: #dc3545;
+  }
+  
