@@ -20,6 +20,8 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { MensagemComponent } from './components/mensagem/mensagem.component';
 import { IconsModule } from './modules/icons.module';
 import { TableComponent } from './components/table/table.component';
+import { ConsultaListComponent } from './views/consulta/consulta-list/consulta-list.component';
+import { ConsultaDetailsComponent } from './views/consulta/consulta-details/consulta-details.component';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { TableComponent } from './components/table/table.component';
     AnimalDetailsComponent,
     SearchBarComponent,
     MensagemComponent,
-    TableComponent
+    TableComponent,
+    ConsultaListComponent,
+    ConsultaDetailsComponent
   ],
   imports: [
     BrowserModule,
