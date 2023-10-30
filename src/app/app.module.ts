@@ -34,13 +34,10 @@ import { UsuarioEditComponent } from './views/usuario/usuario-edit/usuario-edit.
     TutorDetailsComponent,
     UsuarioDetailsComponent,
     UsuarioListComponent,
-<<<<<<< HEAD
     MensagemComponent,
-    TableComponent
-=======
+    TableComponent,
     SearchBarComponent,
     UsuarioEditComponent,
->>>>>>> dfab39acb70d8ff0e0f87ba280c7088d808c9e8e
   ],
   imports: [
     BrowserModule,
@@ -49,11 +46,8 @@ import { UsuarioEditComponent } from './views/usuario/usuario-edit/usuario-edit.
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-<<<<<<< HEAD
-    IconsModule
-=======
+    IconsModule,
     NgxMaskDirective, NgxMaskPipe
->>>>>>> dfab39acb70d8ff0e0f87ba280c7088d808c9e8e
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent]

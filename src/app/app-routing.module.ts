@@ -5,7 +5,7 @@ import { UsuarioListComponent } from './views/usuario/usuario-list/usuario-list.
 import { UsuarioDetailsComponent } from './views/usuario/usuario-details/usuario-details.component';
 
 const routes: Routes = [
-  {path: "tutores", component: TutorListComponent}
+  {path: "tutores", component: TutorListComponent},
   {path: "usuario", component: UsuarioListComponent},
   {path: "usuario/register", component: UsuarioDetailsComponent},
 ];
