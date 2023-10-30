@@ -43,7 +43,7 @@
                 <h5 class="text-secondary fw-bold">Confirma a {{toggleEntidade.deletedAt? "ativação": "desativação"}}?</h5>
             </div>
             <div class="buttons d-flex justify-content-around w-50 gap-3">
-                <button type="button"
+                <button (click)="toggleBtn(toggleEntidade)" type="button"
                 [ngClass]="
                 {
                     'btn-success': toggleEntidade.deletedAt,

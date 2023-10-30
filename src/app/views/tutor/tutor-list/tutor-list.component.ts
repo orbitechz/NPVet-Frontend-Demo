@@ -36,7 +36,7 @@ export class TutorListComponent {
   }
 
   apiUrlPath(){
-    return 'http://localhost:8080/tutor/all';  
+    return 'http://localhost:8080/tutor';  
   }
   callHeaders(){
     let tableHeaders : Header[] = [];

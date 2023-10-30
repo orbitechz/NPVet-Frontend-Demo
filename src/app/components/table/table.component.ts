@@ -57,7 +57,7 @@ export class TableComponent implements OnInit {
     try {
       let formatedDate = new Date(valor);
       if (formatedDate.toString() != 'Invalid Date') {
-        valor = this.datePipe.transform(valor, 'dd/MM/yyyy - HH:mm');
+        valor = this.datePipe.transform(valor, 'dd/MM/yyyy');
       }
     } catch (error) {}
     return valor;
@@ -72,21 +72,56 @@ export class TableComponent implements OnInit {
     this.router.navigate([`/${this.detailsPath}`, entidade.id]);
   }
   onToggleClick(template: any, toggleEntidade: number) {
-    this.toggleEntidade = toggleEntidade
-    this.modalService.open(template, {size: 'md', centered:true,  windowClass: 'modal-principal'})
+    this.toggleEntidade = toggleEntidade;
+    this.modalService.open(template, {
+      size: 'md',
+      centered: true,
+      windowClass: 'modal-principal',
+    });
   }
 
   // ====================== SERVICES ======================
   getAll() {
-    this.http.get<any[]>(this.apiUrl).subscribe({
+    this.http.get<any[]>(`${this.apiUrl}/all`).subscribe({
       next: (entidades) => {
         this.dados = entidades;
         this.carregando = false;
       },
       error: (error) => {
         this.isErro = true;
-        this.mensagem = error.error
+        this.mensagem = error.error;
       },
     });
+  }
+  toggleBtn(entidade: any) {
+    if (!entidade.deletedAt) {
+      this.http.delete<any>(`${this.apiUrl}/delete/${entidade.id}`).subscribe({
+        next: (entidades) => {
+          this.getAll();
+          this.modalService.dismissAll();
+          this.carregando = false;
+        },
+        error: (error) => {
+          this.isErro = true;
+          this.mensagem = error.error;
+          this.modalService.dismissAll();
+        },
+      });
+    } else {
+      this.http
+        .post<any>(`${this.apiUrl}/activate/${entidade.id}`, null)
+        .subscribe({
+          next: (entidades) => {
+            this.getAll();  
+            this.carregando = false;
+            this.modalService.dismissAll();
+          },
+          error: (error) => {
+            this.isErro = true;
+            this.mensagem = error.error;
+            this.modalService.dismissAll();
+          },
+        });
+    }
   }
 }
