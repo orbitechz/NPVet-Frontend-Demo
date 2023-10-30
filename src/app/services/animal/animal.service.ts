@@ -21,6 +21,14 @@ export class AnimalService {
     return this.http.get<Animal[]>(`${this.baseURL}/all`);
   }
 
+  getAllDesativados(): Observable<Animal[]>{
+    return this.http.get<Animal[]>(`${this.baseURL}/all/desativados`);
+  }
+
+  getAllAtivo(): Observable<Animal[]>{
+    return this.http.get<Animal[]>(`${this.baseURL}/all/ativos`);
+  }
+
   getByNome(nome: string): Observable<Animal[]>{
     return this.http.get<Animal[]>(`${this.baseURL}/nome/${nome}`);
   }

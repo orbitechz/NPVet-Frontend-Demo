@@ -15,7 +15,6 @@ export class AnimalListComponent {
   @Input() isModal = false  
   isErro!: boolean
   mensagem!: string
-  title = 'Animais';
   animais: Animal[] = [];
   service = inject(AnimalService);
 

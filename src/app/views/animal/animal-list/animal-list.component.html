@@ -2,9 +2,8 @@
   <div class="w-75 h-100">
       <app-mensagem [isErro]="isErro" [mensagem]="mensagem"></app-mensagem>
       <div class="d-flex justify-content-between mb-3">
-          <h3 class="text-primary font-outfit">Animais Cadastrados</h3>
       </div>
-      <app-table [headers]="callHeaders()" [apiUrl]="apiUrlPath()" [editPath]="'funcionarios/edit'"
+      <app-table  [title]="'Animais Cadastrados'" [headers]="callHeaders()" [apiUrl]="apiUrlPath()" [editPath]="'animal/update'"
           [entidade]="'Animal'" [showToggle]="true"></app-table>
   </div>
 </div>
