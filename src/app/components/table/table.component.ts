@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Header } from './header';
-import { DatePipe } from 'src/app/pipes/date-pipe';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
+  providers: [DatePipe]
 })
 export class TableComponent implements OnInit {
   @Input() headers: Header[] = [];
@@ -21,11 +22,10 @@ export class TableComponent implements OnInit {
   @Output() buttonClick = new EventEmitter<string>();
   dados: any[] = [];
   carregando: boolean = true;
-
+  datePipe = inject(DatePipe)
   constructor(
     private http: HttpClient,
     private router: Router,
-    private datePipe: DatePipe
   ) {}
 
   ngOnInit(): void {
@@ -53,9 +53,9 @@ export class TableComponent implements OnInit {
     try {
       let formatedDate = new Date(valor);
       if (
-        formatedDate.toString() != 'Invalid Date'
+        formatedDate.toString() != 'Invalid Date' 
       ) {
-        valor = this.datePipe.transform(valor);
+        valor = this.datePipe.transform(valor, "dd/MM/yyyy - HH:mm");
       }
     } catch (error) {}
     return valor;
@@ -75,18 +75,18 @@ export class TableComponent implements OnInit {
     }
   }
 
-  // onViewClick(item: any) {
-  //   const entityId = item.id;
-  //   this.p.getPedidoById(entityId).subscribe({
-  //     next: (pedido) => {
-  //       this.pedidoStatus = pedido.status;
-  //     },
-  //     error: (error) => {
-  //       console.log(error);
-  //     },
-  //   });
-  //   if (this.pedidoStatus == Status.PENDENTE) {
-  //     this.router.navigate([`/pedidos/finalizar-pedido`, entityId]);
-  //   }
-  // }
+  onViewClick(item: any) {
+    const entityId = item.id;
+    this.p.getPedidoById(entityId).subscribe({
+      next: (pedido) => {
+        this.pedidoStatus = pedido.status;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+    if (this.pedidoStatus == Status.PENDENTE) {
+      this.router.navigate([`/pedidos/finalizar-pedido`, entityId]);
+    }
+  }
 }
