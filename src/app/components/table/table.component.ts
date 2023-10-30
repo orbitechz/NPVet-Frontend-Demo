@@ -14,6 +14,7 @@ export class TableComponent implements OnInit {
   @Input() headers: Header[] = [];
   @Input() apiUrl: string = '';
   @Input() editPath: string = '';
+  @Input() detailsPath: string = '';
   @Input() entidade: string = '';
   @Input() showToggle: boolean = true;
   @Output() buttonClick = new EventEmitter<string>();
@@ -26,10 +27,10 @@ export class TableComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loadData();
+    this.getAll();
   }
 
-  loadData() {
+  getAll() {
     this.http.get<any[]>(this.apiUrl).subscribe((data) => {
       this.dados = data;
       this.carregando = false;
@@ -39,6 +40,7 @@ export class TableComponent implements OnInit {
     let isData = new Date(valor);
     return isData.toString() != 'Invalid Date' ? true : false;
   }
+
   retornarValor(tableHeader: Header, item: any): string {
     const campo = tableHeader.campo.split('.');
     let valor = item;
@@ -58,32 +60,21 @@ export class TableComponent implements OnInit {
     return valor;
   }
 
+
+  // ====================== AÇÕES DA TABELA ====================== 
   onEditClick(entidade: any) {
     const id = entidade.id;
     this.router.navigate([`/${this.editPath}`, id]);
   }
-
-  onToggleClick(data: any) {
+  onDetailsClick(entidade: any){
+    this.router.navigate([`/${this.detailsPath}`, entidade.id])
+  }
+  onToggleClick(entidade: any) {
     if (this.showToggle) {
-      const deleteUrl = `http://localhost:8080/api/${this.entidade}/${data.id}`;
+      const deleteUrl = `http://localhost:8080/api/${this.entidade}/${entidade.id}`;
       this.http.delete(deleteUrl).subscribe((response) => {
-        this.loadData();
+        this.getAll();
       });
     }
   }
-
-  // onViewClick(item: any) {
-  //   const entityId = item.id;
-  //   this.p.getPedidoById(entityId).subscribe({
-  //     next: (pedido) => {
-  //       this.pedidoStatus = pedido.status;
-  //     },
-  //     error: (error) => {
-  //       console.log(error);
-  //     },
-  //   });
-  //   if (this.pedidoStatus == Status.PENDENTE) {
-  //     this.router.navigate([`/pedidos/finalizar-pedido`, entityId]);
-  //   }
-  // }
 }
