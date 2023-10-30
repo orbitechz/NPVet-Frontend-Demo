@@ -38,7 +38,7 @@ export class AnimalListComponent {
   }
 
   apiUrlPath(){
-    return 'http://localhost:8080/animal/all';  
+    return 'http://localhost:8080/animal';  
   }
   callHeaders(){
     let tableHeaders : Header[] = [];
