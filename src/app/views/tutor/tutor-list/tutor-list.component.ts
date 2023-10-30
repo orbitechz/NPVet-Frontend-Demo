@@ -1,4 +1,5 @@
 import { Component, Input, inject } from '@angular/core';
+import { Header } from 'src/app/components/table/header';
 import { Tutor } from 'src/app/models/tutor/tutor';
 import { TutorService } from 'src/app/services/tutor/tutor.service';
 
@@ -15,6 +16,10 @@ export class TutorListComponent {
   tutores: Tutor[] = [];
   service = inject(TutorService);
 
+
+  data: any[] = [];
+
+
   constructor() {
     this.getAll();
   }
@@ -28,5 +33,18 @@ export class TutorListComponent {
         this.mensagem = erro.error
       },
     });
+  }
+
+  apiUrlPath(){
+    return 'http://localhost:8080/tutor/all';  
+  }
+  callHeaders(){
+    let tableHeaders : Header[] = [];
+    // tableHeaders.push(new Header('Codigo', 'id'));
+    tableHeaders.push(new Header('Nome', 'nome'));
+    tableHeaders.push(new Header('CPF', 'cpf'));
+    tableHeaders.push(new Header('Telefone', 'telefone_principal'));
+    tableHeaders.push(new Header('Data','createdAt'));    
+    return tableHeaders;
   }
 }

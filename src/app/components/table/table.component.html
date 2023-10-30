@@ -1,0 +1,40 @@
+<div class="tabela-card shadow px-4 py-3 mb-5">
+    <table *ngIf="!carregando" class="tabela-principal d-grid">
+        <!-- <thead class="bg-light">
+            <tr>
+                <th *ngFor="let header of headers">{{ header.header }}</th>
+                <th>Ações</th>
+            </tr>
+        </thead> -->
+        <tbody class="d-grid container">
+            <tr class="row" *ngFor="let dado of dados">
+                <div class="h-100 col-md-10 row linha">
+                    <th class="col-md-1">{{dado["id"]}}</th>
+                    <td *ngFor="let header of headers" class="col">{{retornarValor(header, dado)}}</td>
+                </div>
+                <td class="acoes col-md-2">
+                    <div class="acao">
+                        <bi class="icon" name="trash-fill"></bi>
+                    </div>
+                    <div class="acao">
+                        <bi class="icon" name="pen-fill"></bi>
+                    </div>
+                </td>
+                <!-- <td *ngIf="showDeleteButton || !showDeleteButton" class="d-flex gap-2">
+                    <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold" data-mdb-ripple-color="dark"
+                        (click)="onEditClick(dado)" class="btn">
+                        Edit
+                    </button>
+                    <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold" data-mdb-ripple-color="dark"
+                        *ngIf="showDeleteButton" (click)="onDeleteClick(dado)" class="btn">
+                        Delete
+                    </button>
+                    <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold" data-mdb-ripple-color="dark"
+                        *ngIf="showEndButton" (click)="onViewClick(dat)" class="btn">
+                        Finalizar
+                    </button>
+                </td> -->
+            </tr>
+        </tbody>
+    </table>
+</div>

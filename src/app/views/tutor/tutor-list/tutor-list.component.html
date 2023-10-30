@@ -6,17 +6,6 @@
         </div>
         <div class="tabela-card shadow px-4 py-3 mb-5">
             <table class="tabela-principal d-grid">
-                <!-- <thead class="d-grid container">
-                    <tr class="row">
-                        <div class="row col-md-10 linha">
-                            <th class="col-md-1" scope="col">Código</th>
-                            <th class="col-md-4" scope="col">Nome</th>
-                            <th class="col-md-3" scope="col">CPF</th>
-                            <th class="col-md-4" scope="col">Telefone</th>
-                        </div>
-                        <th class="col-md-2 acoes-th" scope="col">Ações</th>
-                    </tr>
-                </thead> -->
                 <tbody class="d-grid container">
                     <tr class="row" *ngFor="let tutor of tutores">
                         <div class="h-100 col-md-10 row linha">
@@ -37,5 +26,7 @@
                 </tbody>
             </table>
         </div>
+        <app-table [headers]="callHeaders()" [apiUrl]="apiUrlPath()" [editPath]="'funcionarios/edit'"
+            [entityName]="'funcionario'" [showDeleteButton]="true"></app-table>
     </div>
 </div>

@@ -16,6 +16,7 @@ import { UsuarioDetailsComponent } from './views/usuario/usuario-details/usuario
 import { UsuarioListComponent } from './views/usuario/usuario-list/usuario-list.component';
 import { MensagemComponent } from './components/mensagem/mensagem.component';
 import { IconsModule } from './modules/icons.module';
+import { TableComponent } from './components/table/table.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { IconsModule } from './modules/icons.module';
     UsuarioDetailsComponent,
     UsuarioListComponent,
     MensagemComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
