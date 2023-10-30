@@ -3,7 +3,6 @@ $primary: #00003D;
 $secondary: #7B7A7A;
 $body-bg: #F0F0F0;
 
-
 // ====================== ESTILIZACAO DE TABELAS ==========================
 .tabela-card {
     background: linear-gradient(0deg, #dddddd 0.37%, #D1D1D1 128.43%);
@@ -85,4 +84,20 @@ $body-bg: #F0F0F0;
 
 .acoes-th{
     margin-left: 1rem;
+}
+
+.modal-title{
+    font-family: 'SimplyRounded';
+}
+
+::ng-deep .modal-content{
+    border-radius: 40px;
+    border: hidden;
+    background: linear-gradient(0deg, #F0F0F0 0.37%, #D1D1D1 128.43%);
+}
+.buttons button{
+    font-family: 'SimplyRounded';
+    font-weight: 400;
+    border-radius: 45.796px;
+    width: 400px !important;
 }

@@ -17,7 +17,6 @@ import { UsuarioListComponent } from './views/usuario/usuario-list/usuario-list.
 import { MensagemComponent } from './components/mensagem/mensagem.component';
 import { IconsModule } from './modules/icons.module';
 import { TableComponent } from './components/table/table.component';
-import { ToggleModalComponent } from './components/modals/toggle-modal/toggle-modal.component';
 
 
 @NgModule({
@@ -32,8 +31,7 @@ import { ToggleModalComponent } from './components/modals/toggle-modal/toggle-mo
     UsuarioDetailsComponent,
     UsuarioListComponent,
     MensagemComponent,
-    TableComponent,
-    ToggleModalComponent
+    TableComponent
   ],
   imports: [
     BrowserModule,
