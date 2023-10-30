@@ -64,6 +64,9 @@ export class TableComponent implements OnInit {
     return valor;
   }
 
+  search(pesquisa: string){
+    console.log(pesquisa)
+  }
   // ====================== AÇÕES DA TABELA ======================
   onEditClick(entidade: any) {
     const id = entidade.id;

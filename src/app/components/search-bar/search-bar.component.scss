@@ -31,14 +31,16 @@
     text-indent: 15px;
 }
 
-.bi-search {
+.icon {
     position: absolute;
     top: 50%;
     left: 10px;
     transform: translateY(-50%);
     color: #00003D;
     font-size: 20px;
-    font-weight: bolder;
+    font-weight: 800;
     cursor: pointer;
     z-index: 99;
+    width: 25px;
+    height: 25px;
 }
