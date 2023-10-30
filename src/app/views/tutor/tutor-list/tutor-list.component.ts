@@ -5,10 +5,13 @@ import { TutorService } from 'src/app/services/tutor/tutor.service';
 @Component({
   selector: 'app-tutor-list',
   templateUrl: './tutor-list.component.html',
-  styleUrls: ['./tutor-list.component.scss']
+  styleUrls: ['./tutor-list.component.scss'],
 })
 export class TutorListComponent {
-  tutores: Tutor[] = []
+  isErro!: boolean
+  mensagem!: string
+  title = 'Tutores';
+  tutores: Tutor[] = [];
   service = inject(TutorService);
 
   constructor() {
@@ -18,7 +21,7 @@ export class TutorListComponent {
     this.service.getAll().subscribe({
       next: (tutores: any) => {
         this.tutores = tutores;
-        console.log(tutores)
+        console.log(tutores);
       },
       error: (erro: any) => {
         alert(erro.error);
@@ -26,6 +29,3 @@ export class TutorListComponent {
     });
   }
 }
-
-
-

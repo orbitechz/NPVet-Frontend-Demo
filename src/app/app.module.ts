@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UsuarioDetailsComponent } from './views/usuario/usuario-details/usuario-details.component';
 import { UsuarioListComponent } from './views/usuario/usuario-list/usuario-list.component';
+import { MensagemComponent } from './components/mensagem/mensagem.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { UsuarioListComponent } from './views/usuario/usuario-list/usuario-list.
     TutorDetailsComponent,
     UsuarioDetailsComponent,
     UsuarioListComponent,
+    MensagemComponent,
   ],
   imports: [
     BrowserModule,
