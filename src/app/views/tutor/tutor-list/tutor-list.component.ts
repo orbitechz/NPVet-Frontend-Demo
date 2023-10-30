@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Tutor } from 'src/app/models/tutor/tutor';
 import { TutorService } from 'src/app/services/tutor/tutor.service';
 
@@ -8,6 +8,7 @@ import { TutorService } from 'src/app/services/tutor/tutor.service';
   styleUrls: ['./tutor-list.component.scss'],
 })
 export class TutorListComponent {
+  @Input() isModal = false  
   isErro!: boolean
   mensagem!: string
   title = 'Tutores';
@@ -21,10 +22,10 @@ export class TutorListComponent {
     this.service.getAll().subscribe({
       next: (tutores: any) => {
         this.tutores = tutores;
-        console.log(tutores);
       },
       error: (erro: any) => {
-        alert(erro.error);
+        this.isErro = true;
+        this.mensagem = erro.error
       },
     });
   }

@@ -1,7 +1,16 @@
+/* ====================== BOOTSTRAP CORES ====================== */
+$primary: #00003D;
+$secondary: #7B7A7A;
+$body-bg: #F0F0F0;
+
+
 /* ====================== IMPORT BOOTSTRAP ====================== */
 @import 'bootstrap/scss/bootstrap';
 
-// ====================== IMPORT FONTS ======================
+
+/* ====================== IMPORT FONTS ========================== */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @font-face {
     font-family: 'Arista';
     src: url('assets/fonts/arista-2.0/Arista2.0.ttf');
@@ -34,28 +43,68 @@
     font-family: 'Simply Rounded Bold';
     src: url('assets/fonts/simply-rounded/Simply Rounded Bold.ttf');
 }
-
-body{
-    background-color: #F0F0F0;
+.font-outfit{
+    font-family: Outfit, 'sans serif';
+    font-weight: 600;
 }
 
 // ====================== ESTILIZACAO DE TABELAS ==========================
-.tabela td{
-    display: table-cell;
-    vertical-align: inherit;
-    width: auto;
-}   
-
-.tabela {
-    border-radius: 20px;
-    background: linear-gradient(0deg, #F0F0F0 0.37%, #D1D1D1 128.43%) !important;
-    vertical-align: top;
-    display: table;
-    box-sizing: border-box;
-    text-indent: initial;
-    border-spacing: 2px;
+.tabela-card {
+    // background-color: #D1D1D1;
+    background: linear-gradient(to bottom, #d4d4d4b4, #D1D1D1 128.43%);
+    border-radius: .5rem;
 }
 
+.tabela-principal thead tr{
+    font-family: Outfit, 'sans serif';
+    font-weight: 600;
+    // color: $primary;
+}
+.tabela-principal tbody th{
+    display: flex;
+    background-color: white;
+    height: 100%;
+    border-radius: .5rem;
+    justify-content: center;
+    align-items: center;
+}
+.tabela-principal tr{
+    border-style: hidden;
+    border-width: 0;
+    font-family: Inter;
+    font-weight: 700;    
+    color: $secondary;
+}
+
+.tabela-principal td, .tabela-principal th{
+    text-align: center;
+    vertical-align: middle;
+}
+.tabela-principal tbody tr {
+    transition: 1000ms;
+    cursor: pointer;
+    align-items: center;
+    background-color: #F0F0F0;
+    height: 3rem;
+    border-radius: .5rem;
+    margin-block: .5rem;
+    
+}
+.tabela-principal tbody tr:hover{
+    transition: 1000ms;
+    background: linear-gradient(to left, #F0F0F0, #ffffff);
+}
+.status-cell {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding-inline: 5rem;
+}
+
+// ====================== WIDTHS ==========================
 .w-80 {
     width: 80%;
 }
+
+

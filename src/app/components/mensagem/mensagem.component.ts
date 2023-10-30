@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./mensagem.component.scss']
 })
 export class MensagemComponent {
-@Input() isErro!: boolean
+@Input() isErro = false
 @Input() mensagem!: string
 
 constructor(){}
