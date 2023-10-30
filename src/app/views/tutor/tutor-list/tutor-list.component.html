@@ -1,11 +1,18 @@
-<h1>funciona</h1>
-<table>
-    <thead>
-        <th>teste</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let tutor of tutores">
-            <td>{{tutor.nome}}</td>
-        </tr>
-    </tbody>
-</table>
+<div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center mt-5">
+    <div class="w-80 h-100">
+        <div class="d-flex justify-content-between mb-3">
+            <h3>Tutores Cadastrados</h3>
+        </div>
+        <table class="tabela table table-borderless">
+            <tbody>
+                <tr *ngFor="let tutor of tutores">
+                    <td class="col-2">{{tutor.nome}}</td>
+                    <td>{{tutor.cpf}}</td>
+                    <td>{{tutor.telefones[0].telefone}}</td>
+                    <td>{{tutor.telefones[1]? tutor.telefones[1].telefone: "N/I"}}</td>
+                    <td>botoes</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
