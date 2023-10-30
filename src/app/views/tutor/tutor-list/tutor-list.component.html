@@ -1,27 +1,38 @@
 <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center mt-5">
-    <div class="w-80 h-100">
+    <div class="w-75 h-100">
         <app-mensagem [isErro]="isErro" [mensagem]="mensagem"></app-mensagem>
         <div class="d-flex justify-content-between mb-3">
             <h3 class="text-primary font-outfit">Tutores Cadastrados</h3>
         </div>
-        <div class="tabela-card shadow p-3 mb-5 rounded">
+        <div class="tabela-card shadow px-4 py-3 mb-5">
             <table class="tabela-principal d-grid">
-                <thead class="d-grid container">
+                <!-- <thead class="d-grid container">
                     <tr class="row">
-                        <th class="col-md-1" scope="col">Código</th>
-                        <th class="col-md-3" scope="col">Nome</th>
-                        <th class="col-md-3" scope="col">CPF</th>
-                        <th class="col-md-3" scope="col">Telefone</th>
-                        <th class="col-md-2" scope="col">Ações</th>
+                        <div class="row col-md-10 linha">
+                            <th class="col-md-1" scope="col">Código</th>
+                            <th class="col-md-4" scope="col">Nome</th>
+                            <th class="col-md-3" scope="col">CPF</th>
+                            <th class="col-md-4" scope="col">Telefone</th>
+                        </div>
+                        <th class="col-md-2 acoes-th" scope="col">Ações</th>
                     </tr>
-                </thead>
+                </thead> -->
                 <tbody class="d-grid container">
                     <tr class="row" *ngFor="let tutor of tutores">
-                        <th class="col-md-1">{{tutor.id}}</th>
-                        <td class="col-md-3">{{tutor.nome}}</td>
-                        <td class="col-md-3">{{tutor.cpf}}</td>
-                        <td class="col-md-3">{{tutor.telefones[0].telefone}}</td>
-                        <td class="col-md-2">botoes</td>
+                        <div class="h-100 col-md-10 row linha">
+                            <th class="col-md-1">{{tutor.id}}</th>
+                            <td class="col-md-4">{{tutor.nome}}</td>
+                            <td class="col-md-3">{{tutor.cpf}}</td>
+                            <td class="col-md-4">{{tutor.telefones[0].telefone}}</td>
+                        </div>
+                        <td class="acoes col-md-2">
+                            <div class="acao">
+                                <bi class="icon" name="trash-fill"></bi>
+                            </div>
+                            <div class="acao">
+                                <bi class="icon" name="pen-fill"></bi>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>

@@ -9,7 +9,7 @@ $body-bg: #F0F0F0;
 
 
 /* ====================== IMPORT FONTS ========================== */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @font-face {
     font-family: 'Arista';
@@ -50,25 +50,27 @@ $body-bg: #F0F0F0;
 
 // ====================== ESTILIZACAO DE TABELAS ==========================
 .tabela-card {
-    // background-color: #D1D1D1;
-    background: linear-gradient(to bottom, #d4d4d4b4, #D1D1D1 128.43%);
-    border-radius: .5rem;
+    background: linear-gradient(0deg, #dddddd 0.37%, #D1D1D1 128.43%);
+    border-radius: 30px;
 }
-
 .tabela-principal thead tr{
     font-family: Outfit, 'sans serif';
-    font-weight: 600;
-    // color: $primary;
+    color: $secondary;
+    font-weight: 800;
+    font-size: 1.1rem;
 }
 .tabela-principal tbody th{
     display: flex;
     background-color: white;
     height: 100%;
-    border-radius: .5rem;
+    border-radius: 50px;
     justify-content: center;
     align-items: center;
 }
-.tabela-principal tr{
+.tabela-principal tbody th, .acao .icon{
+    color: #00003da6;
+}
+.tabela-principal tbody tr{
     border-style: hidden;
     border-width: 0;
     font-family: Inter;
@@ -80,28 +82,53 @@ $body-bg: #F0F0F0;
     text-align: center;
     vertical-align: middle;
 }
-.tabela-principal tbody tr {
-    transition: 1000ms;
-    cursor: pointer;
-    align-items: center;
-    background-color: #F0F0F0;
-    height: 3rem;
-    border-radius: .5rem;
-    margin-block: .5rem;
-    
+.tabela-principal tbody .linha{
+    background-color: $body-bg;
 }
-.tabela-principal tbody tr:hover{
+.linha {
+    transition: 1000ms;
+    padding: 0;
+    border-radius: 50px;
+}
+.linha:hover{
     transition: 1000ms;
     background: linear-gradient(to left, #F0F0F0, #ffffff);
 }
-.status-cell {
+.linha td{
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
     align-items: center;
-    padding-inline: 5rem;
+    justify-content: center;
+}
+.tabela-principal tbody tr {
+    cursor: pointer;
+    align-items: center;
+    height: 3rem;
+    margin-block: .5rem;    
+}
+.acoes{
+    display: flex;
+    justify-content: space-around;
+    margin-left: 1rem;
+    align-items: center;
+    height: 100%;
+}
+.acao{
+    height: 100%;
+    width: 40%;
+    border-radius: 40%;
+    background-color: $body-bg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.acao .icon{
+    width: 25px;
+    height: 25px;
 }
 
+.acoes-th{
+    margin-left: 1rem;
+}
 // ====================== WIDTHS ==========================
 .w-80 {
     width: 80%;
