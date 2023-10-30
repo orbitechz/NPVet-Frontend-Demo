@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Header } from './header';
+import { DatePipe } from 'src/app/pipes/date-pipe';
 
 @Component({
   selector: 'app-table',
@@ -21,7 +22,11 @@ export class TableComponent implements OnInit {
   dados: any[] = [];
   carregando: boolean = true;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private datePipe: DatePipe
+  ) {}
 
   ngOnInit(): void {
     this.loadData();
@@ -33,8 +38,11 @@ export class TableComponent implements OnInit {
       this.carregando = false;
     });
   }
-
-  retornarValor(tableHeader: Header, item: any) {
+  isData(valor: any): boolean {
+    let isData = new Date(valor);
+    return isData.toString() != 'Invalid Date' ? true : false;
+  }
+  retornarValor(tableHeader: Header, item: any): string {
     const campo = tableHeader.campo.split('.');
     let valor = item;
     for (const p of campo) {
@@ -42,23 +50,14 @@ export class TableComponent implements OnInit {
         valor = valor[p];
       }
     }
-    // try {
-    //   let formatedDate = new Date(valor);
-    //   console.log(formatedDate);
-    //   if (
-    //     formatedDate.toString() != 'Invalid Date' &&
-    //     formatedDate.toString() !=
-    //       'Wed Dec 31 1969 21:00:00 GMT-0300 (Brasilia Standard Time)'
-    //   ) {
-    //     valor = this.datePipe.transform(valor);
-    //   }
-    //   if (
-    //     formatedDate.toString() ==
-    //     'Wed Dec 31 1969 21:00:00 GMT-0300 (Brasilia Standard Time)'
-    //   ) {
-    //     valor = this.numberPipe.transform(valor);
-    //   }
-    // } catch (error) {}
+    try {
+      let formatedDate = new Date(valor);
+      if (
+        formatedDate.toString() != 'Invalid Date'
+      ) {
+        valor = this.datePipe.transform(valor);
+      }
+    } catch (error) {}
     return valor;
   }
 

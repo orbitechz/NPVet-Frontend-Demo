@@ -43,7 +43,7 @@ export class TutorListComponent {
     // tableHeaders.push(new Header('Codigo', 'id'));
     tableHeaders.push(new Header('Nome', 'nome'));
     tableHeaders.push(new Header('CPF', 'cpf'));
-    tableHeaders.push(new Header('Telefone', 'telefone_principal'));
+    // tableHeaders.push(new Header('Telefone', 'telefone_principal'));
     tableHeaders.push(new Header('Data','createdAt'));    
     return tableHeaders;
   }
