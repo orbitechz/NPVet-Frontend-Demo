@@ -9,14 +9,15 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { Header } from './header';
-import { DatePipe } from '@angular/common';
+import { DatePipe, DecimalPipe } from '@angular/common';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
-  providers: [DatePipe],
+  providers: [DatePipe, DecimalPipe],
 })
 export class TableComponent implements OnInit {
   @Input() headers: Header[] = [];
@@ -27,11 +28,14 @@ export class TableComponent implements OnInit {
   @Input() title: string = 'Tabela';
   @Input() showToggle: boolean = true;
   @Output() buttonClick = new EventEmitter<string>();
+  switchEstado = new FormControl(false);
   dados: any[] = [];
+  dadosFiltrados: any[] = []
   carregando: boolean = true;
   isErro = false;
   mensagem!: string;
   toggleEntidade!: any;
+  decimalPipe = inject(DecimalPipe);
 
   // injects
   modalService = inject(NgbModal);
@@ -39,7 +43,13 @@ export class TableComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
+    this.switchEstado.setValue(true)
     this.getAll();
+    this.carregando = false
+  }
+
+  filtrarEstado() {
+    this.search();
   }
 
   isData(valor: any): boolean {
@@ -63,9 +73,20 @@ export class TableComponent implements OnInit {
     } catch (error) {}
     return valor;
   }
+  // ====================== SEARCH  ======================
+  search(pesquisa?: string){
+    if(pesquisa){
+      return this.dados.filter((entidade) => {
+        const term = pesquisa.toLowerCase();
+        return (
+          (entidade.descricao.toLowerCase().includes(term)) &&
+          (!this.switchEstado.value || (entidade.delecao === null && this.switchEstado.value))
+        );
+      });
+    }else{
+      return this.dados
+    }
 
-  search(pesquisa: string){
-    console.log(pesquisa)
   }
   // ====================== AÇÕES DA TABELA ======================
   onEditClick(entidade: any) {
@@ -89,7 +110,6 @@ export class TableComponent implements OnInit {
     this.http.get<any[]>(`${this.apiUrl}/all`).subscribe({
       next: (entidades) => {
         this.dados = entidades;
-        this.carregando = false;
       },
       error: (error) => {
         this.isErro = true;

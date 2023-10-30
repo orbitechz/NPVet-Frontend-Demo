@@ -21,6 +21,8 @@ import { UsuarioService } from './services/usuario/usuario.service';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { UsuarioEditComponent } from './views/usuario/usuario-edit/usuario-edit.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { UsuarioEditComponent } from './views/usuario/usuario-edit/usuario-edit.
     FormsModule,
     HttpClientModule,
     IconsModule,
-    NgxMaskDirective, NgxMaskPipe
+    NgxMaskDirective, NgxMaskPipe,
+    MatSlideToggleModule,
+    BrowserAnimationsModule
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent]

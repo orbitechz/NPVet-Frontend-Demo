@@ -3,6 +3,8 @@
         <app-search-bar (searchEvent)="search($event)"></app-search-bar>
         <div class="d-flex justify-content-between mb-3">
             <h3 class="text-primary font-outfit">{{title}}</h3>
+            <mat-slide-toggle class="w-25 pt-2" name="estadoAtivo" [formControl]="switchEstado" #estadoAtivo
+                (change)="filtrarEstado()" color="primary"><p>Mostrar apenas abertos</mat-slide-toggle>
         </div>
     </div>
     <div class="tabela-card shadow px-4 py-3 mb-5">
@@ -37,7 +39,7 @@
             </tbody>
         </table>
     </div>
-    
+
     <ng-template #toggle let-modal class="modal-principal">
         <div class="modal-header w-100 px-5 d-flex justify-content-center">
             <h3 class="modal-title text-center w-100">Confirmação</h3>
@@ -47,18 +49,18 @@
             <div class="body d-flex justify-content-center flex-column align-items-center">
                 <img src="../../../assets/img/gato-preto.png" alt="" srcset="">
                 <div class="aviso pt-5 pb-3 ">
-                    <h5 class="text-secondary fw-bold">Confirma a {{toggleEntidade.deletedAt? "ativação": "desativação"}}?</h5>
+                    <h5 class="text-secondary fw-bold">Confirma a {{toggleEntidade.deletedAt? "ativação":
+                        "desativação"}}?</h5>
                 </div>
                 <div class="buttons d-flex justify-content-around w-50 gap-3">
-                    <button (click)="toggleBtn(toggleEntidade)" type="button"
-                    [ngClass]="
+                    <button (click)="toggleBtn(toggleEntidade)" type="button" [ngClass]="
                     {
                         'btn-success': toggleEntidade.deletedAt,
                         'btn-danger': !toggleEntidade.deletedAt
                     }
-                    "
-                    class="btn botoes">{{toggleEntidade.deletedAt? "Ativar" : "Desativar"}}</button>
-                    <button type="button" class="botoes btn btn-secondary text-white" (click)="modal.close('Close click')">Cancelar</button>
+                    " class="btn botoes">{{toggleEntidade.deletedAt? "Ativar" : "Desativar"}}</button>
+                    <button type="button" class="botoes btn btn-secondary text-white"
+                        (click)="modal.close('Close click')">Cancelar</button>
                 </div>
             </div>
         </div>
