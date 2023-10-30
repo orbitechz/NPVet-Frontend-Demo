@@ -20,7 +20,6 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { MensagemComponent } from './components/mensagem/mensagem.component';
 import { IconsModule } from './modules/icons.module';
 import { TableComponent } from './components/table/table.component';
-import { ToggleModalComponent } from './components/modals/toggle-modal/toggle-modal.component';
 
 
 @NgModule({
@@ -38,8 +37,7 @@ import { ToggleModalComponent } from './components/modals/toggle-modal/toggle-mo
     AnimalDetailsComponent,
     SearchBarComponent,
     MensagemComponent,
-    TableComponent,
-    ToggleModalComponent
+    TableComponent
   ],
   imports: [
     BrowserModule,
