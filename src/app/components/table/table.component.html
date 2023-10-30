@@ -1,0 +1,32 @@
+<div class="tabela-card shadow px-4 py-3 mb-5">
+    <table *ngIf="!carregando" class="tabela-principal d-grid">
+        <thead class="d-grid container">
+            <tr class="row">
+                <div class="row col-md-10 p-0">
+                    <th class="col-md-1">Código</th>
+                    <th class="col" *ngFor="let header of headers">{{ header.header }}</th>
+                </div>
+                <div class="acoes col-md-2">
+                    <th class="col">Ações</th>
+                </div>
+            </tr>
+        </thead>
+        <tbody class="d-grid container">
+            <tr class="row" *ngFor="let entidade of dados">
+                <div class="h-100 col-md-10 row linha hover" (click)="onDetailsClick(entidade)">
+                    <th class="col-md-1">{{entidade["id"]}}</th>
+                    <td *ngFor="let header of headers" class="col">{{retornarValor(header, entidade)}}</td>
+                </div>
+                <td class="acoes col-md-2">
+                    <div class="acao hover" (click)="onEditClick(entidade)">
+                        <bi class="icon" name="pen-fill"></bi>
+                    </div>
+                    <div *ngIf="showToggle" class="acao hover" (click)="onToggleClick(entidade)">
+                        <bi *ngIf="!entidade.deletedAt" class="icon" name="trash-fill"></bi>
+                        <bi *ngIf="entidade.deletedAt" class="icon" name="arrow-clockwise"></bi>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

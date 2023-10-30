@@ -1,0 +1,8 @@
+<div [ngClass]="
+{
+    'alert alert-success': !isErro && mensagem,
+    'alert alert-danger': isErro && mensagem
+}
+" role="alert">
+    {{mensagem}}
+</div>

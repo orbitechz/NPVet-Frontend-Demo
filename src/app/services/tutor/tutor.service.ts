@@ -37,7 +37,10 @@ export class TutorService {
   update(id: number, tutor: Tutor): Observable<Tutor> {
     return this.http.put<Tutor>(`${this.API}/update/${id}`, tutor);
   }
-  delete(id: number): Observable<any> {
+  delete(id: number): Observable<Tutor> {
     return this.http.delete<any>(`${this.API}/delete/${id}`);
+  }
+  activate(id: number): Observable<Tutor> {
+    return this.http.post<any>(`${this.API}/activate/${id}`, null);
   }
 }

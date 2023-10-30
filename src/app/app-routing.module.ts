@@ -5,10 +5,9 @@ import { AnimalListComponent } from './views/animal/animal-list/animal-list.comp
 import { UsuarioListComponent } from './views/usuario/usuario-list/usuario-list.component';
 
 const routes: Routes = [
-  {path: "tutor", component: TutorListComponent},
   {path: "animal", component: AnimalListComponent},
-  {path: "usuarios", component: UsuarioListComponent}
-
+  {path: "usuarios", component: UsuarioListComponent},
+  {path: "tutores", component: TutorListComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,88 @@
+/* ====================== BOOTSTRAP CORES ====================== */
+$primary: #00003D;
+$secondary: #7B7A7A;
+$body-bg: #F0F0F0;
+
+
+// ====================== ESTILIZACAO DE TABELAS ==========================
+.tabela-card {
+    background: linear-gradient(0deg, #dddddd 0.37%, #D1D1D1 128.43%);
+    border-radius: 30px;
+}
+.tabela-principal thead tr{
+    font-family: Outfit, 'sans serif';
+    color: $secondary;
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+.tabela-principal tbody th{
+    display: flex;
+    background-color: white;
+    height: 100%;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+}
+.tabela-principal tbody th, .acao .icon{
+    color: #00003da6;
+}
+.tabela-principal tbody tr{
+    border-style: hidden;
+    border-width: 0;
+    font-family: Inter;
+    font-weight: 700;    
+    color: $secondary;
+}
+
+.tabela-principal td, .tabela-principal th{
+    text-align: center;
+    vertical-align: middle;
+}
+.tabela-principal tbody .linha{
+    background-color: $body-bg;
+}
+.linha {
+    transition: 1000ms;
+    padding: 0;
+    border-radius: 50px;
+}
+.linha:hover, .hover:hover{
+    transition: 500ms;
+    background-color: rgb(231, 224, 224) !important;
+}
+.linha td{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tabela-principal tbody tr {
+    cursor: pointer;
+    align-items: center;
+    height: 3rem;
+    margin-block: .5rem;    
+}
+.acoes{
+    display: flex;
+    justify-content: space-around;
+    margin-left: 1rem;
+    align-items: center;
+    height: 100%;
+}
+.acao{
+    transition: 500ms;
+    height: 100%;
+    width: 40%;
+    border-radius: 40%;
+    background-color: $body-bg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.acao .icon{
+    width: 25px;
+    height: 25px;
+}
+
+.acoes-th{
+    margin-left: 1rem;
+}

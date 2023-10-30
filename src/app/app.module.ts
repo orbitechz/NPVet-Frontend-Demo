@@ -17,6 +17,10 @@ import { AnimalListComponent } from './views/animal/animal-list/animal-list.comp
 import { AnimalDetailsComponent } from './views/animal/animal-details/animal-details.component';
 import { UsuarioService } from './services/usuario/usuario.service';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { MensagemComponent } from './components/mensagem/mensagem.component';
+import { IconsModule } from './modules/icons.module';
+import { TableComponent } from './components/table/table.component';
+import { ToggleModalComponent } from './components/modals/toggle-modal/toggle-modal.component';
 
 
 @NgModule({
@@ -33,6 +37,9 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     AnimalListComponent,
     AnimalDetailsComponent,
     SearchBarComponent,
+    MensagemComponent,
+    TableComponent,
+    ToggleModalComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +47,8 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     NgbModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    IconsModule
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent]

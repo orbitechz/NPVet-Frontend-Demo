@@ -1,4 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
+/* ====================== BOOTSTRAP CORES ====================== */
+$primary: #00003D;
+$secondary: #7B7A7A;
+$body-bg: #F0F0F0;
 
-/* Importing Bootstrap SCSS file. */
+
+/* ====================== IMPORT BOOTSTRAP ====================== */
 @import 'bootstrap/scss/bootstrap';
+
+
+/* ====================== IMPORT FONTS ========================== */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@font-face {
+    font-family: 'Arista';
+    src: url('assets/fonts/arista-2.0/Arista2.0.ttf');
+}
+@font-face {
+    font-family: 'Gotham';
+    src: url('assets/fonts/Gotham-Font/GothamMedium.ttf');
+}
+@font-face {
+    font-family: 'Gotham-Bold';
+    src: url('assets/fonts/Gotham-Font/GothamBold.ttf');
+}
+@font-face {
+    font-family: 'Gotham-Light';
+    src: url('assets/fonts/Gotham-Font/GothamLight.ttf');
+}
+@font-face {
+    font-family: 'Gotham-Bold-Italic';
+    src: url('assets/fonts/Gotham-Font/GothamBoldItalic.ttf');
+}
+@font-face {
+    font-family: 'SimplyRounded';
+    src: url('assets/fonts/simply-rounded/Simply Rounded.ttf');
+}
+@font-face {
+    font-family: 'Simply Rounded Bold';
+    src: url('assets/fonts/simply-rounded/Simply Rounded Bold.ttf');
+}
+@font-face {
+    font-family: 'Simply Rounded Bold';
+    src: url('assets/fonts/simply-rounded/Simply Rounded Bold.ttf');
+}
+.font-outfit{
+    font-family: Outfit, 'sans serif';
+    font-weight: 600;
+}
+
+// ====================== WIDTHS ==========================
+.w-80 {
+    width: 80%;
+}
+
+
