@@ -14,10 +14,10 @@
                 </div>
                 <td class="acoes col-md-2">
                     <div class="acao">
-                        <bi class="icon" name="trash-fill"></bi>
-                    </div>
-                    <div class="acao">
                         <bi class="icon" name="pen-fill"></bi>
+                    </div>
+                    <div *ngIf="showToggle" class="acao">
+                        <bi class="icon" name="trash-fill"></bi>
                     </div>
                 </td>
                 <!-- <td *ngIf="showDeleteButton || !showDeleteButton" class="d-flex gap-2">
