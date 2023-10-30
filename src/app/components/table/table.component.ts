@@ -24,6 +24,7 @@ export class TableComponent implements OnInit {
   @Input() editPath: string = '';
   @Input() detailsPath: string = '';
   @Input() entidade: string = '';
+  @Input() title: string = 'Tabela';
   @Input() showToggle: boolean = true;
   @Output() buttonClick = new EventEmitter<string>();
   dados: any[] = [];
