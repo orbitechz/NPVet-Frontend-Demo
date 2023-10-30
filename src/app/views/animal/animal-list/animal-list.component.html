@@ -1,26 +1,10 @@
-
-<div class="list-animal d-flex flex-column align-items-start gap-4">
-  <div class="page-header w-100 d-flex justify-content-between align-items-center">
-    <p class="align-self-start">LOGO</p>
-    <h1 class="text-center flex-grow-1">Pet</h1>
-</div>
-  <div class="action-register d-flex align-items-center gap-2" routerLink="#">
-    <i class="bi bi-plus"></i>
-    <a href="#">Cadastrar novo Pet</a>
-  </div>
-  <app-search-bar></app-search-bar>
-  <div class="table-container d-flex">
-    <p class="table-title">Pet Cadastrados</p>
-    <table class="">
-
-      <tbody >
-          <tr *ngFor="let animal of lista; index as i">
-        <th scope="row" class="col-4">{{ animal.nome }}</th>
-              <th scope="row col-5">Tutor: {{ animal.tutorId.nome }}</th>
-        <th scope="row col-4">Espécie: {{ animal.especie }}</th>
-        </tr>
-      </tbody>
-    </table>
+<div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center mt-5">
+  <div class="w-75 h-100">
+      <app-mensagem [isErro]="isErro" [mensagem]="mensagem"></app-mensagem>
+      <div class="d-flex justify-content-between mb-3">
+          <h3 class="text-primary font-outfit">Animais Cadastrados</h3>
       </div>
+      <app-table [headers]="callHeaders()" [apiUrl]="apiUrlPath()" [editPath]="'funcionarios/edit'"
+          [entidade]="'Tutor'" [showToggle]="true"></app-table>
+  </div>
 </div>
-
