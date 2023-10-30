@@ -15,7 +15,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UsuarioDetailsComponent } from './views/usuario/usuario-details/usuario-details.component';
 import { UsuarioListComponent } from './views/usuario/usuario-list/usuario-list.component';
 import { UsuarioService } from './services/usuario/usuario.service';
+import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { UsuarioEditComponent } from './views/usuario/usuario-edit/usuario-edit.component';
 
 
 @NgModule({
@@ -30,6 +32,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     UsuarioDetailsComponent,
     UsuarioListComponent,
     SearchBarComponent,
+    UsuarioEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     NgbModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxMaskDirective, NgxMaskPipe
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent]

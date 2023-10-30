@@ -92,3 +92,32 @@
     text-align: center;
   }
   
+  .pass{
+    flex: 90%;
+    position: relative;
+  }
+
+  .eye{
+    background: transparent;
+    border: none;
+    position: absolute;
+    right: 38%;
+    margin-bottom: 20px;
+  }
+
+  .eye2{
+    background: transparent;
+    border: none;
+    position: absolute;
+    right: 6%;
+    margin-bottom: 20px;
+  }
+
+  .is-invalid {
+    border: 1px solid #dc3545;
+  }
+  
+  .invalid-feedback {
+    color: #dc3545;
+  }
+  

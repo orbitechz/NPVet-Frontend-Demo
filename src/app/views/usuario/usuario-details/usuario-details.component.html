@@ -4,19 +4,28 @@
       <p>npvet</p>
       <h1>Cadastro dos Usuários</h1>
       <div class="action-register">
-        <a href="usuario/register"><i class="bi bi-arrow-left"></i></a>
+        <a href="usuario/register">
+          <i class="bi bi-arrow-left"></i>
+        </a>
       </div>
     </div>
   </div>
 
   <div class="registerForm">
+    <div [ngClass]="{
+      'alert alert-success':'!isErro',
+      'alert alert-danger':'isErro'}" *ngIf="mensagem" role="alert">
+      {{mensagem}}
+    </div>
     <form
       action=""
       class="needs-validation"
       #usuarioForm="ngForm"
       (ngSubmit)="submitForm(usuarioForm)"
+      novalidate
     >
       <div class="row mb-3">
+        <!-- Nome -->
         <div class="col-md-4">
           <div class="form-group">
             <label for="nome" class="mb-1">Nome</label>
@@ -30,6 +39,7 @@
             />
           </div>
         </div>
+        <!-- CPF -->
         <div class="col-md-4">
           <div class="form-group">
             <label for="cpf" class="mb-1">CPF</label>
@@ -39,10 +49,14 @@
               class="form-control"
               name="cpf"
               [(ngModel)]="usuario.cpf"
+              placeholder="000.000.000-00"
+              maxlength="14"
+              mask="000.000.000-00"
               required
             />
           </div>
         </div>
+        <!-- Tipo do Usuário -->
         <div class="col-md-4">
           <div class="form-group">
             <label for="tipoUsuario" class="mb-1">Tipo do Usuário</label>
@@ -67,6 +81,7 @@
         </div>
       </div>
       <div class="row mb-3">
+        <!-- Username -->
         <div class="col-md-4">
           <div class="form-group">
             <label for="username" class="mb-1">Username</label>
@@ -80,11 +95,12 @@
             />
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="form-group">
+        <!-- Senha -->
+        <div class="col-md-4 d-flex align-items-center justify-content-between">
+          <div class="form-group pass">
             <label for="senha" class="mb-1">Senha</label>
             <input
-              type="password"
+              [type]="hide ? 'password' : 'text'"
               id="senha"
               class="form-control"
               name="senha"
@@ -92,12 +108,16 @@
               required
             />
           </div>
+          <button (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" class="eye align-self-end">
+            <i [class]="hide ? 'bi bi-eye-slash-fill' : 'bi bi-eye-fill'"></i>
+          </button>
         </div>
-        <div class="col-md-4">
-          <div class="form-group">
+        <!-- Confirmar Senha -->
+        <div class="col-md-4 d-flex align-items-center justify-content-between">
+          <div class="form-group pass">
             <label for="confirmarSenha" class="mb-1">Confirmar Senha</label>
             <input
-              type="password"
+              [type]="hide2 ? 'password' : 'text'"
               id="confirmarSenha"
               class="form-control"
               name="confirmarSenha"
@@ -105,6 +125,9 @@
               required
             />
           </div>
+          <button (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2" class="eye2 align-self-end">
+            <i [class]="hide2 ? 'bi bi-eye-slash-fill' : 'bi bi-eye-fill'"></i>
+          </button>
         </div>
       </div>
       <div class="text-center">
