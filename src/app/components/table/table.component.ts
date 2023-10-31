@@ -131,7 +131,9 @@ export class TableComponent implements OnInit {
       // Verifique se alguma das colunas contém o termo pesquisado
       for (const header of this.headers) {
         const campo = header.campo.split('.');
-        let valor = item;
+        let entidade
+        let valor
+        valor = entidade = item;
 
         for (const p of campo) {
           if (valor != null) {
@@ -145,18 +147,24 @@ export class TableComponent implements OnInit {
           if (typeof valor != 'string') {
             formattedValue = pipe.transform(valor).toLowerCase();
           } else {
-            formattedValue = valor.toLowerCase();
+            if(this.isData(valor)){
+              formattedValue = this.datePipe.transform(valor, "dd/MM/yyyy") as string
+            }else{
+              formattedValue = valor.toLowerCase();
+            }
           }
-          if (formattedValue.includes(term)) {
-            if (
-              !this.switchEstado.value ||
-              (valor.deletedAt === null && this.switchEstado.value)
-            )
-              return true;
+          if (
+            pipe.transform(entidade.id).includes(term) ||
+            formattedValue.includes(term) &&
+            (!this.switchEstado.value ||
+              (entidade.deletedAt === null && this.switchEstado.value))
+          ) {
+            return true;
           }
+        }else{
+          return false;
         }
       }
-
       return false;
     });
   }
