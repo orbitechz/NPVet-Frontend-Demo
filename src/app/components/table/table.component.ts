@@ -15,6 +15,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs';
 
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -47,21 +48,11 @@ export class TableComponent implements OnInit {
 
   async ngOnInit() {
     await this.getAll();
-    this.filter.valueChanges
-      .pipe(
-        startWith(''),
-        map((text) => this.search(text as string, this.decimalPipe))
-      )
-      .subscribe({
-        next: (dadosFiltrados: any) => {
-          this.dadosFiltrados = dadosFiltrados;
-        },
-      });
     this.carregando = false;
   }
 
   filtrarEstado() {
-    this.filter.setValue(this.filter.value);
+    this.search('')
   }
 
   isData(valor: any): boolean {
@@ -85,9 +76,9 @@ export class TableComponent implements OnInit {
     } catch (error) {}
     return valor;
   }
-  search(text: string, pipe: PipeTransform): any[] {
-    7;
-    return this.dados.filter((item) => {
+  search(text: string) {
+    
+    this.dadosFiltrados = this.dados.filter((item) => {
       const term = text.toLowerCase();
       // Verifique se alguma das colunas contém o termo pesquisado
       for (const header of this.headers) {
@@ -106,7 +97,7 @@ export class TableComponent implements OnInit {
         if (valor != null) {
           let formattedValue!: string;
           if (typeof valor != 'string') {
-            formattedValue = pipe.transform(valor).toLowerCase();
+            formattedValue = this.decimalPipe.transform(valor)!.toLowerCase();
           } else {
             if (this.isData(valor)) {
               formattedValue = this.datePipe.transform(
@@ -118,7 +109,7 @@ export class TableComponent implements OnInit {
             }
           }
           if (
-            (pipe.transform(entidade.id).includes(term) ||
+            (this.decimalPipe.transform(entidade.id)!.includes(term) ||
               formattedValue.includes(term)) &&
             (!this.switchEstado.value ||
               (entidade.deletedAt === null && this.switchEstado.value))
