@@ -5,6 +5,7 @@ import {
   Input,
   OnInit,
   Output,
+  PipeTransform,
   inject,
 } from '@angular/core';
 import { Router } from '@angular/router';
@@ -12,6 +13,7 @@ import { Header } from './header';
 import { DatePipe, DecimalPipe } from '@angular/common';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl } from '@angular/forms';
+import { map, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-table',
@@ -29,8 +31,9 @@ export class TableComponent implements OnInit {
   @Input() showToggle: boolean = true;
   @Output() buttonClick = new EventEmitter<string>();
   switchEstado = new FormControl(false);
+  filter = new FormControl('');
   dados: any[] = [];
-  dadosFiltrados: any[] = []
+  dadosFiltrados: any[] = [];
   carregando: boolean = true;
   isErro = false;
   mensagem!: string;
@@ -43,13 +46,23 @@ export class TableComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) {}
 
   async ngOnInit() {
-    this.switchEstado.setValue(true)
+    this.switchEstado.setValue(true);
     await this.getAll();
-    this.carregando = false
+    this.filter.valueChanges
+      .pipe(
+        startWith(''),
+        map((text) => this.search(text as string, this.decimalPipe))
+      )
+      .subscribe({
+        next: (dadosFiltrados: any) => {
+          this.dadosFiltrados = dadosFiltrados;
+        },
+      });
+    this.carregando = false;
   }
 
   filtrarEstado() {
-    this.search();
+    this.filter.setValue(this.filter.value);
   }
 
   isData(valor: any): boolean {
@@ -74,25 +87,78 @@ export class TableComponent implements OnInit {
     return valor;
   }
   // ====================== SEARCH  ======================
-  search(pesquisa?: string){
-    if(pesquisa){
-      
-      this.dadosFiltrados = this.dados.filter((entidade) => {
-        const term = pesquisa.toLowerCase();
-        this.headers.forEach(header => {
-          let campo = header.campo.split('.');
-          campo.forEach(p => {
-            console.log(entidade[p])
-            return (entidade[p].includes(term)) 
-            &&
-            (!this.switchEstado.value || (entidade.deletedAt === null && this.switchEstado.value))
-          });
-        });
-      });
-    }else{
-      this.dadosFiltrados = this.dados
-    }
+  // search(pesquisa?: string){
+  //   if(pesquisa){
 
+  //     this.dadosFiltrados = this.dados.filter((entidade) => {
+  //       const term = pesquisa.toLowerCase();
+  //       this.headers.forEach(header => {
+  //         let campo = header.campo.split('.');
+  //         campo.forEach(p => {
+  //           console.log(entidade[p])
+  //           return (entidade[p].includes(term))
+  //           &&
+  //           (!this.switchEstado.value || (entidade.deletedAt === null && this.switchEstado.value))
+  //         });
+  //       });
+  //     });
+  //   }else{
+  //     this.dadosFiltrados = this.dados
+  //   }
+  // }
+  // search(text?: string, pipe?: PipeTransform): any[] {
+  //   console.log(text);
+  //   if(text){
+  //     return this.dados.filter((dado) => {
+  //       const term = text.toLowerCase();
+  //       this.headers.forEach((header) => {
+  //         let campo = header.campo;
+  //         return (
+  //           dado[campo].toLowerCase().includes(term) &&
+  //           (!this.switchEstado.value ||
+  //             (dado.deletedAt === null && this.switchEstado.value))
+  //         );
+  //       });
+  //     });
+  //   }else{
+  //     return this.dados
+  //   }
+  // }
+  search(text: string, pipe: PipeTransform): any[] {
+    return this.dados.filter((item) => {
+      const term = text.toLowerCase();
+
+      // Verifique se alguma das colunas contém o termo pesquisado
+      for (const header of this.headers) {
+        const campo = header.campo.split('.');
+        let valor = item;
+
+        for (const p of campo) {
+          if (valor != null) {
+            valor = valor[p];
+          }
+        }
+
+        // Verifique se o valor corresponde ao termo pesquisado
+        if (valor != null) {
+          let formattedValue!: string;
+          if (typeof valor != 'string') {
+            formattedValue = pipe.transform(valor).toLowerCase();
+          } else {
+            formattedValue = valor.toLowerCase();
+          }
+          if (formattedValue.includes(term)) {
+            if (
+              !this.switchEstado.value ||
+              (valor.deletedAt === null && this.switchEstado.value)
+            )
+              return true;
+          }
+        }
+      }
+
+      return false;
+    });
   }
   // ====================== AÇÕES DA TABELA ======================
   onEditClick(entidade: any) {
@@ -116,7 +182,7 @@ export class TableComponent implements OnInit {
     this.http.get<any[]>(`${this.apiUrl}/all`).subscribe({
       next: (entidades) => {
         this.dados = entidades;
-        this.dadosFiltrados = entidades
+        this.dadosFiltrados = entidades;
       },
       error: (error) => {
         this.isErro = true;
@@ -143,7 +209,7 @@ export class TableComponent implements OnInit {
         .post<any>(`${this.apiUrl}/activate/${entidade.id}`, null)
         .subscribe({
           next: (entidades) => {
-            this.getAll();  
+            this.getAll();
             this.carregando = false;
             this.modalService.dismissAll();
           },
