@@ -124,6 +124,8 @@ $body-bg: #F0F0F0;
     border: 1px solid #ebebeb;
     background: #fafafa;
     text-indent: 30px;
+    font-weight: 600;
+    font-family: Inter;
 }
 
 .search-input:focus {
@@ -133,6 +135,8 @@ $body-bg: #F0F0F0;
 
 .search-input::placeholder {
     color: #999;
+    font-weight: 600;
+    font-family: Inter;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
     font-weight: 400;
