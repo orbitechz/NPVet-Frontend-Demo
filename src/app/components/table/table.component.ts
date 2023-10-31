@@ -42,9 +42,9 @@ export class TableComponent implements OnInit {
   datePipe = inject(DatePipe);
   constructor(private http: HttpClient, private router: Router) {}
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.switchEstado.setValue(true)
-    this.getAll();
+    await this.getAll();
     this.carregando = false
   }
 
@@ -76,15 +76,21 @@ export class TableComponent implements OnInit {
   // ====================== SEARCH  ======================
   search(pesquisa?: string){
     if(pesquisa){
-      return this.dados.filter((entidade) => {
+      
+      this.dadosFiltrados = this.dados.filter((entidade) => {
         const term = pesquisa.toLowerCase();
-        return (
-          (entidade.descricao.toLowerCase().includes(term)) &&
-          (!this.switchEstado.value || (entidade.delecao === null && this.switchEstado.value))
-        );
+        this.headers.forEach(header => {
+          let campo = header.campo.split('.');
+          campo.forEach(p => {
+            console.log(entidade[p])
+            return (entidade[p].includes(term)) 
+            &&
+            (!this.switchEstado.value || (entidade.deletedAt === null && this.switchEstado.value))
+          });
+        });
       });
     }else{
-      return this.dados
+      this.dadosFiltrados = this.dados
     }
 
   }
@@ -106,10 +112,11 @@ export class TableComponent implements OnInit {
   }
 
   // ====================== SERVICES ======================
-  getAll() {
+  async getAll() {
     this.http.get<any[]>(`${this.apiUrl}/all`).subscribe({
       next: (entidades) => {
         this.dados = entidades;
+        this.dadosFiltrados = entidades
       },
       error: (error) => {
         this.isErro = true;

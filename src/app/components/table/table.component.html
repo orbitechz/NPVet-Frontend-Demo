@@ -21,7 +21,7 @@
                 </tr>
             </thead>
             <tbody class="d-grid container">
-                <tr class="row" *ngFor="let entidade of dados">
+                <tr class="row" *ngFor="let entidade of dadosFiltrados">
                     <div class="h-100 col-md-10 row linha hover" (click)="onDetailsClick(entidade)">
                         <th class="col-md-1">{{entidade["id"]}}</th>
                         <td *ngFor="let header of headers" class="col">{{retornarValor(header, entidade)}}</td>
