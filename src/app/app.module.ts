@@ -30,7 +30,8 @@ import { AnimalDetailsComponent } from './views/animal/animal-details/animal-det
     UsuarioDetailsComponent,
     UsuarioListComponent,
     AnimalListComponent,
-    AnimalDetailsComponent
+    AnimalDetailsComponent,
+    
   ],
   imports: [
     BrowserModule,
