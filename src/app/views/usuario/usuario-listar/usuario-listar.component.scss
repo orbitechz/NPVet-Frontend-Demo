@@ -1,0 +1,27 @@
+.action-register{
+    margin-left: 10.9rem;
+}
+.action-register i {
+    width: 30px;
+    height: 30px;
+    background-color: #00003D;
+    color: #F0F0F0;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.action-register i::before {
+    margin-left: 6.7px;
+    padding-top: 7px;
+}
+.action-register a {
+    text-decoration: none;
+    color: #1E1E1E;
+    font-family: 'Inter';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.table-container{
+    margin-top: 30px;
+}
