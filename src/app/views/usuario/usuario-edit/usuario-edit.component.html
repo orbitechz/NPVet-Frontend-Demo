@@ -77,6 +77,6 @@
     </div>
         <div class="w-75 h-100 p-5 pb-0" *ngIf="usuario.tipoUsuario === 'MEDICO'">
             <app-table [title]="'Historico de Consultas'" [headers]="callHeaders()" [apiUrl]="apiUrlPath()"
-                [editPath]="'/'" [detailsPath]="'usuario/edit'" [entidade]="'Usuario'" [showToggle]="true"></app-table>
+                [editPath]="'/'" [detailsPath]="'/'" [entidade]="'Consulta'" [showToggle]="true"></app-table>
         </div>
 </div>

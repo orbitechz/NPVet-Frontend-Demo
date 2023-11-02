@@ -93,6 +93,9 @@ export class UsuarioEditComponent implements OnInit {
         console.log(err);
         this.isErro = true
         this.mensagem = "Erro ao atualizar usuário!"
+        if(err.status == 400){
+          this.data = [];
+        }
       },
     });
   }
