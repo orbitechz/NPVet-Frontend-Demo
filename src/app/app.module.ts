@@ -12,16 +12,13 @@ import { TutorListComponent } from './views/tutor/tutor-list/tutor-list.componen
 import { TutorDetailsComponent } from './views/tutor/tutor-details/tutor-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { UsuarioDetailsComponent } from './views/usuario/usuario-details/usuario-details.component';
-import { UsuarioListComponent } from './views/usuario/usuario-list/usuario-list.component';
-import { MensagemComponent } from './components/mensagem/mensagem.component';
+ import { MensagemComponent } from './components/mensagem/mensagem.component';
 import { IconsModule } from './modules/icons.module';
 import { TableComponent } from './components/table/table.component';
 import { UsuarioService } from './services/usuario/usuario.service';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
-import { UsuarioEditComponent } from './views/usuario/usuario-edit/usuario-edit.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
@@ -34,13 +31,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     ErrorsComponent,
     TutorListComponent,
     TutorDetailsComponent,
-    UsuarioDetailsComponent,
-    UsuarioListComponent,
     MensagemComponent,
     TableComponent,
     SearchBarComponent,
-    UsuarioEditComponent,
-  ],
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
