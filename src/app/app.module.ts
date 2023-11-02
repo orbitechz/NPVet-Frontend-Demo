@@ -20,6 +20,9 @@ import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
  import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { HeaderComponent } from './components/header/header.component';
+import { AnamneseListarComponent } from './views/anamnese/anamnese-listar/anamnese-listar.component';
+import { UsuarioListarComponent } from './views/usuario/usuario-listar/usuario-listar.component';
 
 
 @NgModule({
@@ -34,6 +37,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MensagemComponent,
     TableComponent,
     SearchBarComponent,
+    HeaderComponent,
+    UsuarioListarComponent,
+    AnamneseListarComponent,
    ],
   imports: [
     BrowserModule,
