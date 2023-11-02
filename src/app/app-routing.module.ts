@@ -5,6 +5,7 @@ import { TutorDetailsComponent } from './views/tutor/tutor-details/tutor-details
 import { UsuarioListarComponent } from './views/usuario/usuario-listar/usuario-listar.component';
 import { AnamneseListarComponent } from './views/anamnese/anamnese-listar/anamnese-listar.component';
 import { UsuarioDetailsComponent } from './views/usuario/usuario-details/usuario-details.component';
+import { UsuarioEditComponent } from './views/usuario/usuario-edit/usuario-edit.component';
  
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: "tutor/:id", component: TutorDetailsComponent},
   {path: "usuarios", component: UsuarioListarComponent},
   {path: "usuario/register", component: UsuarioDetailsComponent},
+  {path: "usuario/edit/:id", component: UsuarioEditComponent},
   {path: "anamneses", component: AnamneseListarComponent},
 ];
 

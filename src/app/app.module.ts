@@ -24,6 +24,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { AnamneseListarComponent } from './views/anamnese/anamnese-listar/anamnese-listar.component';
 import { UsuarioListarComponent } from './views/usuario/usuario-listar/usuario-listar.component';
 import { UsuarioDetailsComponent } from './views/usuario/usuario-details/usuario-details.component';
+import { UsuarioEditComponent } from './views/usuario/usuario-edit/usuario-edit.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { UsuarioDetailsComponent } from './views/usuario/usuario-details/usuario
     UsuarioListarComponent,
     AnamneseListarComponent,
     UsuarioDetailsComponent,
+    UsuarioEditComponent,
    ],
   imports: [
     BrowserModule,
