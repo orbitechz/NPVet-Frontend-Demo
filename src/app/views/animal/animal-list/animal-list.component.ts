@@ -1,7 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Animal } from 'src/app/models/animal/animal';
 import { AnimalService } from 'src/app/services/animal/animal.service';
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Header } from 'src/app/components/table/header';
 
 
 @Component({
@@ -10,34 +12,41 @@ import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./animal-list.component.scss']
 })
 export class AnimalListComponent {
-
-  lista: Animal[] = [];
-
+  @Input() isModal = false  
+  isErro!: boolean
+  mensagem!: string
+  animais: Animal[] = [];
   service = inject(AnimalService);
 
-  animalSelecionadoParaEdicao: Animal = new Animal();
-  idSelecionadoParaEdicao!: number;
+  data: any[] = [];
 
 
-    constructor(){
-
-    this.listAll()
-
+  constructor() {
+    this.getAll();
   }
-
-  listAll() {
-
-    this.animalSelecionadoParaEdicao = new Animal();
+  getAll() {
     this.service.getAll().subscribe({
-      next: (lista: any) => {
-      this.lista = lista;
-      console.log(lista)
-    },
-    error: (erro: any) => {
-      alert(erro.error);
-    },
-  });
+      next: (animais: any) => {
+        this.animais = animais;
+      },
+      error: (erro: any) => {
+        this.isErro = true;
+        this.mensagem = erro.error
+      },
+    });
   }
 
-
+  apiUrlPath(){
+    return 'http://localhost:8080/animal';  
+  }
+  callHeaders(){
+    let tableHeaders : Header[] = [];
+    tableHeaders.push(new Header('Nome', 'nome'));
+    tableHeaders.push(new Header('Tutor', 'tutorId.nome'));
+    tableHeaders.push(new Header('Raça', 'raca'));
+    tableHeaders.push(new Header('Espécie', 'especie'));
+    tableHeaders.push(new Header('Sexo', 'sexo'));
+    tableHeaders.push(new Header('Data de Criação','createdAt'));    
+    return tableHeaders;
+  }
 }

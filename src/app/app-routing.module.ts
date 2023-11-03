@@ -8,8 +8,11 @@ import { UsuarioDetailsComponent } from './views/usuario/usuario-details/usuario
 import { UsuarioEditComponent } from './views/usuario/usuario-edit/usuario-edit.component';
 import { AnimalListComponent } from './views/animal/animal-list/animal-list.component';
 import { AnimalDetailsComponent } from './views/animal/animal-details/animal-details.component';
+import { ConsultaListComponent } from './views/consulta/consulta-list/consulta-list.component';
+
 
 const routes: Routes = [
+  {path: "animal", component: AnimalListComponent},
   {path: "tutores", component: TutorListComponent},
   {path: "tutor/register", component: TutorDetailsComponent},
   {path: "tutor/edit/:id", component: TutorDetailsComponent},
@@ -19,8 +22,8 @@ const routes: Routes = [
   {path: "usuario/edit/:id", component: UsuarioEditComponent},
   {path: "anamneses", component: AnamneseListarComponent},
   {path: "animais", component: AnimalListComponent},
-  {path: "animal/cadastro", component: AnimalDetailsComponent}
-
+  {path: "animal/cadastro", component: AnimalDetailsComponent},
+  {path: "consultas", component: ConsultaListComponent}
 ];
 
 @NgModule({

@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MenuComponent } from './core/menu/menu.component';
@@ -27,6 +25,8 @@ import { UsuarioDetailsComponent } from './views/usuario/usuario-details/usuario
 import { UsuarioEditComponent } from './views/usuario/usuario-edit/usuario-edit.component';
 import { AnimalListComponent } from './views/animal/animal-list/animal-list.component';
 import { AnimalDetailsComponent } from './views/animal/animal-details/animal-details.component';
+import { ConsultaListComponent } from './views/consulta/consulta-list/consulta-list.component';
+import { ConsultaDetailsComponent } from './views/consulta/consulta-details/consulta-details.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +47,8 @@ import { AnimalDetailsComponent } from './views/animal/animal-details/animal-det
     UsuarioEditComponent,
     AnimalListComponent,
     AnimalDetailsComponent,
+    ConsultaListComponent,
+    ConsultaDetailsComponent,
   ],
   imports: [
     BrowserModule,
