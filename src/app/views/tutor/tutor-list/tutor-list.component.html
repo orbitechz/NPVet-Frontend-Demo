@@ -1,5 +1,9 @@
 <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center mt-5">
-    <div class="w-75 h-100">
+    <div class="d-flex flex-column w-75 h-100 gap-3">
+        <div class="register d-flex align-items-center gap-2" (click)="register()">
+            <bi name="plus-circle-fill"></bi>
+            <p class="m-0">Cadastrar novo Tutor</p>
+        </div>
         <app-mensagem [isErro]="isErro" [mensagem]="mensagem"></app-mensagem>
         <app-table [title]="'Tutores Cadastrados'" [headers]="callHeaders()" [apiUrl]="apiUrlPath()" [editPath]="'/tutor/edit'" [detailsPath]="'/tutor'"
             [entidade]="'Tutor'" [showToggle]="true"></app-table>
