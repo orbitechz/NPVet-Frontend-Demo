@@ -44,7 +44,9 @@ import { UsuarioEditComponent } from './views/usuario/usuario-edit/usuario-edit.
     AnamneseListarComponent,
     UsuarioDetailsComponent,
     UsuarioEditComponent,
-   ],
+    AnimalListComponent,
+    AnimalDetailsComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

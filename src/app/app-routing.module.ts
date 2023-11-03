@@ -6,7 +6,8 @@ import { UsuarioListarComponent } from './views/usuario/usuario-listar/usuario-l
 import { AnamneseListarComponent } from './views/anamnese/anamnese-listar/anamnese-listar.component';
 import { UsuarioDetailsComponent } from './views/usuario/usuario-details/usuario-details.component';
 import { UsuarioEditComponent } from './views/usuario/usuario-edit/usuario-edit.component';
- 
+import { AnimalListComponent } from './views/animal/animal-list/animal-list.component';
+import { AnimalDetailsComponent } from './views/animal/animal-details/animal-details.component';
 
 const routes: Routes = [
   {path: "tutores", component: TutorListComponent},
@@ -17,6 +18,9 @@ const routes: Routes = [
   {path: "usuario/register", component: UsuarioDetailsComponent},
   {path: "usuario/edit/:id", component: UsuarioEditComponent},
   {path: "anamneses", component: AnamneseListarComponent},
+  {path: "animal", component: AnimalListComponent},
+  {path: "animal/cadastro", component: AnimalDetailsComponent}
+
 ];
 
 @NgModule({
