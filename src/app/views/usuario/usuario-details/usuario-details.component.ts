@@ -44,7 +44,8 @@ export class UsuarioDetailsComponent implements OnInit {
               this.router.navigate(['/usuario']);
             },
             error: (err) => {
-              this.mensagem = err.message;
+              this.mensagem = err.error;
+              console.log(err);
               this.isErro = true;
             },
           });
