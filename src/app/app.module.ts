@@ -12,20 +12,21 @@ import { TutorListComponent } from './views/tutor/tutor-list/tutor-list.componen
 import { TutorDetailsComponent } from './views/tutor/tutor-details/tutor-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
- import { MensagemComponent } from './components/mensagem/mensagem.component';
+import { MensagemComponent } from './components/mensagem/mensagem.component';
 import { IconsModule } from './modules/icons.module';
 import { TableComponent } from './components/table/table.component';
 import { UsuarioService } from './services/usuario/usuario.service';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
- import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { HeaderComponent } from './components/header/header.component';
 import { AnamneseListarComponent } from './views/anamnese/anamnese-listar/anamnese-listar.component';
 import { UsuarioListarComponent } from './views/usuario/usuario-listar/usuario-listar.component';
 import { UsuarioDetailsComponent } from './views/usuario/usuario-details/usuario-details.component';
 import { UsuarioEditComponent } from './views/usuario/usuario-edit/usuario-edit.component';
-
+import { AnimalListComponent } from './views/animal/animal-list/animal-list.component';
+import { AnimalDetailsComponent } from './views/animal/animal-details/animal-details.component';
 
 @NgModule({
   declarations: [
@@ -55,11 +56,12 @@ import { UsuarioEditComponent } from './views/usuario/usuario-edit/usuario-edit.
     FormsModule,
     HttpClientModule,
     IconsModule,
-    NgxMaskDirective, NgxMaskPipe,
+    NgxMaskDirective,
+    NgxMaskPipe,
     MatSlideToggleModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [UsuarioService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
