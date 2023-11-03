@@ -41,7 +41,7 @@ export class UsuarioDetailsComponent implements OnInit {
           this.uService.create(this.usuario).subscribe({
             next: (u) => {
               this.usuario = u;
-              this.router.navigate(['/usuario']);
+              this.router.navigate(['web/usuarios']);
             },
             error: (err) => {
               this.mensagem = err.error;
