@@ -1,0 +1,5 @@
+export enum TipoUsuario {
+    SECRETARIA = 'SECRETARIA',
+    MEDICO = 'MEDICO',
+    ADMINISTRADOR = 'ADMINISTRADOR'
+}
