@@ -28,6 +28,7 @@ import { AnimalListComponent } from './views/animal/animal-list/animal-list.comp
 import { AnimalDetailsComponent } from './views/animal/animal-details/animal-details.component';
 import { ConsultaListComponent } from './views/consulta/consulta-list/consulta-list.component';
 import { ConsultaDetailsComponent } from './views/consulta/consulta-details/consulta-details.component';
+import { RegisterBtnComponent } from './components/register-btn/register-btn.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { ConsultaDetailsComponent } from './views/consulta/consulta-details/cons
     AnimalDetailsComponent,
     ConsultaListComponent,
     ConsultaDetailsComponent,
+    RegisterBtnComponent,
   ],
   imports: [
     BrowserModule,
