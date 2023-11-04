@@ -3,13 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { TutorListComponent } from './views/tutor/tutor-list/tutor-list.component';
 import { TutorDetailsComponent } from './views/tutor/tutor-details/tutor-details.component';
 import { UsuarioListarComponent } from './views/usuario/usuario-listar/usuario-listar.component';
-import { AnamneseListarComponent } from './views/anamnese/anamnese-listar/anamnese-listar.component';
 import { UsuarioDetailsComponent } from './views/usuario/usuario-details/usuario-details.component';
 import { UsuarioEditComponent } from './views/usuario/usuario-edit/usuario-edit.component';
 import { AnimalListComponent } from './views/animal/animal-list/animal-list.component';
 import { AnimalDetailsComponent } from './views/animal/animal-details/animal-details.component';
 import { ConsultaListComponent } from './views/consulta/consulta-list/consulta-list.component';
 import { IndexComponent } from './core/index/index.component';
+import { ConsultaAnamneseDetailsComponent } from './views/anamnese/consulta-anamnese-details/consulta-anamnese-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'web', pathMatch: 'full' },
@@ -28,7 +28,7 @@ const routes: Routes = [
       { path: 'animais', component: AnimalListComponent },
       { path: 'animal/cadastro', component: AnimalDetailsComponent },
       { path: 'consultas', component: ConsultaListComponent },
-      { path: 'consulta/:id/anamnese/register', component: AnamneseListarComponent}
+      { path: 'consulta/:id/anamnese/register', component: ConsultaAnamneseDetailsComponent}
     ],
   },
 ];
