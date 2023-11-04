@@ -20,7 +20,6 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { HeaderComponent } from './components/header/header.component';
-import { AnamneseListarComponent } from './views/anamnese/anamnese-listar/anamnese-listar.component';
 import { UsuarioListarComponent } from './views/usuario/usuario-listar/usuario-listar.component';
 import { UsuarioDetailsComponent } from './views/usuario/usuario-details/usuario-details.component';
 import { UsuarioEditComponent } from './views/usuario/usuario-edit/usuario-edit.component';
@@ -30,6 +29,7 @@ import { ConsultaListComponent } from './views/consulta/consulta-list/consulta-l
 import { ConsultaDetailsComponent } from './views/consulta/consulta-details/consulta-details.component';
 import { RegisterBtnComponent } from './components/register-btn/register-btn.component';
 import { IndexComponent } from './core/index/index.component';
+import { ConsultaAnamneseDetailsComponent } from './views/anamnese/consulta-anamnese-details/consulta-anamnese-details.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,6 @@ import { IndexComponent } from './core/index/index.component';
     SearchBarComponent,
     HeaderComponent,
     UsuarioListarComponent,
-    AnamneseListarComponent,
     UsuarioDetailsComponent,
     UsuarioEditComponent,
     AnimalListComponent,
@@ -54,6 +53,7 @@ import { IndexComponent } from './core/index/index.component';
     ConsultaDetailsComponent,
     RegisterBtnComponent,
     IndexComponent,
+    ConsultaAnamneseDetailsComponent
   ],
   imports: [
     BrowserModule,
