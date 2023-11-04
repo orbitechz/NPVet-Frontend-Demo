@@ -1,0 +1,46 @@
+<div class="consulta-anamnese d-flex flex-column">
+  <p class="title-form">anamnese geral</p>
+  <div class="register-form">
+    <!-- <app-mensagem [isErro]="isErro" [mensagem]="mensagem" class="w-50"></app-mensagem> -->
+    <form action="" class="d-flex flex-column">
+      <div class="form-group">
+        <label for="data" class="mb-1">Data</label>
+        <input
+          type="text"
+          id="data"
+          class="form-control"
+          name="data"
+          [(ngModel)]="anamnese.createdAt"
+          required
+        />
+      </div>
+      <div class="row mb-3">
+        <div class="col form-group">
+          <label for="animal" class="mb-1">Animal</label>
+          <input
+            type="text"
+            id="animal"
+            class="form-control"
+            name="animal"
+            [(ngModel)]="anamnese.animal.nome"
+            required
+          />
+        </div>
+        <div class="col form-group">
+            <label for="tutor" class="mb-1">Tutor</label>
+            <input
+              type="text"
+              id="tutor"
+              class="form-control"
+              name="tutor"
+              [(ngModel)]="anamnese.tutor.nome"
+              required
+            />
+          </div>
+      </div>
+      <div class="row mb-3">
+        
+      </div>
+    </form>
+  </div>
+</div>

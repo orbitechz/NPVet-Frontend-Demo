@@ -88,6 +88,7 @@ export class UsuarioEditComponent implements OnInit {
         this.editMode = false;
         this.isErro = false
         this.mensagem = "Usuário atualizado com sucesso!"
+        this.router.navigate(['web/usuarios']);
       },
       error: (err) => {
         console.log(err);
