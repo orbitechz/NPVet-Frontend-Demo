@@ -25,10 +25,10 @@ const routes: Routes = [
       { path: 'usuarios', component: UsuarioListarComponent },
       { path: 'usuario/register', component: UsuarioDetailsComponent },
       { path: 'usuario/edit/:id', component: UsuarioEditComponent },
-      { path: 'anamneses', component: AnamneseListarComponent },
       { path: 'animais', component: AnimalListComponent },
       { path: 'animal/cadastro', component: AnimalDetailsComponent },
       { path: 'consultas', component: ConsultaListComponent },
+      { path: 'consulta/:id/anamnese/register', component: AnamneseListarComponent}
     ],
   },
 ];
