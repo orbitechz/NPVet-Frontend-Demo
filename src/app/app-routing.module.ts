@@ -10,6 +10,9 @@ import { AnimalDetailsComponent } from './views/animal/animal-details/animal-det
 import { ConsultaListComponent } from './views/consulta/consulta-list/consulta-list.component';
 import { IndexComponent } from './core/index/index.component';
 import { ConsultaAnamneseDetailsComponent } from './views/anamnese/consulta-anamnese-details/consulta-anamnese-details.component';
+import { ExameListComponent } from './views/exame-fisico/exame-list/exame-list.component';
+import { ExameDetailsComponent } from './views/exame-fisico/exame-details/exame-details.component';
+ 
 
 const routes: Routes = [
   { path: '', redirectTo: 'web', pathMatch: 'full' },
@@ -17,7 +20,6 @@ const routes: Routes = [
     path: 'web',
     component: IndexComponent,
     children: [
-      { path: 'animal', component: AnimalListComponent },
       { path: 'tutores', component: TutorListComponent },
       { path: 'tutor/register', component: TutorDetailsComponent },
       { path: 'tutor/edit/:id', component: TutorDetailsComponent },
@@ -28,7 +30,8 @@ const routes: Routes = [
       { path: 'animais', component: AnimalListComponent },
       { path: 'animal/cadastro', component: AnimalDetailsComponent },
       { path: 'consultas', component: ConsultaListComponent },
-      { path: 'consulta/:id/anamnese/register', component: ConsultaAnamneseDetailsComponent}
+      { path: 'exame/register', component: ExameDetailsComponent },
+
     ],
   },
 ];

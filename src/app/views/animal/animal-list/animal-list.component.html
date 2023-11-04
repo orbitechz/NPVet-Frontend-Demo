@@ -3,7 +3,7 @@
       <app-mensagem [isErro]="isErro" [mensagem]="mensagem"></app-mensagem>
       <div class="d-flex justify-content-between mb-3">
       </div>
-      <app-table  [title]="'Animais Cadastrados'" [headers]="callHeaders()" [apiUrl]="apiUrlPath()" [editPath]="'animal/update'"
+      <app-table  [title]="'Animais Cadastrados'" [headers]="callHeaders()" [apiUrl]="apiUrlPath()" [editPath]="'web/animal/edit'" [detailsPath]="'/web/animal'"
           [entidade]="'Animal'" [showToggle]="true"></app-table>
   </div>
 </div>
