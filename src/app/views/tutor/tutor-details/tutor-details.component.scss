@@ -36,3 +36,28 @@ input:focus-visible{
     width: 200px;
     border-radius: 50px;
 }
+.add-btn {
+    background-color: white;
+    width: 60px;
+    height: 2.8rem;
+    border-radius: 50px;
+}
+
+.add-btn, 
+.add-btn:hover, 
+.add-btn bi,
+.add-btn bi:hover{
+    transition: 500ms;
+}
+
+.add-btn:hover{
+    cursor: pointer;
+}
+.add-btn bi:hover{
+    color: var(--primary);
+}
+.add-btn bi{
+    color: var(--body-bg);
+    width: 50px;
+    height: 50px
+}
