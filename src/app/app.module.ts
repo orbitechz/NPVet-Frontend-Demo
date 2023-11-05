@@ -57,6 +57,7 @@ import { ExameDetailsComponent } from './views/exame-fisico/exame-details/exame-
     IndexComponent,
     ExameListComponent,
     ExameDetailsComponent,
+    ConsultaAnamneseDetailsComponent
   ],
  imports: [
     BrowserModule,
