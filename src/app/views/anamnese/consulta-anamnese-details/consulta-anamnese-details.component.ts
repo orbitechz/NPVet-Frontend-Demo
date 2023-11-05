@@ -59,6 +59,10 @@ export class ConsultaAnamneseDetailsComponent implements OnInit {
     ));
   }
 
+  removeRow(lista: any[], i:any){
+    lista.splice(i, 1);
+  }
+
 
   addNewQuestion() {
     this.showInputs = !this.showInputs;
