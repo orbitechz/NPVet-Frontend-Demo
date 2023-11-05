@@ -258,6 +258,14 @@
                   {{ "Animal: " + animal.nome + " | Tutor: " + animal.tutorId.nome + " | CPF: " + animal.tutorId.cpf }}                  </option>
               </select>
 
+              <mat-form-field>
+                <mat-select placeholder="Basic">
+                  <mat-option *ngFor="let item of animais">
+                    {{item}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
             </div>
           </div>
   
