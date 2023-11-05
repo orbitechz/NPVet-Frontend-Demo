@@ -80,7 +80,7 @@
             <div class="form-group">
               <label for="tempoPreenchimentoCapilar" class="mb-1">Tempo de Preenchimento Capilar</label>
               <input
-                type="text"
+                type="time"
                 id="tempoPreenchimentoCapilar"
                 class="form-control"
                 name="tempoPreenchimentoCapilar"
@@ -258,12 +258,13 @@
                   {{ "Animal: " + animal.nome + " | Tutor: " + animal.tutorId.nome + " | CPF: " + animal.tutorId.cpf }}                  </option>
               </select>
 
-              <mat-form-field>
-                <mat-select placeholder="Basic">
-                  <mat-option *ngFor="let item of animais">
-                    {{item}}
+              <mat-form-field class="example-full-width">
+                  <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                  <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{option.nome}}
                   </mat-option>
-                </mat-select>
+                </mat-autocomplete>
               </mat-form-field>
 
             </div>

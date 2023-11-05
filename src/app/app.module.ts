@@ -35,6 +35,10 @@ import { MatOption } from '@angular/material/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatSelectModule } from '@angular/material/select';
 import {MatFormFieldModule } from '@angular/material/form-field';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatInputModule} from '@angular/material/input';
+import { AsyncPipe } from '@angular/common';
+
 // import { MatSelectFilter } 
 
 // import { MatSelec};
@@ -79,6 +83,10 @@ import {MatFormFieldModule } from '@angular/material/form-field';
     BrowserAnimationsModule,
     MatSelectModule, 
     MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    AsyncPipe,
+
     // MatSelectFilterModule 
   ],
   providers: [UsuarioService],
