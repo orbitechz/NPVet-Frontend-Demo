@@ -30,6 +30,8 @@ import { ConsultaDetailsComponent } from './views/consulta/consulta-details/cons
 import { RegisterBtnComponent } from './components/register-btn/register-btn.component';
 import { IndexComponent } from './core/index/index.component';
 import { ConsultaAnamneseDetailsComponent } from './views/anamnese/consulta-anamnese-details/consulta-anamnese-details.component';
+import { ExameListComponent } from './views/exame-fisico/exame-list/exame-list.component';
+import { ExameDetailsComponent } from './views/exame-fisico/exame-details/exame-details.component';
 
 @NgModule({
   declarations: [
@@ -53,9 +55,10 @@ import { ConsultaAnamneseDetailsComponent } from './views/anamnese/consulta-anam
     ConsultaDetailsComponent,
     RegisterBtnComponent,
     IndexComponent,
-    ConsultaAnamneseDetailsComponent
+    ExameListComponent,
+    ExameDetailsComponent,
   ],
-  imports: [
+ imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,

@@ -18,7 +18,6 @@ export class HeaderComponent implements OnInit {
     this.title = this.url.slice(0, 1).toUpperCase() + this.url.slice(1);
   }
   back(){
-    console.log('ok')
     this.location.back()
   }
 }
