@@ -287,6 +287,29 @@
       </div>
 
       <div class="row mb-3">
+        <p class="title-form">hístorico médico</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Progresso Médico</th>
+              <th>Data Atualização</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let historico of anamnese.historicoProgressoMedico; let i = index">
+              <td>
+                <input type="text" [(ngModel)]="historico.progressoMedico" name="progressoMedico{{i}}" />
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="historico.data" name="dataAtualizacao{{i}}" />
+              </td>
+            </tr>
+          </tbody>
+        </table>   
+        <button class="btn mt-2" style="width: 250px;" (click)="addNewRow()">Adicionar Novo Histórico</button>     
+      </div>
+
+      <div class="row mb-3">
         <p class="title-form">anamnese geral</p>
         <div class="col form-group">
           <label for="queixaPrincipal">Queixa Principal</label>
@@ -489,7 +512,7 @@
       </div>
       <div class="actions d-flex justify-content-end">
         <button
-          type="button"
+          type="submit"
           class="btn btn-primary"
           (click)="cadastrarAnamnese()"
         >

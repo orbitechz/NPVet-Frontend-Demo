@@ -8,6 +8,8 @@ import { Animal } from 'src/app/models/animal/animal';
 import { Router } from '@angular/router';
 import { AnamneseService } from 'src/app/services/anamnese/anamnese.service';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
+import { ProgressoMedico } from 'src/app/models/progresso-medico/progresso-medico';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-consulta-anamnese-details',
@@ -29,10 +31,10 @@ export class ConsultaAnamneseDetailsComponent implements OnInit {
   constructor(
     private t: TutorService,
     private a: AnimalService,
-    private u : UsuarioService,
+    private u: UsuarioService,
     private router: Router,
     private an: AnamneseService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.u.getById(1).subscribe({
@@ -46,6 +48,12 @@ export class ConsultaAnamneseDetailsComponent implements OnInit {
     });
   }
 
+  addNewRow() {
+    this.anamnese.historicoProgressoMedico.push(new ProgressoMedico(
+    ));
+  }
+
+
   fetchAnimal() {
     this.a
       .getByTutorAndAnimalName(
@@ -55,7 +63,6 @@ export class ConsultaAnamneseDetailsComponent implements OnInit {
       .subscribe({
         next: (animal) => {
           this.anamnese.animalDTO = animal;
-          console.log(animal);
         },
         error: (err) => {
           if (err.status == 400) {
@@ -72,9 +79,11 @@ export class ConsultaAnamneseDetailsComponent implements OnInit {
     if (this.anamnese.tutorDTO.cpf.length == 11) {
       this.t.getByCpf(this.anamnese.tutorDTO.cpf).subscribe({
         next: (tutor) => {
+        
           this.anamnese.tutorDTO = tutor;
           this.selectedGenero = tutor.genero;
           this.telefones = tutor.telefones;
+          console.log(this.anamnese.tutorDTO);
         },
         error: (err) => {
           this.isErro = true;
@@ -85,49 +94,48 @@ export class ConsultaAnamneseDetailsComponent implements OnInit {
   }
 
   cadastrarAnamnese() {
-    this.t.update(this.anamnese.tutorDTO.id, this.anamnese.tutorDTO).subscribe({
-      next: (tutor) => {},
-      error: (err) => {
-        this.isErro = true;
-        this.mensagem = err.error;
-      },
-    });
+    // this.t.update(this.anamnese.tutorDTO.id, this.anamnese.tutorDTO).subscribe({
+    //   next: (tutor) => { },
+    //   error: (err) => {
+    //     this.isErro = true;
+    //     this.mensagem = err.error;
+    //   },
+    // });
 
-    this.a
-      .getByTutorAndAnimalName(
-        this.anamnese.tutorDTO.id,
-        this.anamnese.animalDTO.nome
-      )
-      .subscribe({
-        next: (a) => {
-          this.a.update(this.anamnese.animalDTO).subscribe({
-            next: (animal) => {
-              this.anamnese.animalDTO = animal;
-            },
-            error: (err) => {
-              this.isErro = true;
-              this.mensagem = err.error;
-            },
-          });
-        },
-        error: (err) => {
-          this.a.save(this.anamnese.animalDTO).subscribe({
-            next: (animal) => {
-              this.anamnese.animalDTO = animal;
-            },
-            error: (err) => {
-              this.isErro = true;
-              this.mensagem = err.error;
-            },
-          });
-        },
-      });
-
+    // this.a
+    //   .getByTutorAndAnimalName(
+    //     this.anamnese.tutorDTO.id,
+    //     this.anamnese.animalDTO.nome
+    //   )
+    //   .subscribe({
+    //     next: (a) => {
+    //       this.a.update(this.anamnese.animalDTO).subscribe({
+    //         next: (animal) => {
+    //           this.anamnese.animalDTO = animal;
+    //         },
+    //         error: (err) => {
+    //           this.isErro = true;
+    //           this.mensagem = err.error;
+    //         },
+    //       });
+    //     },
+    //     error: (err) => {
+    //       this.a.save(this.anamnese.animalDTO).subscribe({
+    //         next: (animal) => {
+    //           this.anamnese.animalDTO = animal;
+    //         },
+    //         error: (err) => {
+    //           this.isErro = true;
+    //           this.mensagem = err.error;
+    //         },
+    //       });
+    //     },
+    //   });
 
     this.an.create(this.anamnese).subscribe({
       next: (anamnese) => {
-        this.anamnese = anamnese;
-        this.router.navigate(['', this.anamnese.id]);
+        this.isErro = false;
+        this.mensagem = 'Anamnese cadastrada com sucesso!';
       },
       error: (err) => {
         this.isErro = true;
