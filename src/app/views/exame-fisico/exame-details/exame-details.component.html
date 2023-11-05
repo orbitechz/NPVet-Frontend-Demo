@@ -14,7 +14,7 @@
       >
         <div class="row mb-3">
           <!-- Nível de Consciência -->
-          <div class="col-md-4">
+          <div class="col-md-6 ms-3">
             <div class="form-group">
               <label for="nivelConsciencia" class="mb-1">Nível de Consciência</label>
               <input
@@ -28,7 +28,7 @@
             </div>
           </div>
           <!-- Temperatura Retal -->
-          <div class="col-md-4">
+          <div class="col-md-3 ms-5">
             <div class="form-group">
               <label class="mb-1">Temperatura Retal</label>
               <input
@@ -41,8 +41,11 @@
               />
             </div>
           </div>
+        </div>
+        <div class="row mb-3">
+
           <!-- Frequência Respiratória -->
-          <div class="col-md-4">
+          <div class="col-md-6 ms-3">
             <div class="form-group">
               <label for="frequenciaRespiratoria" class="mb-1">Frequência Respiratória</label>
               <input
@@ -55,10 +58,8 @@
               />
             </div>
           </div>
-        </div>
-        <div class="row mb-3">
           <!-- Frequência Cardíaca -->
-          <div class="col-md-4">
+          <div class="col-md-4  ms-5">
             <div class="form-group">
               <label for="frequenciaCardiaca" class="mb-1">Frequência Cardíaca</label>
               <input
@@ -71,8 +72,11 @@
               />
             </div>
           </div>
+        </div>
+          <div class="row mb-3">
+
           <!-- Tempo de Preenchimento Capilar -->
-          <div class="col-md-4">
+          <div class="col-md-6 ms-3">
             <div class="form-group">
               <label for="tempoPreenchimentoCapilar" class="mb-1">Tempo de Preenchimento Capilar</label>
               <input
@@ -86,7 +90,7 @@
             </div>
           </div>
           <!-- Pulso -->
-          <div class="col-md-4">
+          <div class="col-md-4 ms-5">
             <div class="form-group">
               <label for="pulso" class="mb-1">Pulso</label>
               <input
@@ -102,7 +106,7 @@
         </div>
         <div class="row mb-3">
           <!-- Hidratação -->
-          <div class="col-md-4">
+          <div class="col-md-6 ms-3">
             <div class="form-group">
               <label for="hidratacao" class="mb-1">Hidratação</label>
               <input
@@ -116,7 +120,7 @@
             </div>
           </div>
           <!-- Linf Submand -->
-          <div class="col-md-4">
+          <div class="col-md-4 ms-5">
             <div class="form-group">
               <label for="linfSubmand" class="mb-1">Linf Submand</label>
               <input
@@ -129,8 +133,11 @@
               />
             </div>
           </div>
+        </div>
+          <div class="row mb-3">
+
           <!-- Linf PreEscapulares -->
-          <div class="col-md-4">
+          <div class="col-md-6 ms-3">
             <div class="form-group">
               <label for="linfPreEscapulares" class="mb-1">Linf PreEscapulares</label>
               <input
@@ -143,10 +150,8 @@
               />
             </div>
           </div>
-        </div>
-        <div class="row mb-3">
           <!-- Linf Popliteos -->
-          <div class="col-md-4">
+          <div class="col-md-4 ms-5">
             <div class="form-group">
               <label for="linfPopliteos" class="mb-1">Linf Popliteos</label>
               <input
@@ -159,9 +164,11 @@
               />
             </div>
           </div>
-          <!-- Linf Inguinais -->
-          <div class="col-md-4">
-            <div class="form-group">
+        </div>
+        <div class="row mb-3">
+        <!-- Linf Inguinais -->
+        <div class="col-md-6 ms-3">
+          <div class="form-group">
               <label for="linfInguinais" class="mb-1">Linf Inguinais</label>
               <input
                 type="text"
@@ -174,7 +181,7 @@
             </div>
           </div>
           <!-- Mucosa Ocular -->
-          <div class="col-md-4">
+          <div class="col-md-4 ms-5">
             <div class="form-group">
               <label for="mucosaOcular" class="mb-1">Mucosa Ocular</label>
               <input
@@ -189,9 +196,9 @@
           </div>
         </div>
         <div class="row mb-3">
-          <!-- Mucosa Oral -->
-          <div class="col-md-4">
-            <div class="form-group">
+        <!-- Mucosa Oral -->
+        <div class="col-md-6 ms-3">
+          <div class="form-group">
               <label for="mucosaOral" class="mb-1">Mucosa Oral</label>
               <input
                 type="text"
@@ -204,7 +211,7 @@
             </div>
           </div>
           <!-- Mucosa Peniana -->
-          <div class="col-md-4">
+          <div class="col-md-4 ms-5">
             <div class="form-group">
               <label for="mucosaPeniana" class="mb-1">Mucosa Peniana</label>
               <input
@@ -217,9 +224,11 @@
               />
             </div>
           </div>
-          <!-- Mucosa Anal -->
-          <div class="col-md-4">
-            <div class="form-group">
+        </div>
+        <div class="row mb-3">
+        <!-- Mucosa Anal -->
+        <div class="col-md-6 ms-3">
+          <div class="form-group">
               <label for="mucosaAnal" class="mb-1">Mucosa Anal</label>
               <input
                 type="text"
@@ -232,7 +241,7 @@
             </div>
           </div>
 
-          <div class="col-md-4">
+          <div class="col-md-4 ms-5">
             <div class="form-group">
               <label for="animal" class="mb-1">Animal</label>
               <select
@@ -246,9 +255,9 @@
                   Selecione um animal
                 </option>
                 <option *ngFor="let animal of animais" [ngValue]="animal">
-                  {{ animal.nome }} <!-- Substitua pelo atributo correto do animal -->
-                </option>
+                  {{ "Animal: " + animal.nome + " | Tutor: " + animal.tutorId.nome + " | CPF: " + animal.tutorId.cpf }}                  </option>
               </select>
+
             </div>
           </div>
   

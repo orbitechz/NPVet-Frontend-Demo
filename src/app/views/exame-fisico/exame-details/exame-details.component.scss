@@ -3,6 +3,9 @@
     min-width: 100vw;
     height: 100vh;
     margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   form{
@@ -37,6 +40,7 @@
   input, select {
     width: calc(100% - 20px);
     height: 45px;
+    width: 400px;
     border: 1px solid #ccc;
     border-radius: 25px;
     background: #FFF;
