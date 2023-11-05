@@ -10,7 +10,7 @@ import { Anamnese } from 'src/app/models/anamnese/anamnese';
 })
 export class AnamneseService {
 
-  private baseUrl = '/api/anamnese'; // Replace with your actual backend API URL
+  private baseUrl = 'http://localhost:8080/anamnese';
 
   constructor(private http: HttpClient) { }
 
@@ -30,16 +30,16 @@ export class AnamneseService {
     return this.http.get<Anamnese[]>(`${this.baseUrl}/tutor/${cpf}/animal/${nome}`);
   }
 
-  create(anamneseDTO: Anamnese): Observable<Anamnese> {
-    return this.http.post<Anamnese>(`${this.baseUrl}/post`, anamneseDTO);
+  create(anamnese: Anamnese): Observable<Anamnese> {
+    return this.http.post<Anamnese>(`${this.baseUrl}/post`, anamnese);
   }
 
   addQuestionAnswerToAnamnese(anamneseId: number, request: AnamnesePergunta): Observable<AnamnesePergunta> {
     return this.http.post<AnamnesePergunta>(`${this.baseUrl}/adicionar/pergunta/${anamneseId}`, request);
   }
 
-  addProgressoMedico(id: number, progressoMedico: ProgressoMedico): Observable<ProgressoMedico> {
-    return this.http.post<ProgressoMedico>(`${this.baseUrl}/atualizar/progresso-medico/${id}`, progressoMedico);
+  addProgressoMedico(progressoMedico: ProgressoMedico): Observable<ProgressoMedico> {
+    return this.http.post<ProgressoMedico>(`${this.baseUrl}/atualizar/progresso-medico`, progressoMedico);
   }
 
   update(id: number, anamneseDTO: Anamnese): Observable<Anamnese> {

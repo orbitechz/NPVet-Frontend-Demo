@@ -6,4 +6,14 @@ export class Endereco {
     numero!: string
     cep!: string
     complemento!: string
+
+    constructor() {
+        this.logradouro = ''
+        this.cidade = ''
+        this.estado = ''
+        this.pais = ''
+        this.numero = ''
+        this.cep = ''
+        this.complemento = ''
+    }
 }

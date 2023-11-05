@@ -17,6 +17,14 @@ export class AnimalService {
     return this.http.get<Animal>(`${this.baseURL}/id/${id}`);
   }
 
+  getByTutor(id: number): Observable<Animal[]>{
+    return this.http.get<Animal[]>(`${this.baseURL}/tutor/${id}`);
+  }
+
+  getByTutorAndAnimalName(id: number,nome : string) : Observable<Animal>{
+    return this.http.get<Animal>(`${this.baseURL}/tutor/${id}/nome/${nome}`);
+  }
+
   getAll(): Observable<Animal[]>{
     return this.http.get<Animal[]>(`${this.baseURL}/all`);
   }
