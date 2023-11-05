@@ -32,6 +32,9 @@ import { IndexComponent } from './core/index/index.component';
 import { ConsultaAnamneseDetailsComponent } from './views/anamnese/consulta-anamnese-details/consulta-anamnese-details.component';
 import { ExameListComponent } from './views/exame-fisico/exame-list/exame-list.component';
 import { ExameDetailsComponent } from './views/exame-fisico/exame-details/exame-details.component';
+import { MatOption } from '@angular/material/core';
+import {MatSelectModule, MatFormFieldModule} from '@angular/material';
+import { MatSelectFilterModule } from 'mat-select-filter';
 
 @NgModule({
   declarations: [
@@ -71,6 +74,10 @@ import { ExameDetailsComponent } from './views/exame-fisico/exame-details/exame-
     NgxMaskPipe,
     MatSlideToggleModule,
     BrowserAnimationsModule,
+    MatOption,
+    MatSelectModule, 
+    MatFormFieldModule,
+    MatSelectFilterModule 
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent],
