@@ -11,6 +11,7 @@ import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { ProgressoMedico } from 'src/app/models/progresso-medico/progresso-medico';
 import { Sexo } from 'src/app/models/enums/sexo';
 import { AnamnesePergunta } from 'src/app/models/anamnese-pergunta/anamnese-pergunta';
+import { Contato } from 'src/app/models/contato/contato';
 
 @Component({
   selector: 'app-consulta-anamnese-details',
@@ -21,8 +22,11 @@ import { AnamnesePergunta } from 'src/app/models/anamnese-pergunta/anamnese-perg
 export class ConsultaAnamneseDetailsComponent implements OnInit {
   anamnese = new Anamnese();
   generoEnum = Genero;
+  sexoEnum = Sexo;
   telefones: any[] = [];
+  endereco: any[] = [];
   selectedGenero = Genero.FEMININO;
+  selectedSexo = Sexo.FEMEA;
 
   @Input() isErro = true;
   @Input() mensagem = '';
@@ -74,6 +78,13 @@ export class ConsultaAnamneseDetailsComponent implements OnInit {
 
   }
 
+  addTelefone() {
+    const phone = new Contato();
+    phone.telefone = '';
+  
+    this.anamnese.tutorDTO.telefones.push(phone);
+  }
+
   fetchAnimal() {
     this.a
       .getByTutorAndAnimalName(
@@ -111,6 +122,7 @@ export class ConsultaAnamneseDetailsComponent implements OnInit {
           this.anamnese.tutorDTO = tutor;
           this.selectedGenero = tutor.genero;
           this.telefones = tutor.telefones;
+          this.endereco = tutor.endereco;
         },
         error: (err) => {
           this.isErro = true;

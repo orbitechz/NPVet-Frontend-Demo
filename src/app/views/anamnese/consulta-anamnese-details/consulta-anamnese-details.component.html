@@ -82,122 +82,59 @@
         </div>
       </div>
 
-      <div class="row mb-3">
-        <div
-          class="col form-group"
-          *ngFor="let numero of telefones; let i = index"
-        >
-          <label for="celular{{ i }}" class="mb-1">Celular</label>
+      <div class="row mb-3" *ngIf="anamnese.tutorDTO.cpf">
+        <div *ngFor="let telefone of anamnese.tutorDTO.telefones; let i = index">
+          <label for="celular{{ i + 1 }}" class="mb-1">Celular {{ i + 1 }}</label>
           <input
             type="text"
-            id="celular{{ i }}"
+            id="celular{{ i + 1 }}"
             class="form-control"
-            name="celular{{ i }}"
-            [(ngModel)]="telefones[i].telefone"
-            required
+            name="celular{{ i + 1 }}"
+            [(ngModel)]="telefone.telefone"
           />
         </div>
+        <button type="button" class="btn btn-primary" style="margin-left: auto; margin-right: 10px;" (click)="addTelefone()">Add Another Phone</button>
       </div>
 
-      <div
-        class="row mb-3"
-        *ngIf="
-          anamnese.tutorDTO.endereco && anamnese.tutorDTO.endereco.length > 0
-        "
-      >
-        <div class="col-4 form-group">
-          <label for="cep" class="mb-1">CEP</label>
-          <input
-            type="text"
-            id="cep"
-            class="form-control"
-            name="cep"
-            [(ngModel)]="
-              anamnese.tutorDTO.endereco[anamnese.tutorDTO.endereco.length - 1]
-                .cep
-            "
-            required
-          />
-        </div>
-        <div class="col-4 form-group">
-          <label for="logradouro" class="mb-1">Logradouro</label>
-          <input
-            type="text"
-            id="logradouro"
-            class="form-control"
-            name="logradouro"
-            [(ngModel)]="
-              anamnese.tutorDTO.endereco[anamnese.tutorDTO.endereco.length - 1]
-                .logradouro
-            "
-            required
-          />
-        </div>
-        <div class="col-4 form-group">
-          <label for="numero" class="mb-1">Número</label>
-          <input
-            type="text"
-            id="numero"
-            class="form-control"
-            name="numero"
-            [(ngModel)]="
-              anamnese.tutorDTO.endereco[anamnese.tutorDTO.endereco.length - 1]
-                .numero
-            "
-            required
-          />
+      <div class="row mb-3" *ngIf="anamnese.tutorDTO.endereco && anamnese.tutorDTO.endereco.length > 0">
+        <div *ngFor="let endereco of anamnese.tutorDTO.endereco; let i = index">
+          <div class="col-4 form-group">
+            <label for="cep{{ i }}" class="mb-1">CEP</label>
+            <input
+              type="text"
+              id="cep{{ i }}"
+              class="form-control"
+              name="cep{{ i }}"
+              [(ngModel)]="endereco.cep"
+              required
+            />
+          </div>
+          <div class="col-4 form-group">
+            <label for="logradouro{{ i }}" class="mb-1">Logradouro</label>
+            <input
+              type="text"
+              id="logradouro{{ i }}"
+              class="form-control"
+              name="logradouro{{ i }}"
+              [(ngModel)]="endereco.logradouro"
+              required
+            />
+          </div>
+          <div class="col-4 form-group">
+            <label for="numero{{ i }}" class="mb-1">Número</label>
+            <input
+              type="text"
+              id="numero{{ i }}"
+              class="form-control"
+              name="numero{{ i }}"
+              [(ngModel)]="endereco.numero"
+              required
+            />
+          </div>
         </div>
       </div>
+      
 
-      <div
-        class="row mb-3"
-        *ngIf="
-          anamnese.tutorDTO.endereco && anamnese.tutorDTO.endereco.length > 0
-        "
-      >
-        <div class="col form-group">
-          <label for="cidade" class="mb-1">Cidade</label>
-          <input
-            type="text"
-            id="cidade"
-            class="form-control"
-            name="cidade"
-            [(ngModel)]="
-              anamnese.tutorDTO.endereco[anamnese.tutorDTO.endereco.length - 1]
-                .cidade
-            "
-            required
-          />
-        </div>
-        <div class="col form-group">
-          <label for="estado" class="mb-1">Estado</label>
-          <input
-            type="text"
-            id="estado"
-            class="form-control"
-            name="estado"
-            [(ngModel)]="
-              anamnese.tutorDTO.endereco[anamnese.tutorDTO.endereco.length - 1]
-                .estado
-            "
-            required
-          />
-        </div>
-        <div class="col form-group">
-          <label for="complemento" class="mb-1">Complemento</label>
-          <input
-            type="text"
-            id="complemento"
-            class="form-control"
-            name="complemento"
-            [(ngModel)]="
-              anamnese.tutorDTO.endereco[anamnese.tutorDTO.endereco.length - 1]
-                .complemento
-            "
-            required
-          />
-        </div>
-      </div>
 
       <div class="d-flex justify-content-end">
         <button type="button" class="btn btn-primary" (click)="cadastrarNovo()">
@@ -250,10 +187,18 @@
             id="sexo"
             class="form-control"
             name="sexo"
-            [(ngModel)]="anamnese.animalDTO.sexo"
+            [(ngModel)]="selectedSexo"
             required
           >
-            <option></option>
+            <option [ngValue]="null" disabled selected>
+              Selecione
+            </option>
+            <option
+              *ngFor="let tipo of sexoEnum | keyvalue"
+              [ngValue]="tipo.key"
+            >
+              {{ tipo.value }}
+            </option>
           </select>
         </div>
         <div class="col-2 form-group">
