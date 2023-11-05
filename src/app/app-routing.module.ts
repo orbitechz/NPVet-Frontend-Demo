@@ -30,8 +30,8 @@ const routes: Routes = [
       { path: 'animais', component: AnimalListComponent },
       { path: 'animal/cadastro', component: AnimalDetailsComponent },
       { path: 'consultas', component: ConsultaListComponent },
+      { path: 'anamnese/register/:id', component: ConsultaAnamneseDetailsComponent},
       { path: 'exame/register', component: ExameDetailsComponent },
-
     ],
   },
 ];

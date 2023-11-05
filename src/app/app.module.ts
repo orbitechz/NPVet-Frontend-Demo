@@ -63,7 +63,7 @@ import {MatFormFieldModule } from '@angular/material/form-field';
     IndexComponent,
     ExameListComponent,
     ExameDetailsComponent,
-    ConsultaAnamneseDetailsComponent,
+    ConsultaAnamneseDetailsComponent
   ],
  imports: [
     BrowserModule,
