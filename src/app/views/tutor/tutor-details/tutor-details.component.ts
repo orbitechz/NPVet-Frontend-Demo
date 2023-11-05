@@ -50,6 +50,7 @@ export class TutorDetailsComponent implements OnInit {
     this.service.getById(id).subscribe({
       next: (tutor) => {
         this.tutor = tutor;
+        console.log(this.tutor.enderecos)
       },
       error: (error) => {
         this.isErro = true;
@@ -84,5 +85,7 @@ export class TutorDetailsComponent implements OnInit {
   }
 
   addTelefone(){}
-  addEndereco(){}
+  addEndereco(){
+    this.tutor.enderecos.push(new Endereco())
+  }
 }
