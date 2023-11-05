@@ -1,29 +1,96 @@
 <div class="w-100 d-flex justify-content-center">
     <div class="w-70">
-        <form>
+        <app-mensagem [isErro]="isErro" [mensagem]="mensagem"></app-mensagem>
+        <form #details>
             <h3 class="heading">DADOS DO TUTOR</h3>
+            <!--Dados Pessoais-->
             <div class="my-4">
                 <h4 class="subheading p-0 m-0">Dados Pessoais</h4>
                 <div class="w-100 container p-0 d-flex flex-column">
                     <div class="row">
                         <div class="col form-campo d-flex flex-column">
-                            <label for="tutor_nome">Nome</label><input id="tutor_nome" type="text">
+                            <label for="tutor-nome">Nome</label><input name="tutor-nome" [(ngModel)]="tutor.nome"
+                                id="tutor-nome" type="text">
                         </div>
                         <div class="col form-campo d-flex flex-column">
-                            <label for="tutor_genero">Gênero</label><input id="tutor_genero"
-                                type="text">
+                            <label for="tutor-genero">Gênero</label><input name="tutor-genero"
+                                [(ngModel)]="tutor.genero" id="tutor-genero" type="text">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col form-campo d-flex flex-column">
-                            <label for="tutor_cpf">CPF</label><input id="tutor_cpf" type="text">
+                            <label for="tutor-cpf">CPF</label><input name="tutor-cpf" [(ngModel)]="tutor.cpf"
+                                id="tutor-cpf" type="text">
                         </div>
                         <div class="col form-campo d-flex flex-column">
-                            <label for="tutor_rg">RG</label><input id="tutor_rg" type="text">
+                            <label for="tutor-rg">RG</label><input name="tutor-rg" [(ngModel)]="tutor.rg" id="tutor-rg"
+                                type="text">
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- Contatos -->
+            <div class="my-4">
+                <h4 class="subheading p-0 m-0">Contatos</h4>
+                <div class="w-100 container p-0 d-flex flex-column">
+                    <div class="row">
+                        <div class="col form-campo d-flex flex-column">
+                            <label for="tutor_telefone1">Telefone 1</label><input id="tutor_telefon2" type="text">
+                        </div>
+                        <div class="col form-campo d-flex flex-column">
+                            <label for="tutor_telefone2">Telefone 2</label><input id="tutor_telefon2" type="text">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-campo d-flex flex-column">
+                            <label for="tutor-email">E-mail</label><input name="tutor-emiail" [(ngModel)]="tutor.email"
+                                id="tutor-email" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Contatos -->
+            <div class="my-4">
+                <h4 class="subheading p-0 m-0">Endereço</h4>
+                <div class="w-100 container p-0 d-flex flex-column">
+                    <div class="row">
+                        <div class="col form-campo d-flex flex-column">
+                            <label for="tutor-endereo-cep">CEP</label><input id="tutor_telefon2" type="text">
+                        </div>
+                        <div class="col form-campo d-flex flex-column">
+                            <label for="tutor-endereo-pais">País</label><input id="tutor-endereco-pais" type="text">
+                        </div>
+                        <div class="col form-campo d-flex flex-column">
+                            <label for="tutor-endereco-estado">Estado</label><input id="tutor_telefon2" type="text">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-campo d-flex flex-column">
+                            <label for="tutor-endereco-cidade">Cidade</label><input id="tutor_cpf" type="text">
+                        </div>
+                        <div class="col-md-6 form-campo d-flex flex-column">
+                            <label for="tutor-endereco-logradouro">Logradouro</label><input
+                                id="tutor-endereco-logradouro" type="text">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 form-campo d-flex flex-column">
+                            <label for="tutor-endereco-bairro">Bairro</label><input id="tutor-endereco-bairro"
+                                type="text">
+                        </div>
+                        <div class="col-md-2 form-campo d-flex flex-column">
+                            <label for="tutor-endereco-numero">Número</label><input id="tutor-endereco-numero"
+                                type="text">
+                        </div>
+                        <div class="col-md-6 form-campo d-flex flex-column">
+                            <label for="tutor-endereco-complemento">Complemento</label><input
+                                id="tutor-endereco-complemento" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="my-5 w-100 d-flex justify-content-center"><button id="confirmar" class="btn btn-primary" type="button" (click)="confirmar()">{{modoRegister? "Cadastrar":
+                    "Editar"}}</button></div>
         </form>
     </div>
 </div>
