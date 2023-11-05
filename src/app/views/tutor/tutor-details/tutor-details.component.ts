@@ -88,4 +88,7 @@ export class TutorDetailsComponent implements OnInit {
   addEndereco(){
     this.tutor.enderecos.push(new Endereco())
   }
+  removeEndereco(index: number){
+    this.tutor.enderecos.splice(index, 1);
+  }
 }
