@@ -18,7 +18,6 @@ import { UsuarioService } from './services/usuario/usuario.service';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { HeaderComponent } from './components/header/header.component';
 import { UsuarioListarComponent } from './views/usuario/usuario-listar/usuario-listar.component';
 import { UsuarioDetailsComponent } from './views/usuario/usuario-details/usuario-details.component';
@@ -33,8 +32,12 @@ import { ConsultaAnamneseDetailsComponent } from './views/anamnese/consulta-anam
 import { ExameListComponent } from './views/exame-fisico/exame-list/exame-list.component';
 import { ExameDetailsComponent } from './views/exame-fisico/exame-details/exame-details.component';
 import { MatOption } from '@angular/material/core';
-import {MatSelectModule, MatFormFieldModule} from '@angular/material';
-import { MatSelectFilterModule } from 'mat-select-filter';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatSelectModule } from '@angular/material/select';
+import {MatFormFieldModule } from '@angular/material/form-field';
+// import { MatSelectFilter } 
+
+// import { MatSelec};
 
 @NgModule({
   declarations: [
@@ -60,7 +63,7 @@ import { MatSelectFilterModule } from 'mat-select-filter';
     IndexComponent,
     ExameListComponent,
     ExameDetailsComponent,
-    ConsultaAnamneseDetailsComponent
+    ConsultaAnamneseDetailsComponent,
   ],
  imports: [
     BrowserModule,
@@ -74,10 +77,9 @@ import { MatSelectFilterModule } from 'mat-select-filter';
     NgxMaskPipe,
     MatSlideToggleModule,
     BrowserAnimationsModule,
-    MatOption,
     MatSelectModule, 
     MatFormFieldModule,
-    MatSelectFilterModule 
+    // MatSelectFilterModule 
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent],
