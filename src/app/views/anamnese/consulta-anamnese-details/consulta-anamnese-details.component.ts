@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 import { AnamneseService } from 'src/app/services/anamnese/anamnese.service';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { ProgressoMedico } from 'src/app/models/progresso-medico/progresso-medico';
-import { DatePipe } from '@angular/common';
+import { Sexo } from 'src/app/models/enums/sexo';
+import { AnamnesePergunta } from 'src/app/models/anamnese-pergunta/anamnese-pergunta';
 
 @Component({
   selector: 'app-consulta-anamnese-details',
@@ -27,6 +28,9 @@ export class ConsultaAnamneseDetailsComponent implements OnInit {
   @Input() mensagem = '';
   animal = new Animal();
   doesntExistAnimal: boolean = false;
+
+  showInputs: boolean = false;
+
 
   constructor(
     private t: TutorService,
@@ -50,9 +54,21 @@ export class ConsultaAnamneseDetailsComponent implements OnInit {
 
   addNewRow() {
     this.anamnese.historicoProgressoMedico.push(new ProgressoMedico(
+      '',
+      new Date()
     ));
   }
 
+
+  addNewQuestion() {
+    this.showInputs = !this.showInputs;
+
+    const newQuestion = new AnamnesePergunta();
+    newQuestion.perguntaDTO = '';
+    newQuestion.resposta = '';
+    this.anamnese.anamnesePerguntas.push(newQuestion);
+
+  }
 
   fetchAnimal() {
     this.a
@@ -63,10 +79,19 @@ export class ConsultaAnamneseDetailsComponent implements OnInit {
       .subscribe({
         next: (animal) => {
           this.anamnese.animalDTO = animal;
+
         },
         error: (err) => {
           if (err.status == 400) {
             this.doesntExistAnimal = true;
+            this.anamnese.animalDTO.especie = '';
+            this.anamnese.animalDTO.raca = '';
+            this.anamnese.animalDTO.idade = 0;
+            this.anamnese.animalDTO.peso = 0;
+            this.anamnese.animalDTO.pelagem = '';
+            this.anamnese.animalDTO.procedencia = '';
+            this.anamnese.animalDTO.sexo = Sexo.MACHO;
+            this.anamnese.animalDTO.consulta = [];
           } else {
             this.isErro = true;
             this.mensagem = err.error;
@@ -79,11 +104,9 @@ export class ConsultaAnamneseDetailsComponent implements OnInit {
     if (this.anamnese.tutorDTO.cpf.length == 11) {
       this.t.getByCpf(this.anamnese.tutorDTO.cpf).subscribe({
         next: (tutor) => {
-        
           this.anamnese.tutorDTO = tutor;
           this.selectedGenero = tutor.genero;
           this.telefones = tutor.telefones;
-          console.log(this.anamnese.tutorDTO);
         },
         error: (err) => {
           this.isErro = true;

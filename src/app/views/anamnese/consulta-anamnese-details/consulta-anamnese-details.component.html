@@ -15,7 +15,7 @@
             class="form-control"
             name="data"
             [value]="dateNow()"
-            style="text-align: center;"
+            style="text-align: center"
             disabled
           />
         </div>
@@ -32,7 +32,7 @@
             [(ngModel)]="anamnese.tutorDTO.cpf"
             maxlength="14"
             mask="000.000.000-00"
-            (ngModelChange)="fetchTutor()"
+            (blur)="fetchTutor()"
             required
           />
         </div>
@@ -58,15 +58,15 @@
             [(ngModel)]="selectedGenero"
             required
           >
-          <option [ngValue]="null" disabled selected>
-            Selecione um tipo
-          </option>
-          <option
-            *ngFor="let tipo of generoEnum | keyvalue"
-            [ngValue]="tipo.key"
-          >
-            {{ tipo.value }}
-          </option>
+            <option [ngValue]="null" disabled selected>
+              Selecione um tipo
+            </option>
+            <option
+              *ngFor="let tipo of generoEnum | keyvalue"
+              [ngValue]="tipo.key"
+            >
+              {{ tipo.value }}
+            </option>
           </select>
         </div>
         <div class="col-6 form-group">
@@ -83,20 +83,28 @@
       </div>
 
       <div class="row mb-3">
-        <div class="col form-group" *ngFor="let numero of telefones; let i = index">
-          <label for="celular{{i}}" class="mb-1">Celular</label>
+        <div
+          class="col form-group"
+          *ngFor="let numero of telefones; let i = index"
+        >
+          <label for="celular{{ i }}" class="mb-1">Celular</label>
           <input
             type="text"
-            id="celular{{i}}"
+            id="celular{{ i }}"
             class="form-control"
-            name="celular{{i}}"
+            name="celular{{ i }}"
             [(ngModel)]="telefones[i].telefone"
             required
           />
         </div>
-        </div>
+      </div>
 
-       <div class="row mb-3" *ngIf="anamnese.tutorDTO.endereco && anamnese.tutorDTO.endereco.length > 0">
+      <div
+        class="row mb-3"
+        *ngIf="
+          anamnese.tutorDTO.endereco && anamnese.tutorDTO.endereco.length > 0
+        "
+      >
         <div class="col-4 form-group">
           <label for="cep" class="mb-1">CEP</label>
           <input
@@ -104,7 +112,10 @@
             id="cep"
             class="form-control"
             name="cep"
-            [(ngModel)]="anamnese.tutorDTO.endereco[anamnese.tutorDTO.endereco.length - 1].cep"
+            [(ngModel)]="
+              anamnese.tutorDTO.endereco[anamnese.tutorDTO.endereco.length - 1]
+                .cep
+            "
             required
           />
         </div>
@@ -115,7 +126,10 @@
             id="logradouro"
             class="form-control"
             name="logradouro"
-            [(ngModel)]="anamnese.tutorDTO.endereco[anamnese.tutorDTO.endereco.length - 1].logradouro"
+            [(ngModel)]="
+              anamnese.tutorDTO.endereco[anamnese.tutorDTO.endereco.length - 1]
+                .logradouro
+            "
             required
           />
         </div>
@@ -126,13 +140,21 @@
             id="numero"
             class="form-control"
             name="numero"
-            [(ngModel)]="anamnese.tutorDTO.endereco[anamnese.tutorDTO.endereco.length - 1].numero"
+            [(ngModel)]="
+              anamnese.tutorDTO.endereco[anamnese.tutorDTO.endereco.length - 1]
+                .numero
+            "
             required
           />
         </div>
       </div>
 
-     <div class="row mb-3" *ngIf="anamnese.tutorDTO.endereco && anamnese.tutorDTO.endereco.length > 0">
+      <div
+        class="row mb-3"
+        *ngIf="
+          anamnese.tutorDTO.endereco && anamnese.tutorDTO.endereco.length > 0
+        "
+      >
         <div class="col form-group">
           <label for="cidade" class="mb-1">Cidade</label>
           <input
@@ -140,7 +162,10 @@
             id="cidade"
             class="form-control"
             name="cidade"
-            [(ngModel)]="anamnese.tutorDTO.endereco[anamnese.tutorDTO.endereco.length - 1].cidade"
+            [(ngModel)]="
+              anamnese.tutorDTO.endereco[anamnese.tutorDTO.endereco.length - 1]
+                .cidade
+            "
             required
           />
         </div>
@@ -151,7 +176,10 @@
             id="estado"
             class="form-control"
             name="estado"
-            [(ngModel)]="anamnese.tutorDTO.endereco[anamnese.tutorDTO.endereco.length - 1].estado"
+            [(ngModel)]="
+              anamnese.tutorDTO.endereco[anamnese.tutorDTO.endereco.length - 1]
+                .estado
+            "
             required
           />
         </div>
@@ -162,18 +190,21 @@
             id="complemento"
             class="form-control"
             name="complemento"
-            [(ngModel)]="anamnese.tutorDTO.endereco[anamnese.tutorDTO.endereco.length - 1].complemento"
+            [(ngModel)]="
+              anamnese.tutorDTO.endereco[anamnese.tutorDTO.endereco.length - 1]
+                .complemento
+            "
             required
           />
         </div>
       </div>
 
-     <div class="d-flex justify-content-end">
+      <div class="d-flex justify-content-end">
         <button type="button" class="btn btn-primary" (click)="cadastrarNovo()">
           Cadastrar Novo Tutor
         </button>
       </div>
- 
+
       <div class="row">
         <p class="title-form">animal</p>
         <div class="col-6 form-group">
@@ -274,7 +305,7 @@
         </div>
       </div>
 
-      <div class="row mb-3">
+      <div class="row mb-3 p-2">
         <p class="title-form">hístorico médico</p>
         <table>
           <thead>
@@ -284,17 +315,32 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let historico of anamnese.historicoProgressoMedico; let i = index">
+            <tr
+              *ngFor="
+                let historico of anamnese.historicoProgressoMedico;
+                let i = index
+              "
+            >
               <td>
-                <input type="text" [(ngModel)]="historico.progressoMedico" name="progressoMedico{{i}}" />
+                <input
+                  type="text"
+                  [(ngModel)]="historico.progressoMedico"
+                  name="progressoMedico{{ i }}"
+                />
               </td>
               <td>
-                <input type="text" [(ngModel)]="historico.data" name="dataAtualizacao{{i}}" />
+                <input
+                  type="text"
+                  [(ngModel)]="historico.data"
+                  name="dataAtualizacao{{ i }}"
+                />
               </td>
             </tr>
           </tbody>
-        </table>   
-        <button class="btn mt-2" style="width: 250px;" (click)="addNewRow()">Adicionar Novo Histórico</button>     
+        </table>
+        <button class="btn mt-2" style="width: 250px" (click)="addNewRow()">
+          Adicionar Novo Histórico
+        </button>
       </div>
 
       <div class="row mb-3">
@@ -498,6 +544,40 @@
           ></textarea>
         </div>
       </div>
+
+      <div class="row mb-3">
+        <div class="d-flex justify-content-between">
+          <p class="title-form">pergunta adicional</p>
+          <button class="btn btn-primary" (click)="addNewQuestion()">
+            Adiconar Pergunta
+          </button>
+        </div>
+        <div *ngFor="let p of anamnese.anamnesePerguntas; let i = index">
+          <div class="form-group">
+            <label for="pergunta"> Define uma Pergunta Adicional: </label>
+            <input
+              type="text"
+              id="pergunta"
+              class="form-control"
+              [(ngModel)]="p.perguntaDTO"
+              name="pergunta{{ i }}"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="resposta"> Define a Resposta: </label>
+            <input
+              type="text"
+              id="resposta"
+              class="form-control"
+              name="resposta{{ i }}"
+              [(ngModel)]="p.resposta"
+              required
+            />
+          </div>
+        </div>
+      </div>
+
       <div class="actions d-flex justify-content-end">
         <button
           type="submit"
