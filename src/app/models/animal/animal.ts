@@ -17,4 +17,11 @@ export class Animal extends AbstractEntity{
     anamneses!: Anamnese[];
     consulta!: Consulta[];
     /*vacinas!: Vacina[];*/
+
+    constructor(){
+        super();
+        this.anamneses = [];
+        this.consulta = [];
+        /*this.vacinas = [];*/
+    }
 }
