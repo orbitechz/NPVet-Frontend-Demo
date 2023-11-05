@@ -94,43 +94,43 @@ export class ConsultaAnamneseDetailsComponent implements OnInit {
   }
 
   cadastrarAnamnese() {
-    // this.t.update(this.anamnese.tutorDTO.id, this.anamnese.tutorDTO).subscribe({
-    //   next: (tutor) => { },
-    //   error: (err) => {
-    //     this.isErro = true;
-    //     this.mensagem = err.error;
-    //   },
-    // });
+    this.t.update(this.anamnese.tutorDTO.id, this.anamnese.tutorDTO).subscribe({
+      next: (tutor) => { },
+      error: (err) => {
+        this.isErro = true;
+        this.mensagem = err.error;
+      },
+    });
 
-    // this.a
-    //   .getByTutorAndAnimalName(
-    //     this.anamnese.tutorDTO.id,
-    //     this.anamnese.animalDTO.nome
-    //   )
-    //   .subscribe({
-    //     next: (a) => {
-    //       this.a.update(this.anamnese.animalDTO).subscribe({
-    //         next: (animal) => {
-    //           this.anamnese.animalDTO = animal;
-    //         },
-    //         error: (err) => {
-    //           this.isErro = true;
-    //           this.mensagem = err.error;
-    //         },
-    //       });
-    //     },
-    //     error: (err) => {
-    //       this.a.save(this.anamnese.animalDTO).subscribe({
-    //         next: (animal) => {
-    //           this.anamnese.animalDTO = animal;
-    //         },
-    //         error: (err) => {
-    //           this.isErro = true;
-    //           this.mensagem = err.error;
-    //         },
-    //       });
-    //     },
-    //   });
+    this.a
+      .getByTutorAndAnimalName(
+        this.anamnese.tutorDTO.id,
+        this.anamnese.animalDTO.nome
+      )
+      .subscribe({
+        next: (a) => {
+          this.a.update(this.anamnese.animalDTO).subscribe({
+            next: (animal) => {
+              this.anamnese.animalDTO = animal;
+            },
+            error: (err) => {
+              this.isErro = true;
+              this.mensagem = err.error;
+            },
+          });
+        },
+        error: (err) => {
+          this.a.save(this.anamnese.animalDTO).subscribe({
+            next: (animal) => {
+              this.anamnese.animalDTO = animal;
+            },
+            error: (err) => {
+              this.isErro = true;
+              this.mensagem = err.error;
+            },
+          });
+        },
+      });
 
     this.an.create(this.anamnese).subscribe({
       next: (anamnese) => {

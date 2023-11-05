@@ -96,7 +96,7 @@
         </div>
         </div>
 
-      <!-- <div class="row mb-3">
+       <div class="row mb-3" *ngIf="anamnese.tutorDTO.endereco && anamnese.tutorDTO.endereco.length > 0">
         <div class="col-4 form-group">
           <label for="cep" class="mb-1">CEP</label>
           <input
@@ -104,9 +104,7 @@
             id="cep"
             class="form-control"
             name="cep"
-            [(ngModel)]="
-              endereco.cep
-            "
+            [(ngModel)]="anamnese.tutorDTO.endereco[anamnese.tutorDTO.endereco.length - 1].cep"
             required
           />
         </div>
@@ -117,9 +115,7 @@
             id="logradouro"
             class="form-control"
             name="logradouro"
-            [(ngModel)]="
-              endereco.logradouro
-            "
+            [(ngModel)]="anamnese.tutorDTO.endereco[anamnese.tutorDTO.endereco.length - 1].logradouro"
             required
           />
         </div>
@@ -130,15 +126,13 @@
             id="numero"
             class="form-control"
             name="numero"
-            [(ngModel)]="
-              endereco.numero
-            "
+            [(ngModel)]="anamnese.tutorDTO.endereco[anamnese.tutorDTO.endereco.length - 1].numero"
             required
           />
         </div>
       </div>
 
-      <div class="row mb-3">
+     <div class="row mb-3" *ngIf="anamnese.tutorDTO.endereco && anamnese.tutorDTO.endereco.length > 0">
         <div class="col form-group">
           <label for="cidade" class="mb-1">Cidade</label>
           <input
@@ -146,9 +140,7 @@
             id="cidade"
             class="form-control"
             name="cidade"
-            [(ngModel)]="
-              endereco.cidade
-            "
+            [(ngModel)]="anamnese.tutorDTO.endereco[anamnese.tutorDTO.endereco.length - 1].cidade"
             required
           />
         </div>
@@ -159,9 +151,7 @@
             id="estado"
             class="form-control"
             name="estado"
-            [(ngModel)]="
-              endereco.estado
-            "
+            [(ngModel)]="anamnese.tutorDTO.endereco[anamnese.tutorDTO.endereco.length - 1].estado"
             required
           />
         </div>
@@ -172,13 +162,11 @@
             id="complemento"
             class="form-control"
             name="complemento"
-            [(ngModel)]="
-              endereco.complemento
-            "
+            [(ngModel)]="anamnese.tutorDTO.endereco[anamnese.tutorDTO.endereco.length - 1].complemento"
             required
           />
         </div>
-      </div> -->
+      </div>
 
      <div class="d-flex justify-content-end">
         <button type="button" class="btn btn-primary" (click)="cadastrarNovo()">
