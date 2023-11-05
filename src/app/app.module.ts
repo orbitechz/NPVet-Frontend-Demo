@@ -32,6 +32,7 @@ import { IndexComponent } from './core/index/index.component';
 import { ExameListComponent } from './views/exame-fisico/exame-list/exame-list.component';
 import { ExameDetailsComponent } from './views/exame-fisico/exame-details/exame-details.component';
 import { ConsultaAnamneseDetailsComponent } from './views/anamnese/consulta-anamnese-details/consulta-anamnese-details.component';
+import { AnamneseEditComponent } from './views/anamnese/anamnese-edit/anamnese-edit.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { ConsultaAnamneseDetailsComponent } from './views/anamnese/consulta-anam
     IndexComponent,
     ExameListComponent,
     ExameDetailsComponent,
-    ConsultaAnamneseDetailsComponent
+    ConsultaAnamneseDetailsComponent,
+    AnamneseEditComponent,
   ],
  imports: [
     BrowserModule,
