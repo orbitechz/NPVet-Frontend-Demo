@@ -74,4 +74,7 @@ export class TutorDetailsComponent implements OnInit {
       },
     });
   }
+
+  addTelefone(){}
+  addEndereco(){}
 }

@@ -40,7 +40,7 @@
                         <div class="col form-campo d-flex flex-column">
                             <label for="tutor_telefone2">Telefone 2</label><input id="tutor_telefon2" type="text">
                         </div>
-                        <div class="align-self-end add-btn p-0 m-0 col-md-1 d-flex flex-row justify-content-center align-items-center">
+                        <div (click)="addTelefone()" class="align-self-end add-btn p-0 m-0 col-md-1 d-flex flex-row justify-content-center align-items-center">
                             <bi class="add-btn" name="plus"></bi>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
             </div>
             <!-- Contatos -->
             <div class="my-4">
-                <h4 class="subheading p-0 m-0">Endereço</h4>
+                <h4 class="subheading p-0 m-0">Endereços</h4>
                 <div class="w-100 container p-0 d-flex flex-column">
                     <div class="row">
                         <div class="col form-campo d-flex flex-column">
@@ -91,7 +91,7 @@
                         </div>
                     </div>
                     <div class="d-grid w-100 my-3">
-                        <div class="add-btn p-0 m-0 col-1 d-flex flex-row justify-content-center align-items-center">
+                        <div (click)="addEndereco()" class="add-btn p-0 m-0 col-1 d-flex flex-row justify-content-center align-items-center">
                             <bi class="add-btn" name="plus"></bi>
                         </div>
                     </div>
