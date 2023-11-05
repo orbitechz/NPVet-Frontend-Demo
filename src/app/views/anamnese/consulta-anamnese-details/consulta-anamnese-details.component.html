@@ -1,45 +1,500 @@
 <div class="consulta-anamnese d-flex flex-column">
-  <p class="title-form">anamnese geral</p>
   <div class="register-form">
-    <!-- <app-mensagem [isErro]="isErro" [mensagem]="mensagem" class="w-50"></app-mensagem> -->
-    <form action="" class="d-flex flex-column">
-      <div class="form-group">
-        <label for="data" class="mb-1">Data</label>
-        <input
-          type="text"
-          id="data"
-          class="form-control"
-          name="data"
-          [(ngModel)]="anamnese.createdAt"
-          required
-        />
-      </div>
-      <div class="row mb-3">
-        <div class="col form-group">
-          <label for="animal" class="mb-1">Animal</label>
+    <app-mensagem
+      [isErro]="isErro"
+      [mensagem]="mensagem"
+      class="w-50"
+    ></app-mensagem>
+    <form action="">
+      <div class="row">
+        <div class="col-sm-2 form-group">
+          <label for="animal" class="mb-1">Data</label>
           <input
             type="text"
             id="animal"
             class="form-control"
-            name="animal"
-            [(ngModel)]="anamnese.animal.nome"
+            name="data"
+            [value]="dateNow()"
+            style="text-align: center;"
+            disabled
+          />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <p class="title-form">responsavel</p>
+        <div class="col-6 form-group">
+          <label for="cpf" class="mb-1">CPF</label>
+          <input
+            type="text"
+            id="cpf"
+            class="form-control"
+            name="cpf"
+            [(ngModel)]="anamnese.tutorDTO.cpf"
+            maxlength="14"
+            mask="000.000.000-00"
+            (ngModelChange)="fetchTutor()"
+            required
+          />
+        </div>
+        <div class="col-6 form-group">
+          <label for="nome" class="mb-1">Nome</label>
+          <input
+            type="text"
+            id="nome"
+            class="form-control"
+            name="nome"
+            [(ngModel)]="anamnese.tutorDTO.nome"
+            required
+          />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-6 form-group">
+          <label for="genero" class="mb-1">Gênero</label>
+          <select
+            id="genero"
+            class="form-control"
+            name="genero"
+            [(ngModel)]="selectedGenero"
+            required
+          >
+          <option [ngValue]="null" disabled selected>
+            Selecione um tipo
+          </option>
+          <option
+            *ngFor="let tipo of generoEnum | keyvalue"
+            [ngValue]="tipo.key"
+          >
+            {{ tipo.value }}
+          </option>
+          </select>
+        </div>
+        <div class="col-6 form-group">
+          <label for="rg" class="mb-1">RG</label>
+          <input
+            type="text"
+            id="rg"
+            class="form-control"
+            name="rg"
+            [(ngModel)]="anamnese.tutorDTO.rg"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col form-group" *ngFor="let numero of telefones; let i = index">
+          <label for="celular{{i}}" class="mb-1">Celular</label>
+          <input
+            type="text"
+            id="celular{{i}}"
+            class="form-control"
+            name="celular{{i}}"
+            [(ngModel)]="telefones[i].telefone"
+            required
+          />
+        </div>
+        </div>
+
+      <!-- <div class="row mb-3">
+        <div class="col-4 form-group">
+          <label for="cep" class="mb-1">CEP</label>
+          <input
+            type="text"
+            id="cep"
+            class="form-control"
+            name="cep"
+            [(ngModel)]="
+              endereco.cep
+            "
+            required
+          />
+        </div>
+        <div class="col-4 form-group">
+          <label for="logradouro" class="mb-1">Logradouro</label>
+          <input
+            type="text"
+            id="logradouro"
+            class="form-control"
+            name="logradouro"
+            [(ngModel)]="
+              endereco.logradouro
+            "
+            required
+          />
+        </div>
+        <div class="col-4 form-group">
+          <label for="numero" class="mb-1">Número</label>
+          <input
+            type="text"
+            id="numero"
+            class="form-control"
+            name="numero"
+            [(ngModel)]="
+              endereco.numero
+            "
+            required
+          />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col form-group">
+          <label for="cidade" class="mb-1">Cidade</label>
+          <input
+            type="text"
+            id="cidade"
+            class="form-control"
+            name="cidade"
+            [(ngModel)]="
+              endereco.cidade
+            "
             required
           />
         </div>
         <div class="col form-group">
-            <label for="tutor" class="mb-1">Tutor</label>
-            <input
-              type="text"
-              id="tutor"
-              class="form-control"
-              name="tutor"
-              [(ngModel)]="anamnese.tutor.nome"
-              required
-            />
-          </div>
+          <label for="estado" class="mb-1">Estado</label>
+          <input
+            type="text"
+            id="estado"
+            class="form-control"
+            name="estado"
+            [(ngModel)]="
+              endereco.estado
+            "
+            required
+          />
+        </div>
+        <div class="col form-group">
+          <label for="complemento" class="mb-1">Complemento</label>
+          <input
+            type="text"
+            id="complemento"
+            class="form-control"
+            name="complemento"
+            [(ngModel)]="
+              endereco.complemento
+            "
+            required
+          />
+        </div>
+      </div> -->
+
+     <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-primary" (click)="cadastrarNovo()">
+          Cadastrar Novo Tutor
+        </button>
       </div>
+ 
+      <div class="row">
+        <p class="title-form">animal</p>
+        <div class="col-6 form-group">
+          <label for="nomeAnimal" class="mb-1">Nome</label>
+          <input
+            type="text"
+            id="nomeAnimal"
+            class="form-control"
+            name="nomeAnimal"
+            (blur)="fetchAnimal()"
+            [(ngModel)]="anamnese.animalDTO.nome"
+            required
+          />
+        </div>
+        <div class="col-6 form-group">
+          <label for="especie" class="mb-1">Espécie</label>
+          <input
+            type="text"
+            id="especie"
+            class="form-control"
+            name="especie"
+            [(ngModel)]="anamnese.animalDTO.especie"
+            required
+          />
+        </div>
+      </div>
+
       <div class="row mb-3">
-        
+        <div class="col-6 form-group">
+          <label for="raca" class="mb-1">Raça</label>
+          <input
+            type="text"
+            id="raca"
+            class="form-control"
+            name="raca"
+            [(ngModel)]="anamnese.animalDTO.raca"
+            required
+          />
+        </div>
+        <div class="col-4 form-group">
+          <label for="sexo" class="mb-1">Sexo</label>
+          <select
+            id="sexo"
+            class="form-control"
+            name="sexo"
+            [(ngModel)]="anamnese.animalDTO.sexo"
+            required
+          >
+            <option></option>
+          </select>
+        </div>
+        <div class="col-2 form-group">
+          <label for="idade" class="mb-1">Idade</label>
+          <input
+            type="text"
+            id="idade"
+            class="form-control"
+            name="idade"
+            [(ngModel)]="anamnese.animalDTO.idade"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-2 form-group">
+          <label for="peso" class="mb-1">Peso</label>
+          <input
+            type="text"
+            id="peso"
+            class="form-control"
+            name="peso"
+            [(ngModel)]="anamnese.animalDTO.peso"
+            required
+          />
+        </div>
+        <div class="col-6 form-group">
+          <label for="procedencia" class="mb-1">Procedencia</label>
+          <input
+            type="text"
+            id="procedencia"
+            class="form-control"
+            name="procedencia"
+            [(ngModel)]="anamnese.animalDTO.procedencia"
+            required
+          />
+        </div>
+        <div class="col-4 form-group">
+          <label for="pelagem" class="mb-1">Pelagem</label>
+          <input
+            type="text"
+            id="pelagem"
+            class="form-control"
+            name="pelagem"
+            [(ngModel)]="anamnese.animalDTO.pelagem"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <p class="title-form">anamnese geral</p>
+        <div class="col form-group">
+          <label for="queixaPrincipal">Queixa Principal</label>
+          <textarea
+            class="form-control"
+            id="queixaPrincipal"
+            name="queixaPrincipal"
+            [(ngModel)]="anamnese.queixaPrincipal"
+            rows="2"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col form-group">
+          <label for="alimentacao">Alimentação</label>
+          <textarea
+            class="form-control"
+            id="alimentacao"
+            name="alimentacao"
+            [(ngModel)]="anamnese.alimentacao"
+            rows="1"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-4 form-group">
+          <label for="contactantes">Contactantes</label>
+          <textarea
+            class="form-control"
+            id="contactantes"
+            name="contactantes"
+            [(ngModel)]="anamnese.contactantes"
+            rows="2"
+          ></textarea>
+        </div>
+        <div class="col-4 form-group">
+          <label for="vermifugacao">Vermifugacao</label>
+          <textarea
+            class="form-control"
+            id="vermifugacao"
+            name="vermifugacao"
+            [(ngModel)]="anamnese.vermifugacao"
+            rows="2"
+          ></textarea>
+        </div>
+        <div class="col-4 form-group">
+          <label for="ambiente">Ambiente que vive</label>
+          <textarea
+            class="form-control"
+            id="ambiente"
+            name="ambiente"
+            [(ngModel)]="anamnese.ambiente"
+            rows="2"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <p class="title-form">anamnese especial</p>
+        <div class="col form-group">
+          <label for="sistemaRespiratorio"
+            >Sistema Respiratorio (secreção, tosse, espirro, cianose, dispnéia,
+            ruído na respiração, etc)</label
+          >
+          <textarea
+            class="form-control"
+            id="sistemaRespiratorio"
+            name="sistemaRespiratorio"
+            [(ngModel)]="anamnese.sistemaRespiratorio"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col form-group">
+          <label for="sistemaCardiovascular"
+            >Sistema Cardiovascular (intolerância a exercícios, cansaço,
+            síncope, cianose, tosse etc)</label
+          >
+          <textarea
+            class="form-control"
+            id="sistemaCardiovascular"
+            name="sistemaCardiovascular"
+            [(ngModel)]="anamnese.sistemaCardiovascular"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col form-group">
+          <label for="sistemaDigestorio"
+            >Sistema Digestório (apetite, vômito, diarréia)</label
+          >
+          <textarea
+            class="form-control"
+            id="sistemaDigestorio"
+            name="sistemaDigestorio"
+            [(ngModel)]="anamnese.sistemaDigestorio"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col form-group">
+          <label for="sistemaUrinario"
+            >Sistema Urinário (ingestão de água, aspecto, volume e frequência da
+            urina, tenesmo vesical, disúria)</label
+          >
+          <textarea
+            class="form-control"
+            id="sistemaUrinario"
+            name="sistemaUrinario"
+            [(ngModel)]="anamnese.sistemaUrinario"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col form-group">
+          <label for="sistemaReprodutor"
+            >Sistema Reprodutor (secreção, cio, anticoncepcional, prenhez,
+            filhotes, mamas, comportamento)</label
+          >
+          <textarea
+            class="form-control"
+            id="sistemaReprodutor"
+            name="sistemaReprodutor"
+            [(ngModel)]="anamnese.sistemaReprodutor"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col form-group">
+          <label for="sistemaLocomotor"
+            >Sistema Locomotor (claudicação, trauma, aumento de volume, marcha,
+            impotência, exercícios)</label
+          >
+          <textarea
+            class="form-control"
+            id="sistemaLocomotor"
+            name="sistemaLocomotor"
+            [(ngModel)]="anamnese.sistemaLocomotor"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col form-group">
+          <label for="sistemaNeurologico"
+            >Sistema Neurológico (convulsão, síncopes, déficits, deambulação,
+            audição, olfato, propriocepção, manias, deglutição, alteração,
+            latido/miado)</label
+          >
+          <textarea
+            class="form-control"
+            id="sistemaNeurologico"
+            name="sistemaNeurologico"
+            [(ngModel)]="anamnese.sistemaNeurologico"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-6 form-group">
+          <label for="pele"
+            >Pele e anexos (higiene, secreção, alopecia, prurido, lesões,
+            descamação, parasitas, orelha)</label
+          >
+          <textarea
+            class="form-control"
+            id="pele"
+            name="pele"
+            [(ngModel)]="anamnese.pele"
+            rows="3"
+          ></textarea>
+        </div>
+        <div class="col-6 form-group">
+          <label for="olhos"
+            >Olhos (secreção, olho vermelho, olho esbranquiçado, déficit visual,
+            blefaroepasmo, fotofobia, primeiro olho afetado)</label
+          >
+          <textarea
+            class="form-control"
+            id="olhos"
+            name="olhos"
+            [(ngModel)]="anamnese.olhos"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+      <div class="actions d-flex justify-content-end">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="cadastrarAnamnese()"
+        >
+          Salvar
+        </button>
       </div>
     </form>
   </div>
