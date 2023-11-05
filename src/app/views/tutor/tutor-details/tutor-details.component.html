@@ -13,8 +13,12 @@
                                 id="tutor-nome" type="text">
                         </div>
                         <div class="col form-campo d-flex flex-column">
-                            <label for="tutor-genero">Gênero</label><input name="tutor-genero"
-                                [(ngModel)]="tutor.genero" id="tutor-genero" type="text">
+                            <label for="tutor-genero">Gênero</label>
+                            <select [(ngModel)]="tutor.genero" name="tutor-genero" class="form-select" aria-label="Gênero">
+                                <option *ngFor="let genero of keys(generos)" [value]="genero" value="1">{{genero}}</option>
+                            </select>
+                            <!-- <input name="tutor-genero"
+                                [(ngModel)]="tutor.genero" id="tutor-genero" type="text"> -->
                         </div>
                     </div>
                     <div class="row">

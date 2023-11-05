@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TelephoneMinus } from 'ng-bootstrap-icons/icons';
 import { Endereco } from 'src/app/models/endereco/endereco';
+import { Genero } from 'src/app/models/enums/genero';
 import { Tutor } from 'src/app/models/tutor/tutor';
 import { TutorService } from 'src/app/services/tutor/tutor.service';
 
@@ -12,13 +13,19 @@ import { TutorService } from 'src/app/services/tutor/tutor.service';
 })
 export class TutorDetailsComponent implements OnInit {
   tutor!: Tutor;
+
+  keys = Object.keys
+  generos = Genero
+
+  id!: string;
   url!: string;
   isErro: boolean = false;
+  modoRegister = true;
   mensagem!: string;
+
   router = inject(Router);
   service = inject(TutorService);
-  id!: string;
-  modoRegister = true;
+
   constructor(private route: ActivatedRoute) {
     this.url = this.router.url;
   }
