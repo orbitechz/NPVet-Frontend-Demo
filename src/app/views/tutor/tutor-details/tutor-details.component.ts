@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TelephoneMinus } from 'ng-bootstrap-icons/icons';
 import { Endereco } from 'src/app/models/endereco/endereco';
+
 import { Genero } from 'src/app/models/enums/genero';
 import { Tutor } from 'src/app/models/tutor/tutor';
 import { TutorService } from 'src/app/services/tutor/tutor.service';
@@ -12,8 +12,7 @@ import { TutorService } from 'src/app/services/tutor/tutor.service';
   styleUrls: ['./tutor-details.component.scss'],
 })
 export class TutorDetailsComponent implements OnInit {
-  tutor!: Tutor;
-
+  tutor = new Tutor();
   keys = Object.keys
   generos = Genero
 
@@ -27,6 +26,7 @@ export class TutorDetailsComponent implements OnInit {
   service = inject(TutorService);
 
   constructor(private route: ActivatedRoute) {
+    this.tutor.enderecos = []
     this.url = this.router.url;
   }
   ngOnInit(): void {
@@ -38,10 +38,11 @@ export class TutorDetailsComponent implements OnInit {
       } else {
         this.isErro = true;
         this.mensagem = 'ID informado é inválido!';
+        this.tutor.enderecos.push(new Endereco())
       }
     } else {
       this.modoRegister = true;
-      this.tutor = new Tutor();
+      this.tutor.enderecos.push(new Endereco())
     }
   }
 

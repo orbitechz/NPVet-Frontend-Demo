@@ -2,6 +2,7 @@ export class Endereco {
     logradouro!: string
     cidade!: string
     estado!: string
+    bairro!: string
     pais!: string
     numero!: string
     cep!: string
@@ -15,5 +16,6 @@ export class Endereco {
         this.numero = ''
         this.cep = ''
         this.complemento = ''
+        this.bairro = ''
     }
 }

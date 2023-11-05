@@ -56,41 +56,41 @@
                     </div>
                 </div>
             </div>
-            <!-- Contatos -->
+            <!-- Endereços -->
             <div class="my-4">
                 <h4 class="subheading p-0 m-0">Endereços</h4>
-                <div class="w-100 container p-0 d-flex flex-column">
+                <div *ngFor="let endereco of tutor.enderecos" class="w-100 container p-0 d-flex flex-column">
                     <div class="row">
                         <div class="col form-campo d-flex flex-column">
-                            <label for="tutor-endereo-cep">CEP</label><input id="tutor_telefon2" type="text">
+                            <label for="tutor-endereco-cep">CEP</label><input [(ngModel)]="endereco.cep" name="tutor-endereco-cep" id="tutor-endereco-cep" type="text">
                         </div>
                         <div class="col form-campo d-flex flex-column">
-                            <label for="tutor-endereo-pais">País</label><input id="tutor-endereco-pais" type="text">
+                            <label for="tutor-endereco-pais">País</label><input [(ngModel)]="endereco.pais"  name="tutor-endereco-pais" id="tutor-endereco-pais" type="text">
                         </div>
                         <div class="col form-campo d-flex flex-column">
-                            <label for="tutor-endereco-estado">Estado</label><input id="tutor_telefon2" type="text">
+                            <label for="tutor-endereco-estado">Estado</label><input [(ngModel)]="endereco.estado" name="tutor-endereco-estado" id="tutor-endereco-estado" type="text">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 form-campo d-flex flex-column">
-                            <label for="tutor-endereco-cidade">Cidade</label><input id="tutor_cpf" type="text">
+                            <label for="tutor-endereco-cidade">Cidade</label><input [(ngModel)]="endereco.cidade" name="tutor-endereco-cidade" id="tutor-endereco-cidade" type="text">
                         </div>
                         <div class="col-md-6 form-campo d-flex flex-column">
-                            <label for="tutor-endereco-logradouro">Logradouro</label><input
+                            <label for="tutor-endereco-logradouro">Logradouro</label><input [(ngModel)]="endereco.logradouro" name="tutor-endereco-logradouro"
                                 id="tutor-endereco-logradouro" type="text">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4 form-campo d-flex flex-column">
-                            <label for="tutor-endereco-bairro">Bairro</label><input id="tutor-endereco-bairro"
+                            <label for="tutor-endereco-bairro">Bairro</label><input [(ngModel)]="endereco.bairro" name="tutor-endereco-bairro" id="tutor-endereco-bairro"
                                 type="text">
                         </div>
                         <div class="col-md-2 form-campo d-flex flex-column">
-                            <label for="tutor-endereco-numero">Número</label><input id="tutor-endereco-numero"
+                            <label for="tutor-endereco-numero">Número</label><input [(ngModel)]="endereco.numero" name="tutor-endereco-numero" id="tutor-endereco-numero"
                                 type="text">
                         </div>
                         <div class="col-md-6 form-campo d-flex flex-column">
-                            <label for="tutor-endereco-complemento">Complemento</label><input
+                            <label for="tutor-endereco-complemento">Complemento</label><input [(ngModel)]="endereco.complemento" name="tutor-endereco-complemento" 
                                 id="tutor-endereco-complemento" type="text">
                         </div>
                     </div>

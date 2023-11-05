@@ -10,5 +10,5 @@ export class Tutor extends AbstractEntity {
   rg!: string;
   email!: string;
   telefones!: Contato[];
-  endereco!: Endereco[];
+  enderecos!: Endereco[];
 }
