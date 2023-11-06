@@ -38,6 +38,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import { AsyncPipe } from '@angular/common';
 import { NgxViacepModule } from '@brunoc/ngx-viacep';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 
 // import { MatSelectFilter } 
 
@@ -91,7 +93,8 @@ import { MenuPrincipalComponent } from './views/menu-principal/menu-principal.co
     MatInputModule,
     MatAutocompleteModule,
     AsyncPipe,
-    NgxViacepModule
+    NgxViacepModule,
+    MatTooltipModule
     // MatSelectFilterModule 
   ],
   providers: [UsuarioService],
