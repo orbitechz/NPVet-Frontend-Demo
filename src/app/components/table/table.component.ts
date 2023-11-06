@@ -34,7 +34,9 @@ export class TableComponent implements OnInit {
   @Input() showToggle: boolean = true;
   @Input() showEdit: boolean = true;
   @Input() showAtivoFilter: boolean = true;
+  @Input() isModal: boolean = false
   @Output() toggleClick = new EventEmitter<number>();
+  @Output() detailsClick = new EventEmitter<any>();
   switchEstado = new FormControl(false);
   filter = new FormControl('');
   dados: any[] = [];
@@ -53,6 +55,7 @@ export class TableComponent implements OnInit {
   async ngOnInit() {
     await this.getAll();
     this.carregando = false;
+    // this.switchEstado.setValue(true)
   }
 
   filtrarEstado() {
@@ -133,7 +136,11 @@ export class TableComponent implements OnInit {
     this.router.navigate([`/${this.editPath}`, id]);
   }
   onDetailsClick(entidade: any) {
-    this.router.navigate([`/${this.detailsPath}`, entidade.id]);
+    if(this.isModal){
+      this.detailsClick.emit(entidade)
+    }else{
+      this.router.navigate([`/${this.detailsPath}`, entidade.id]);
+    }
   }
   onToggleClick(template: any, toggleEntidade: number) {
     if(this.softDelete){

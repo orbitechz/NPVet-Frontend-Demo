@@ -29,7 +29,7 @@ const routes: Routes = [
       { path: 'usuario/register', component: UsuarioDetailsComponent },
       { path: 'usuario/edit/:id', component: UsuarioEditComponent },
       { path: 'animais', component: AnimalListComponent },
-      { path: 'animal/cadastro', component: AnimalDetailsComponent },
+      { path: 'animal/register', component: AnimalDetailsComponent },
       { path: 'consultas', component: ConsultaListComponent },
       { path: 'anamnese/register/:id', component: ConsultaAnamneseDetailsComponent},
       { path: 'anamnese/edit/:id', component: AnamneseEditComponent},
