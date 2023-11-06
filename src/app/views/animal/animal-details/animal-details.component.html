@@ -42,11 +42,21 @@
 </div>
   <div class="col-md-20">
     <label for="inputEmail4" class="form-label">Tutor</label>
-    <input type="email" class="form-control" id="inputEmail4">
+    <input type="email" class="form-control" id="inputEmail4" (click)="open(content)">
   </div>
 
-
-
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <app-tutor-list></app-tutor-list>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+    </div>
+  </ng-template>
+  
   <div class="col-12 d-flex justify-content-center py-5 ">
     <button type="submit" class="btn btn-primary btn-end">Finalizar</button>
   </div>
