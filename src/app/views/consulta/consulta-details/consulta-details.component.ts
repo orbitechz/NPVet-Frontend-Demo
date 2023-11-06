@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output, inject } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Header } from 'src/app/components/table/header';
 import { Animal } from 'src/app/models/animal/animal';
 import { Consulta } from 'src/app/models/consulta/consulta';
@@ -19,15 +19,19 @@ export class ConsultaDetailsComponent {
   disabled = false;
   consulta = new Consulta();
   modalService = inject(NgbModal);
+  modalRef!: NgbModalRef;
+
   constructor() {
     this.consulta.animal = new Animal();
   }
 
-  selecionarAnimal(template: any) {}
+  selecionarAnimal(template: any) {
+    this.modalRef = this.modalService.open(template, {size: "lg", centered: true})
+  }
 
   definirAnimal(animal: Animal) {
     this.consulta.animal = animal;
-    this.modalService.dismissAll();
+    this.modalRef.close();
   }
   callAnimalHeaders(){
     let tableHeaders : Header[] = [];

@@ -6,26 +6,35 @@
                 <form>
                     <div class="row align-items-center pt-4 pb-3">
                         <div class="col-md-4 ps-5">
-                            <h6 class="mb-0 font-simplyrounded">Animal<span *ngIf="!disabled" style="color:red">*</span>:</h6>
+                            <h6 class="mb-0 font-simplyrounded">Animal<span *ngIf="!disabled"
+                                    style="color:red">*</span>:</h6>
                         </div>
                         <div class="col-md-8 pe-5 justify-content-between d-flex flex-row">
                             <input type="text" [(ngModel)]="consulta.animal" name="cliente"
                                 class="text-center form-control form-control-md input-hidden" required disabled />
-                            <p *ngIf="consulta.animal.nome" class="m-0 fw-bold pt-2">{{consulta.animal.nome}} -
-                                {{consulta.animal.tutorId.nome}}</p>
+                            <p *ngIf="consulta.animal.nome" class="m-0 fw-bold pt-2">Animal: {{consulta.animal.nome}} -
+                                {{consulta.animal.especie}}</p>
                             <p *ngIf="!consulta.animal.nome" class="m-0 fw-bold pt-2">Não selecionado</p>
-                            <button type="button"
-                                class="btn btn-primary font-outfit selecionar d-flex flex-row gap-3"
-                                (click)="selecionarAnimal(animais)">Selecionar<bi class="search-btn"
-                                    name="search">
+                            <button type="button" class="btn btn-primary font-outfit selecionar d-flex flex-row gap-3"
+                                (click)="selecionarAnimal(animais)">Selecionar<bi class="search-btn" name="search">
                                 </bi></button>
 
+                        </div>
+                    </div>
+                    <div *ngIf="consulta.animal.nome"  class="row align-items-center pt-4 pb-3">
+                        <div class="col-md-4 ps-5">
+                            <h6 class="mb-0 font-simplyrounded">Tutor:</h6>
+                        </div>
+                        <div class="col-md-8 pe-5 justify-content-between d-flex flex-row">
+                            <p class="m-0 fw-bold pt-2">Tutor: {{consulta.animal.tutorId.nome}}
+                                - {{consulta.animal.tutorId.cpf}}</p>
                         </div>
                     </div>
                     <hr class="mx-n3">
                     <div class="row align-items-center py-3">
                         <div class="col-md-4 ps-5">
-                            <h6 class="mb-0 font-simplyrounded">Data agendada:<span *ngIf="!disabled" style="color:red">*</span>:
+                            <h6 class="mb-0 font-simplyrounded">Data agendada:<span *ngIf="!disabled"
+                                    style="color:red">*</span>:
                             </h6>
                         </div>
                         <div class="col-md-5 pe-5">
@@ -42,7 +51,8 @@
                         </div>
                         <div class="col-md-8 pe-5">
                             <select [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]" required
-                                [(ngModel)]="consulta.status" name="tutor-genero" class="form-select" aria-label="Gênero">
+                                [(ngModel)]="consulta.status" name="tutor-genero" class="form-select"
+                                aria-label="Gênero">
                                 <option *ngFor="let status of keys(statuses)" [value]="status" value="1">{{status}}
                                 </option>
                             </select>
@@ -63,9 +73,9 @@
                 (click)="modal.dismiss('Cross click')"></button></div>
     </div>
     <div class="modal-body">
-        <app-table [title]="'Animais do Tutor'" [headers]="callAnimalHeaders()" [apiUrl]="'http://localhost:8080/animal'"
-        [entidade]="'Animal'" [showToggle]="false" [showEdit]="false"
-        [showAtivoFilter]="false"></app-table>
+        <app-table [title]="'Animais Cadastrados'" [isModal]="true" [headers]="callAnimalHeaders()"
+            [apiUrl]="'http://localhost:8080/animal'" [entidade]="'Animal'" [showToggle]="false" [showEdit]="false"
+            [showAtivoFilter]="false" (detailsClick)="definirAnimal($event)"></app-table>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-primary font-outfit" (click)="modal.close('Close click')">Fechar</button>
