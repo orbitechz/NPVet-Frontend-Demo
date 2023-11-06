@@ -1,3 +1,40 @@
 .form-control{
   border-radius: 2rem;
+  background-color: #fff;
+  padding: 0.5rem;
+}
+
+.form-label{
+  font-family: 'SimplyRounded' !important;
+  color: #00003D;
+}
+
+.dados-pet{
+  font-family: Outfit, 'sans serif';
+    font-weight: bold;
+    color:#BABABC;
+}
+
+.add-pic {
+  background: #fff;
+  border-radius: 50%;
+  width: 18rem; 
+  height: 18rem; 
+  color: #BABABC;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#btn-add-pic{
+  font-size: 10rem;
+  text-align: center;
+  align-items: center;
+
+}
+
+.btn-end{
+  border-radius: 5rem;
+  width: 15rem;
+  font-family: 'SimplyRounded' !important;
 }

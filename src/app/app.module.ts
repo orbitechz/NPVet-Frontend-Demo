@@ -70,6 +70,7 @@ import { ExameEditComponent } from './views/exame-fisico/exame-edit/exame-edit/e
     ExameDetailsComponent,
     ConsultaAnamneseDetailsComponent,
     ExameEditComponent,
+    ConsultaAnamneseDetailsComponent
   ],
  imports: [
     BrowserModule,
