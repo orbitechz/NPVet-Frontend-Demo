@@ -7,37 +7,37 @@
     <h4 id="btn-add-pic">+</h4>
   </div>
   -->
-    <div class="row g-2 d-flex justify-content-end">
-      <div class="col-md-6 text-right dados-pet text-align-center">
-        <h3 class="heading">DADOS DO PET</h3>     
+    <div class="row g-2 d-flex justify-content-center text-align-center">
+      <div class="col-md-6 text-right dados-pet text-align-center align-self-center text-align-center">
+        <h3 class="heading text-align-center">DADOS DO PET</h3>     
        </div>
     </div>
-    <div class="row g-2 d-flex justify-content-end">
-      <div class="col-md-4">
+    <div class="row ">
+      <div class="col-6">
         <label for="inputNome" class="form-label">Nome<span style="color:red">*</span></label>
         <input type="email" class="form-control" id="inputNome" [(ngModel)]="animal.nome" name="nome">
       </div>
-      <div class="col-md-2">
+      <div class="col-6">
         <label for="inputEmail4" class="form-label">Idade<span style="color:red">*</span></label>
         <input type="number" class="form-control" id="inputEmail4" [(ngModel)]="animal.idade" name="idade">
       </div>
     </div>
-    <div class="row g-2 d-flex justify-content-end">
-      <div class="col-md-4">
+    <div class="row">
+      <div class="col-6">
         <label for="inputEmail4" class="form-label">Espécie<span style="color:red">*</span></label>
         <input type="email" class="form-control" id="inputEmail4" [(ngModel)]="animal.especie" name="especie">
       </div>
-      <div class="col-md-2">
+      <div class="col-6">
         <label for="inputEmail4" class="form-label">Raça<span style="color:red">*</span></label>
         <input type="email" class="form-control" id="inputEmail4" [(ngModel)]="animal.raca" name="raca">
       </div>
     </div>
-    <div class="row g-2 d-flex justify-content-end">
-      <div class="col-md-4">
+    <div class="row">
+      <div class="col-6">
         <label for="inputEmail4" class="form-label">Pelagem<span style="color:red">*</span></label>
         <input type="email" class="form-control" id="inputEmail4" [(ngModel)]="animal.pelagem" name="pelagem">
       </div>
-      <div class="col-md-2">
+      <div class="col-6">
           <label for="animal-sexo" class="form-label">Sexo<span style="color:red">*</span></label>
           <select [disabled]="disabled" class="form-select" ngClass="['disabled': disabled]" required
               [(ngModel)]="animal.sexo" name="animal-sexo" class="form-select" aria-label="Sexo">
