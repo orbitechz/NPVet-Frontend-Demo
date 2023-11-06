@@ -69,27 +69,37 @@ export class TutorDetailsComponent implements OnInit {
     });
   }
   confirmar() {
+
     this.modoRegister ? this.register() : this.edit();
   }
   register() {
+    console.log('ok')
     this.service.create(this.tutor).subscribe({
       next: (tutor) => {
+        this.isErro = false
+        this.mensagem = "Tutor cadastrado com sucesso!"
+        this.moveTo()
         this.router.navigate(["['/web/tutor']", tutor.id]);
       },
       error: (error) => {
+        console.log(error)
         this.isErro = true;
-        this.mensagem = error.mensagem;
+        this.mensagem = error.error;
+        this.moveTo()
       },
     });
   }
   edit() {
     this.service.update(Number(this.id), this.tutor).subscribe({
       next: (tutor) => {
-        this.router.navigate(["['/web/tutor']", tutor.id]);
+        this.isErro = false
+        this.mensagem = "Tutor editado com sucesso!"
+        this.voltar(800)
       },
       error: (error) => {
         this.isErro = true;
         this.mensagem = error.mensagem;
+        this.moveTo()
       },
     });
   }
@@ -115,4 +125,15 @@ export class TutorDetailsComponent implements OnInit {
       return 'Editar'
     }
   }
+
+    //utils
+    voltar(ms: number) {
+      this.moveTo();
+      setTimeout(() => {
+        this.router.navigate(['/web/tutores']);
+      }, ms);
+    }
+    moveTo() {
+      window.scrollTo(0, 0);
+    }
 }

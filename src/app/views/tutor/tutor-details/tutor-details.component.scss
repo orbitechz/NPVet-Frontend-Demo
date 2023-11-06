@@ -26,10 +26,11 @@ input, select{
     font-weight: 600;
     color: rgb(80, 78, 78);
 }
-input:focus-visible, select:focus-visible, select:focus{
+input:focus-visible, input:focus select:focus-visible, select:focus{
     border: 0 !important;
     outline: none !important;
     box-shadow: 0px 11.44906px 11.44906px 0px rgba(22, 34, 51, 0.04), 0px 11.44906px 68.6944px 0px rgba(22, 34, 51, 0.04);
+    background-color: white;
 }
 #confirmar{
     font-family: SimplyRounded;
@@ -102,4 +103,9 @@ input:focus-visible, select:focus-visible, select:focus{
     width: 25px;
     height: 25px;
     color: var(--primary);
+}
+
+input:disabled, select:disabled{
+    background-color: rgba(128, 128, 128, 0.178);
+    box-shadow: none;
 }
