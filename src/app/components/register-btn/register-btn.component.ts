@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,10 +9,15 @@ import { Router } from '@angular/router';
 export class RegisterBtnComponent {
   @Input() registerLink!: string
   @Input() text: string = "Cadastrar novo"
+  @Output() clickEvent = new EventEmitter<boolean>()
   router = inject(Router)
   constructor(){}
 
   register(){
-    this.router.navigate([`${this.registerLink}`])
+    if(!this.registerLink){
+      this.clickEvent.emit(true)
+    }else{
+      this.router.navigate([`${this.registerLink}`])
+    }
   }
 }

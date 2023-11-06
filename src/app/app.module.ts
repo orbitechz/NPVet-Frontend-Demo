@@ -37,16 +37,16 @@ import {MatFormFieldModule } from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import { AsyncPipe } from '@angular/common';
+import { ExameEditComponent } from './views/exame-fisico/exame-edit/exame-edit/exame-edit.component';
 import { NgxViacepModule } from '@brunoc/ngx-viacep';
 import {MatTooltipModule} from '@angular/material/tooltip';
-
-
 // import { MatSelectFilter } 
 
 // import { MatSelec};
 import { ConsultaAnamneseDetailsComponent } from './views/anamnese/consulta-anamnese-details/consulta-anamnese-details.component';
 import { AnamneseEditComponent } from './views/anamnese/anamnese-edit/anamnese-edit.component';
 import { MenuPrincipalComponent } from './views/menu-principal/menu-principal.component';
+import { AnimalEditComponent } from './views/animal/animal-edit/animal-edit/animal-edit.component';
 
 @NgModule({
   declarations: [
@@ -73,8 +73,11 @@ import { MenuPrincipalComponent } from './views/menu-principal/menu-principal.co
     ExameListComponent,
     ExameDetailsComponent,
     ConsultaAnamneseDetailsComponent,
+    ExameEditComponent,
+    ConsultaAnamneseDetailsComponent,
     AnamneseEditComponent,
     MenuPrincipalComponent,
+    AnimalEditComponent,
   ],
  imports: [
     BrowserModule,

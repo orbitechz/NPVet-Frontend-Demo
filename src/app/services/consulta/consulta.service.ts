@@ -4,57 +4,61 @@ import { Cons, Observable } from 'rxjs';
 import { Consulta } from 'src/app/models/consulta/consulta';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ConsultaService {
-
-  baseURL: string = 'http://localhost:8080/consulta'
+  baseURL: string = 'http://localhost:8080/consulta';
   http = inject(HttpClient);
 
+  constructor() {}
 
-  constructor() { }
+  create(consulta: Consulta): Observable<Consulta> {
+    return this.http.post<Consulta>(`${this.baseURL}/post`, consulta)
+  }
 
   getById(id: number): Observable<Consulta> {
     return this.http.get<Consulta>(`${this.baseURL}/${id}`);
   }
 
-  getAll(): Observable<Consulta[]>{
-    return this.http.get<Consulta[]>(`${this.baseURL}/all`)
+  getAll(): Observable<Consulta[]> {
+    return this.http.get<Consulta[]>(`${this.baseURL}/all`);
   }
 
-  getByAnimalNome(nome: string): Observable<Consulta[]>{
+  getByAnimalNome(nome: string): Observable<Consulta[]> {
     return this.http.get<Consulta[]>(`${this.baseURL}/animal/nome/${nome}`);
   }
 
-  getByAnimalId(id: number): Observable<Consulta[]>{
+  getByAnimalId(id: number): Observable<Consulta[]> {
     return this.http.get<Consulta[]>(`${this.baseURL}/animal/id/${id}`);
   }
 
-  getByVetNome(nome: string): Observable<Consulta[]>{
-    return this.http.get<Consulta[]>(`${this.baseURL}/veterinario/nome/${nome}`);
+  getByVetNome(nome: string): Observable<Consulta[]> {
+    return this.http.get<Consulta[]>(
+      `${this.baseURL}/veterinario/nome/${nome}`
+    );
   }
 
-  getConsultasByVeterinarioId(id: number): Observable<Consulta[]>{
+  getConsultasByVeterinarioId(id: number): Observable<Consulta[]> {
     return this.http.get<Consulta[]>(`${this.baseURL}/veterinario/${id}`);
   }
 
-  getByAnamneseId(id: number): Observable<Consulta[]>{
+  getByAnamneseId(id: number): Observable<Consulta[]> {
     return this.http.get<Consulta[]>(`${this.baseURL}/anamnese/${id}`);
   }
 
-  getEmAndamento(): Observable<Consulta[]>{
+  getEmAndamento(): Observable<Consulta[]> {
     return this.http.get<Consulta[]>(`${this.baseURL}/em-andamento`);
   }
 
-  getConcluida(): Observable<Consulta[]>{
+  getConcluida(): Observable<Consulta[]> {
     return this.http.get<Consulta[]>(`${this.baseURL}/concluida`);
   }
 
-  getCanceladas(): Observable<Consulta[]>{
-    return this.http.get<Consulta[]>(`${this.baseURL}/cancelada`)
+  getCanceladas(): Observable<Consulta[]> {
+    return this.http.get<Consulta[]>(`${this.baseURL}/cancelada`);
   }
 
-  getAgendada(): Observable<Consulta[]>{
-    return this.http.get<Consulta[]>(`${this.baseURL}/agendada`)
+  getAgendada(): Observable<Consulta[]> {
+    return this.http.get<Consulta[]>(`${this.baseURL}/agendada`);
   }
 }

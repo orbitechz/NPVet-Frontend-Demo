@@ -1,1 +1,130 @@
-<p>consulta-details works!</p>
+<div class="container">
+    <div class="d-flex flex-row justify-content-center align-items-center">
+        <div class="col-xl-12">
+            <app-mensagem  [isErro]="isErro" [mensagem]="mensagem"></app-mensagem>
+            <div>
+                <form>
+                    <div class="row align-items-center pt-4 pb-3">
+                        <div class="col-md-4 ps-5">
+                            <h6 class="mb-0 font-simplyrounded">Veterinário<span *ngIf="!disabled"
+                                    style="color:red">*</span>:</h6>
+                        </div>
+                        <div class="col-md-8 pe-5 justify-content-between d-flex flex-row">
+                            <input type="text" [(ngModel)]="consulta.veterinario" name="cliente"
+                                class="text-center form-control form-control-md input-hidden" required disabled />
+                            <p *ngIf="consulta.veterinario.id" class="m-0 fw-bold pt-2">Veterinário:
+                                {{consulta.veterinario.nome}}</p>
+                            <p *ngIf="!consulta.veterinario.id" class="m-0 fw-bold pt-2">Não selecionado</p>
+                            <button type="button" class="btn btn-primary font-outfit selecionar d-flex flex-row gap-3"
+                                (click)="abrirModal(veterinarios)">Selecionar<bi class="search-btn" name="search">
+                                </bi></button>
+
+                        </div>
+                    </div>
+                    <hr class="mx-n3">
+                    <div class="row align-items-center pt-4 pb-3">
+                        <div class="col-md-4 ps-5">
+                            <h6 class="mb-0 font-simplyrounded">Animal<span *ngIf="!disabled"
+                                    style="color:red">*</span>:</h6>
+                        </div>
+                        <div class="col-md-8 pe-5 justify-content-between d-flex flex-row">
+                            <input type="text" [(ngModel)]="consulta.animal" name="animal"
+                                class="text-center form-control form-control-md input-hidden" required disabled />
+                            <p *ngIf="consulta.animal.nome" class="m-0 fw-bold pt-2">Animal: {{consulta.animal.nome}} -
+                                {{consulta.animal.especie}}</p>
+                            <p *ngIf="!consulta.animal.nome" class="m-0 fw-bold pt-2">Não selecionado</p>
+                            <button type="button" class="btn btn-primary font-outfit selecionar d-flex flex-row gap-3"
+                                (click)="abrirModal(animais)">Selecionar<bi class="search-btn" name="search">
+                                </bi></button>
+
+                        </div>
+                    </div>
+                    <div *ngIf="consulta.animal.nome" class="row align-items-center pt-4 pb-3">
+                        <div class="col-md-4 ps-5">
+                            <h6 class="mb-0 font-simplyrounded">Tutor:</h6>
+                        </div>
+                        <div class="col-md-8 pe-5 justify-content-between d-flex flex-row">
+                            <!-- <input type="text" [(ngModel)]="consulta.tutor" name="tutor"
+                                class="text-center form-control form-control-md" [value]="consulta.animal.tutorId" required disabled /> -->
+                            <p class="m-0 fw-bold pt-2">Tutor: {{consulta.animal.tutorId.nome}}
+                                - {{consulta.animal.tutorId.cpf}}</p>
+                        </div>
+                    </div>
+                    <hr class="mx-n3">
+                    <div class="row align-items-center py-3">
+                        <div class="col-md-4 ps-5">
+                            <h6 class="mb-0 font-simplyrounded">Data agendada:<span *ngIf="!disabled"
+                                    style="color:red">*</span>:
+                            </h6>
+                        </div>
+                        <div class="col-md-5 pe-5">
+                            <input *ngIf="!disabled" type="datetime-local" class="form-control form-control-md"
+                                name="dataAbertura" [(ngModel)]="consulta.data" required />
+                            <p *ngIf="disabled" class="m-0 fw-bold">{{consulta.data | date : 'dd/MM/yyyy -
+                                HH:mm'}}</p>
+                        </div>
+                    </div>
+                    <div class="row align-items-center py-3">
+                        <div class="col-md-4 ps-5">
+                            <h6 class="mb-0 font-simplyrounded">Status:
+                            </h6>
+                        </div>
+                        <div class="col-md-8 pe-5">
+                            <select [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]" required
+                                [(ngModel)]="consulta.status" name="tutor-genero" class="form-select"
+                                aria-label="Gênero">
+                                <option *ngFor="let status of keys(statuses)" [value]="status" value="1">{{status}}
+                                </option>
+                            </select>
+                            <p *ngIf="disabled" class="m-0 fw-bold">{{consulta.status}}</p>
+                        </div>
+                    </div>
+                    <div class="px-5 gap-4 d-flex flex-row justify-content-center py-4">
+                        <button type="button" class="color-white btn btn-primary"
+                            (click)="confirmar()">{{btnAcao()}}</button>
+                        <!-- <button *ngIf="modoEditar" type="submit" class="btn btn-edit"
+                            (click)="editar()">Editar</button>
+                        <button *ngIf="!modoEditar && id && pedido.delecao === null" type="submit"
+                            class="btn btn-danger" (click)="toggle()">Cancelar</button>
+                        <button *ngIf="!modoEditar && id && pedido.delecao != null" type="submit"
+                            class="btn btn-success" (click)="toggle()">Reabrir  </button>
+                        <button type="button" id="cancelar" (click)="voltar(100)"
+                            class="btn btn-secondary">Voltar</button> -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #animais let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title text-primary fw-bold font-outfit">Selecionar Animal</h4>
+        <div class="botao shadow"><button type="button" class="btn-close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')"></button></div>
+    </div>
+    <div class="modal-body">
+        <app-table [title]="'Animais Cadastrados'" [isModal]="true" [headers]="callAnimalHeaders()"
+            [apiUrl]="'http://localhost:8080/animal'" [entidade]="'Animal'" [showToggle]="false" [showEdit]="false"
+            [showAtivoFilter]="false" (detailsClick)="definirAnimal($event)"></app-table>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary font-outfit" (click)="modal.close('Close click')">Fechar</button>
+    </div>
+</ng-template>
+
+<ng-template #veterinarios let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title text-primary fw-bold font-outfit">Selecionar Veterinário</h4>
+        <div class="botao shadow"><button type="button" class="btn-close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')"></button></div>
+    </div>
+    <div class="modal-body">
+        <app-table [title]="'Veterinários Cadastrados'" [isModal]="true" [headers]="callVeterinarioHeaders()"
+            [urlEspecifica]="'http://localhost:8080/usuario/veterinarios'" [entidade]="'Usuario'" [showToggle]="false"
+            [showEdit]="false" [showAtivoFilter]="false" (detailsClick)="definirVeterinario($event)"></app-table>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary font-outfit" (click)="modal.close('Close click')">Fechar</button>
+    </div>
+</ng-template>

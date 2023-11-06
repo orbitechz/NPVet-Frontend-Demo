@@ -7,12 +7,19 @@
 .form-label{
   font-family: 'SimplyRounded' !important;
   color: #00003D;
+  
 }
 
-.dados-pet{
-  font-family: Outfit, 'sans serif';
-    font-weight: bold;
-    color:#BABABC;
+.heading{
+  color: var(--text-secondary);
+  font-family: Outfit;
+  font-weight: 800;
+}
+input:focus-visible, input:focus select:focus-visible, select:focus{
+  border: 0 !important;
+  outline: none !important;
+  box-shadow: 0px 11.44906px 11.44906px 0px rgba(22, 34, 51, 0.04), 0px 11.44906px 68.6944px 0px rgba(22, 34, 51, 0.04);
+  background-color: white;
 }
 
 .btn-edit{
@@ -50,4 +57,11 @@
   border-radius: 5rem;
   width: 15rem;
   font-family: 'SimplyRounded' !important;
+}
+
+label{
+  font-size: 1.2rem;
+  position: relative;
+  top: 1.2rem;
+  left: .5rem;
 }

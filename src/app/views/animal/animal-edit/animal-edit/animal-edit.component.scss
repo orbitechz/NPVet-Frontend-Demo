@@ -1,0 +1,67 @@
+.form-control{
+    border-radius: 2rem;
+    background-color: #fff;
+    padding: 0.5rem;
+  }
+  
+  .form-label{
+    font-family: 'SimplyRounded' !important;
+    color: #00003D;
+    
+  }
+  
+  .heading{
+    color: var(--text-secondary);
+    font-family: Outfit;
+    font-weight: 800;
+  }
+  
+  input:focus-visible, input:focus select:focus-visible, select:focus{
+    border: 0 !important;
+    outline: none !important;
+    box-shadow: 0px 11.44906px 11.44906px 0px rgba(22, 34, 51, 0.04), 0px 11.44906px 68.6944px 0px rgba(22, 34, 51, 0.04);
+    background-color: white;
+}
+  .btn-edit{
+      background-color: var(--primary);
+  }
+  .input-hidden{
+      display: none;
+      visibility: hidden
+  }
+  
+  .search-btn{
+      width: 20px;
+      width: 20px;
+  }
+  
+  .add-pic {
+    background: #fff;
+    border-radius: 50%;
+    width: 18rem; 
+    height: 18rem; 
+    color: #BABABC;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  #btn-add-pic{
+    font-size: 10rem;
+    text-align: center;
+    align-items: center;
+  
+  }
+  
+  .btn-end{
+    border-radius: 5rem;
+    width: 15rem;
+    font-family: 'SimplyRounded' !important;
+  }
+  
+  label{
+    font-size: 1.2rem;
+    position: relative;
+    top: 1.2rem;
+    left: .5rem;
+  }
