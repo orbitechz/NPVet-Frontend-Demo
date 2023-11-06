@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Header } from 'src/app/components/table/header';
 import { Animal } from 'src/app/models/animal/animal';
+import { Sexo } from 'src/app/models/enums/sexo';
 import { Tutor } from 'src/app/models/tutor/tutor';
 import { AnimalService } from 'src/app/services/animal/animal.service';
 
@@ -26,6 +27,10 @@ export class AnimalDetailsComponent implements OnInit {
   service = inject(AnimalService);
   isErro : boolean = false;
   mensagem! : string;
+  keys = Object.keys;
+  sexos = Sexo;
+  disabled = false;
+
 
 
   constructor(
