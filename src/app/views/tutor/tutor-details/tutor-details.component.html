@@ -9,13 +9,14 @@
                 <div class="w-100 container p-0 d-flex flex-column">
                     <div class="row">
                         <div class="col form-campo d-flex flex-column">
-                            <label for="tutor-nome">Nome</label><input [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]" name="tutor-nome" [(ngModel)]="tutor.nome"
-                                id="tutor-nome" type="text"> 
+                            <label for="tutor-nome">Nome<span style="color:red">*</span> </label><input
+                                [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]"
+                                name="tutor-nome" [(ngModel)]="tutor.nome" id="tutor-nome" type="text" required>
                         </div>
                         <div class="col form-campo d-flex flex-column">
-                            <label for="tutor-genero">Gênero</label>
-                            <select [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]" [(ngModel)]="tutor.genero" name="tutor-genero" class="form-select"
-                                aria-label="Gênero">
+                            <label for="tutor-genero">Gênero<span style="color:red">*</span></label>
+                            <select [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]" required
+                                [(ngModel)]="tutor.genero" name="tutor-genero" class="form-select" aria-label="Gênero">
                                 <option *ngFor="let genero of keys(generos)" [value]="genero" value="1">{{genero}}
                                 </option>
                             </select>
@@ -25,11 +26,13 @@
                     </div>
                     <div class="row">
                         <div class="col form-campo d-flex flex-column">
-                            <label for="tutor-cpf">CPF</label><input [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]" name="tutor-cpf" [(ngModel)]="tutor.cpf"
-                                id="tutor-cpf" type="text">
+                            <label for="tutor-cpf">CPF<span style="color:red">*</span></label><input
+                                [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]"
+                                name="tutor-cpf" required [(ngModel)]="tutor.cpf" id="tutor-cpf" type="text">
                         </div>
                         <div class="col form-campo d-flex flex-column">
-                            <label for="tutor-rg">RG</label><input [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]" name="tutor-rg" [(ngModel)]="tutor.rg" id="tutor-rg"
+                            <label for="tutor-rg">RG</label><input [disabled]="disabled" class="form-control" required
+                                ngClass="['disabled': disabled]" name="tutor-rg" [(ngModel)]="tutor.rg" id="tutor-rg"
                                 type="text">
                         </div>
                     </div>
@@ -41,16 +44,21 @@
                 <div class="w-100 container p-0 d-flex flex-column">
                     <div class="row">
                         <div class="col-md-6 form-campo d-flex flex-column">
-                            <label for="tutor-email">E-mail</label><input [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]" name="tutor-email" [(ngModel)]="tutor.email"
+                            <label for="tutor-email">E-mail</label><input [disabled]="disabled" class="form-control"
+                                required ngClass="['disabled': disabled]" name="tutor-email" [(ngModel)]="tutor.email"
                                 id="tutor-email" type="text">
                         </div>
                     </div>
                     <form *ngFor="let telefone of tutor.telefones; let i = index" class="row d-flex flex-row">
                         <div class="col-md-6 form-campo d-flex flex-column">
-                            <label for="tutor_telefone1">Telefone {{i+1}}</label><input [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]" [(ngModel)]="tutor.telefones[i].telefone" name="tutor-telefone" id="tutor-telefone" type="text">
+                            <label for="tutor_telefone1">Telefone {{i+1}}<span style="color:red">*</span></label><input
+                                required [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]"
+                                [(ngModel)]="tutor.telefones[i].telefone" name="tutor-telefone" id="tutor-telefone"
+                                type="text">
                         </div>
                         <div *ngIf="i+1!=tutor.telefones.length && !disabled" class="ml-4 telefone-remove-btn">
-                            <div (click)="removeTelefone(i)" class="icon d-flex justify-content-center align-items-center">
+                            <div (click)="removeTelefone(i)"
+                                class="icon d-flex justify-content-center align-items-center">
                                 <bi name="x"></bi>
                             </div>
                         </div>
@@ -78,45 +86,55 @@
                                 </div>
                             </div>
                             <div class="col form-campo d-flex flex-column">
-                                <label for="tutor-endereco-cep">CEP</label><input [disabled]="disabled" class="form-control" (change)="pesquisaCep(i)" ngClass="['disabled': disabled]" [(ngModel)]="tutor.enderecos[i].cep"
+                                <label for="tutor-endereco-cep">CEP<span style="color:red">*</span></label><input
+                                    required [disabled]="disabled" class="form-control" (change)="pesquisaCep(i)"
+                                    ngClass="['disabled': disabled]" [(ngModel)]="tutor.enderecos[i].cep"
                                     name="tutor-endereco-cep" id="tutor-endereco-cep" type="text">
                             </div>
                             <div class="col form-campo d-flex flex-column">
-                                <label for="tutor-endereco-pais">País</label><input [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]"
+                                <label for="tutor-endereco-pais">País<span style="color:red">*</span></label><input
+                                    required [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]"
                                     [(ngModel)]="tutor.enderecos[i].pais" name="tutor-endereco-pais"
                                     id="tutor-endereco-pais" type="text">
                             </div>
                             <div class="col form-campo d-flex flex-column">
-                                <label for="tutor-endereco-estado">Estado</label><input [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]"
+                                <label for="tutor-endereco-estado">Estado<span style="color:red">*</span></label><input
+                                    required [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]"
                                     [(ngModel)]="tutor.enderecos[i].estado" name="tutor-endereco-estado"
                                     id="tutor-endereco-estado" type="text">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 form-campo d-flex flex-column">
-                                <label for="tutor-endereco-cidade">Cidade</label><input [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]"
+                                <label for="tutor-endereco-cidade">Cidade<span style="color:red">*</span></label><input
+                                    required [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]"
                                     [(ngModel)]="tutor.enderecos[i].cidade" name="tutor-endereco-cidade"
                                     id="tutor-endereco-cidade" type="text">
                             </div>
                             <div class="col-md-6 form-campo d-flex flex-column">
-                                <label for="tutor-endereco-logradouro">Logradouro</label><input [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]"
+                                <label for="tutor-endereco-logradouro">Logradouro<span
+                                        style="color:red">*</span></label><input required [disabled]="disabled"
+                                    class="form-control" ngClass="['disabled': disabled]"
                                     [(ngModel)]="tutor.enderecos[i].logradouro" name="tutor-endereco-logradouro"
                                     id="tutor-endereco-logradouro" type="text">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4 form-campo d-flex flex-column">
-                                <label for="tutor-endereco-bairro">Bairro</label><input [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]"
+                                <label for="tutor-endereco-bairro">Bairro<span style="color:red">*</span></label><input
+                                    required [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]"
                                     [(ngModel)]="tutor.enderecos[i].bairro" name="tutor-endereco-bairro"
                                     id="tutor-endereco-bairro" type="text">
                             </div>
                             <div class="col-md-2 form-campo d-flex flex-column">
-                                <label for="tutor-endereco-numero">Número</label><input [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]"
+                                <label for="tutor-endereco-numero">Número</label><input required [disabled]="disabled"
+                                    class="form-control" ngClass="['disabled': disabled]"
                                     [(ngModel)]="tutor.enderecos[i].numero" name="tutor-endereco-numero"
                                     id="tutor-endereco-numero" type="text">
                             </div>
                             <div class="col-md-6 form-campo d-flex flex-column">
-                                <label for="tutor-endereco-complemento">Complemento</label><input [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]"
+                                <label for="tutor-endereco-complemento">Complemento</label><input required
+                                    [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]"
                                     [(ngModel)]="tutor.enderecos[i].complemento" name="tutor-endereco-complemento"
                                     id="tutor-endereco-complemento" type="text">
                             </div>
@@ -130,8 +148,16 @@
                     </div>
                 </div>
             </div>
+            <hr class="w-100">
+            <div class="secao">
+                <div class="w-100 container p-0 d-flex flex-column">
+                    <app-table [title]="'Animais do Tutor'" [headers]="callHeaders()" [urlEspecifica]="getUrlAnimais()"
+                        [detailsPath]="'web/animal'" [entidade]="'Animal'" [showToggle]="false" [showEdit]="false"
+                        [showAtivoFilter]="false"></app-table>
+                </div>
+            </div>
             <div class="my-5 w-100 d-flex justify-content-center"><button id="confirmar" class="btn btn-primary"
-                    type="button" (click)="confirmar()">{{mensagemBtn()}}</button></div>
+                    type="submit" (click)="confirmar()">{{mensagemBtn()}}</button></div>
         </form>
     </div>
 </div>

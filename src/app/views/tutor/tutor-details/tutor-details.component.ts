@@ -2,11 +2,13 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CEPError, NgxViacepService } from '@brunoc/ngx-viacep';
 import { EMPTY, catchError } from 'rxjs';
+import { Header } from 'src/app/components/table/header';
 import { Contato } from 'src/app/models/contato/contato';
 import { Endereco, EnderecoInterface } from 'src/app/models/endereco/endereco';
 
 import { Genero } from 'src/app/models/enums/genero';
 import { Tutor } from 'src/app/models/tutor/tutor';
+import { AnimalService } from 'src/app/services/animal/animal.service';
 import { TutorService } from 'src/app/services/tutor/tutor.service';
 
 @Component({
@@ -28,6 +30,7 @@ export class TutorDetailsComponent implements OnInit {
 
   router = inject(Router);
   service = inject(TutorService);
+  animalService = inject(AnimalService)
 
   constructor(private route: ActivatedRoute, private viacep: NgxViacepService) {
     this.tutor.enderecos = [];
@@ -116,6 +119,9 @@ export class TutorDetailsComponent implements OnInit {
   removeTelefone(index: number) {
     this.tutor.telefones.splice(index, 1);
   }
+  removeAnimal(id: number){
+    
+  }
   mensagemBtn(): string {
     if (this.modoRegister) {
       return 'Cadastrar';
@@ -125,7 +131,13 @@ export class TutorDetailsComponent implements OnInit {
       return 'Editar';
     }
   }
-
+  getUrlAnimais(){
+    if(Number(this.id)){
+      return `http://localhost:8080/animal/tutor/${Number(this.id)}`
+    }else{
+      return 'null'
+    }
+  }
   //utils
   voltar(ms: number) {
     this.moveTo();
@@ -154,6 +166,13 @@ export class TutorDetailsComponent implements OnInit {
         this.tutor.enderecos[index].estado = endereco.uf;
         this.tutor.enderecos[index].cidade = endereco.localidade;
       });
+  }
+  callHeaders(){
+    let tableHeaders : Header[] = [];
+    tableHeaders.push(new Header('Nome', 'nome'));
+    tableHeaders.push(new Header('Espécie', 'especie'));
+    tableHeaders.push(new Header('Raça','raca'));    
+    return tableHeaders;
   }
 
 }
