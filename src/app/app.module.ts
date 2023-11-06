@@ -44,6 +44,7 @@ import { NgxViacepModule } from '@brunoc/ngx-viacep';
 // import { MatSelec};
 import { ConsultaAnamneseDetailsComponent } from './views/anamnese/consulta-anamnese-details/consulta-anamnese-details.component';
 import { AnamneseEditComponent } from './views/anamnese/anamnese-edit/anamnese-edit.component';
+import { MenuPrincipalComponent } from './views/menu-principal/menu-principal.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { AnamneseEditComponent } from './views/anamnese/anamnese-edit/anamnese-e
     ExameDetailsComponent,
     ConsultaAnamneseDetailsComponent,
     AnamneseEditComponent,
+    MenuPrincipalComponent,
   ],
  imports: [
     BrowserModule,
