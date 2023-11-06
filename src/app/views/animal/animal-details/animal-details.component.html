@@ -1,5 +1,6 @@
-<app-mensagem [isErro]="isErro" [mensagem]="mensagem"></app-mensagem>
-<div class="container">
+
+<div class="container w-70">
+  <app-mensagem [isErro]="isErro" [mensagem]="mensagem"></app-mensagem>
   <form>
     <!--
   <div class="row g-3 add-pic d-flex text-align-start ">
@@ -37,8 +38,17 @@
         <input type="email" class="form-control" id="inputEmail4" [(ngModel)]="animal.pelagem" name="pelagem">
       </div>
       <div class="col-md-2">
-        <label for="inputEmail4" class="form-label">Sexo<span style="color:red">*</span></label>
-        <input type="email" class="form-control" id="inputEmail4" [(ngModel)]="animal.sexo" name="sexo">
+          <label for="animal-sexo" class="form-label">Sexo<span style="color:red">*</span></label>
+          <select [disabled]="disabled" class="form-select" ngClass="['disabled': disabled]" required
+              [(ngModel)]="animal.sexo" name="animal-sexo" class="form-select" aria-label="Sexo">
+              <option *ngFor="let sexo of keys(sexos)" [value]="sexo" value="1">{{sexo}}
+              </option>
+          </select>
+
+          
+          <!-- <input name="tutor-genero"
+              [(ngModel)]="tutor.genero" id="tutor-genero" type="text"> -->
+     
       </div>
 
     
