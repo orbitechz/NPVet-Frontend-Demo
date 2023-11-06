@@ -44,6 +44,9 @@ input:focus-visible, select:focus-visible, select:focus{
     border-radius: 50px;
     justify-self: end;
 }
+.add-btn.telefone {
+    justify-self: start ;
+}
 .secao{
     margin-top: 2rem;
     margin-bottom: 3rem;
@@ -53,7 +56,9 @@ input:focus-visible, select:focus-visible, select:focus{
 .add-btn bi,
 .add-btn bi:hover,
 .endereco-head bi,
-.endereco-head bi:hover
+.endereco-head bi:hover,
+.telefone-remove-btn bi,
+.telefone-remove-btn bi:hover
 {
     transition: 500ms;
 }
@@ -82,6 +87,19 @@ input:focus-visible, select:focus-visible, select:focus{
     height: 25px;
     color: var(--primary);
 }
-.endereco-head bi:hover{
+.telefone-remove-btn bi:hover, .endereco-head bi:hover{
     color: red;
+}
+.telefone-remove-btn{
+    background-color: var(--text-secondary);
+    height: 1.5rem;
+    width: 50px;
+    border-radius: 50px;
+    cursor: pointer;
+    align-self: end;
+}
+.telefone-remove-btn bi{
+    width: 25px;
+    height: 25px;
+    color: var(--primary);
 }

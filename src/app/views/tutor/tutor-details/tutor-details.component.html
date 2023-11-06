@@ -14,8 +14,10 @@
                         </div>
                         <div class="col form-campo d-flex flex-column">
                             <label for="tutor-genero">Gênero</label>
-                            <select [(ngModel)]="tutor.genero" name="tutor-genero" class="form-select" aria-label="Gênero">
-                                <option *ngFor="let genero of keys(generos)" [value]="genero" value="1">{{genero}}</option>
+                            <select [(ngModel)]="tutor.genero" name="tutor-genero" class="form-select"
+                                aria-label="Gênero">
+                                <option *ngFor="let genero of keys(generos)" [value]="genero" value="1">{{genero}}
+                                </option>
                             </select>
                             <!-- <input name="tutor-genero"
                                 [(ngModel)]="tutor.genero" id="tutor-genero" type="text"> -->
@@ -38,22 +40,28 @@
                 <h4 class="subheading p-0 m-0">Contatos</h4>
                 <div class="w-100 container p-0 d-flex flex-column">
                     <div class="row">
-                        <div class="col form-campo d-flex flex-column">
-                            <label for="tutor_telefone1">Telefone 1</label><input id="tutor_telefon2" type="text">
-                        </div>
-                        <div class="col form-campo d-flex flex-column">
-                            <label for="tutor_telefone2">Telefone 2</label><input id="tutor_telefon2" type="text">
-                        </div>
-                        <div (click)="addTelefone()" class="align-self-end add-btn p-0 m-0 col-md-1 d-flex flex-row justify-content-center align-items-center">
-                            <bi class="add-btn" name="plus"></bi>
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-6 form-campo d-flex flex-column">
-                            <label for="tutor-email">E-mail</label><input name="tutor-emiail" [(ngModel)]="tutor.email"
+                            <label for="tutor-email">E-mail</label><input name="tutor-email" [(ngModel)]="tutor.email"
                                 id="tutor-email" type="text">
                         </div>
                     </div>
+                    <form *ngFor="let telefone of tutor.telefones; let i = index" class="row d-flex flex-row">
+                        <div class="col-md-6 form-campo d-flex flex-column">
+                            <label for="tutor_telefone1">Telefone {{i+1}}</label><input id="tutor_telefon2" type="text">
+                        </div>
+                        <div *ngIf="i+1!=tutor.telefones.length" class="ml-4 telefone-remove-btn">
+                            <div (click)="removeTelefone(i)" class="icon d-flex justify-content-center align-items-center">
+                                <bi name="x"></bi>
+                            </div>
+                        </div>
+                        <div *ngIf="i+1==tutor.telefones.length" class="align-self-end col-1 d-grid">
+                            <div (click)="addTelefone()"
+                                class="add-btn telefone p-0 m-0 col-1 d-flex flex-row justify-content-center align-items-center">
+                                <bi class="add-btn" name="plus"></bi>
+                            </div>
+                        </div>
+                    </form>
+
                 </div>
             </div>
             <!-- Endereços -->
@@ -64,50 +72,66 @@
                         <div class="row mt-4">
                             <div class="endereco-head gap-3 d-flex align-items-center">
                                 <h5 class="heading m-0">Endereço {{i+1}}</h5>
-                                <div (click)="removeEndereco(i)" class="icon d-flex justify-content-center align-items-center"><bi name="x"></bi></div>
+                                <div (click)="removeEndereco(i)"
+                                    class="icon d-flex justify-content-center align-items-center">
+                                    <bi name="x"></bi>
+                                </div>
                             </div>
                             <div class="col form-campo d-flex flex-column">
-                                <label for="tutor-endereco-cep">CEP</label><input [(ngModel)]="tutor.enderecos[i].cep" name="tutor-endereco-cep" id="tutor-endereco-cep" type="text">
+                                <label for="tutor-endereco-cep">CEP</label><input [(ngModel)]="tutor.enderecos[i].cep"
+                                    name="tutor-endereco-cep" id="tutor-endereco-cep" type="text">
                             </div>
                             <div class="col form-campo d-flex flex-column">
-                                <label for="tutor-endereco-pais">País</label><input [(ngModel)]="tutor.enderecos[i].pais"  name="tutor-endereco-pais" id="tutor-endereco-pais" type="text">
+                                <label for="tutor-endereco-pais">País</label><input
+                                    [(ngModel)]="tutor.enderecos[i].pais" name="tutor-endereco-pais"
+                                    id="tutor-endereco-pais" type="text">
                             </div>
                             <div class="col form-campo d-flex flex-column">
-                                <label for="tutor-endereco-estado">Estado</label><input [(ngModel)]="tutor.enderecos[i].estado" name="tutor-endereco-estado" id="tutor-endereco-estado" type="text">
+                                <label for="tutor-endereco-estado">Estado</label><input
+                                    [(ngModel)]="tutor.enderecos[i].estado" name="tutor-endereco-estado"
+                                    id="tutor-endereco-estado" type="text">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 form-campo d-flex flex-column">
-                                <label for="tutor-endereco-cidade">Cidade</label><input [(ngModel)]="tutor.enderecos[i].cidade" name="tutor-endereco-cidade" id="tutor-endereco-cidade" type="text">
+                                <label for="tutor-endereco-cidade">Cidade</label><input
+                                    [(ngModel)]="tutor.enderecos[i].cidade" name="tutor-endereco-cidade"
+                                    id="tutor-endereco-cidade" type="text">
                             </div>
                             <div class="col-md-6 form-campo d-flex flex-column">
-                                <label for="tutor-endereco-logradouro">Logradouro</label><input [(ngModel)]="tutor.enderecos[i].logradouro" name="tutor-endereco-logradouro"
+                                <label for="tutor-endereco-logradouro">Logradouro</label><input
+                                    [(ngModel)]="tutor.enderecos[i].logradouro" name="tutor-endereco-logradouro"
                                     id="tutor-endereco-logradouro" type="text">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4 form-campo d-flex flex-column">
-                                <label for="tutor-endereco-bairro">Bairro</label><input [(ngModel)]="tutor.enderecos[i].bairro" name="tutor-endereco-bairro" id="tutor-endereco-bairro"
-                                    type="text">
+                                <label for="tutor-endereco-bairro">Bairro</label><input
+                                    [(ngModel)]="tutor.enderecos[i].bairro" name="tutor-endereco-bairro"
+                                    id="tutor-endereco-bairro" type="text">
                             </div>
                             <div class="col-md-2 form-campo d-flex flex-column">
-                                <label for="tutor-endereco-numero">Número</label><input [(ngModel)]="tutor.enderecos[i].numero" name="tutor-endereco-numero" id="tutor-endereco-numero"
-                                    type="text">
+                                <label for="tutor-endereco-numero">Número</label><input
+                                    [(ngModel)]="tutor.enderecos[i].numero" name="tutor-endereco-numero"
+                                    id="tutor-endereco-numero" type="text">
                             </div>
                             <div class="col-md-6 form-campo d-flex flex-column">
-                                <label for="tutor-endereco-complemento">Complemento</label><input [(ngModel)]="tutor.enderecos[i].complemento" name="tutor-endereco-complemento"
+                                <label for="tutor-endereco-complemento">Complemento</label><input
+                                    [(ngModel)]="tutor.enderecos[i].complemento" name="tutor-endereco-complemento"
                                     id="tutor-endereco-complemento" type="text">
                             </div>
                         </div>
                     </form>
                     <div class="d-grid w-100 my-3">
-                        <div (click)="addEndereco()" class="add-btn p-0 m-0 col-1 d-flex flex-row justify-content-center align-items-center">
+                        <div (click)="addEndereco()"
+                            class="add-btn p-0 m-0 col-1 d-flex flex-row justify-content-center align-items-center">
                             <bi class="add-btn" name="plus"></bi>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="my-5 w-100 d-flex justify-content-center"><button id="confirmar" class="btn btn-primary" type="button" (click)="confirmar()">{{modoRegister? "Cadastrar":
+            <div class="my-5 w-100 d-flex justify-content-center"><button id="confirmar" class="btn btn-primary"
+                    type="button" (click)="confirmar()">{{modoRegister? "Cadastrar":
                     "Editar"}}</button></div>
         </form>
     </div>

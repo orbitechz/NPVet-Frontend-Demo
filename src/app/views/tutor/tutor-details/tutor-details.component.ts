@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Contato } from 'src/app/models/contato/contato';
 import { Endereco } from 'src/app/models/endereco/endereco';
 
 import { Genero } from 'src/app/models/enums/genero';
@@ -27,6 +28,7 @@ export class TutorDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) {
     this.tutor.enderecos = []
+    this.tutor.telefones = []
     this.url = this.router.url;
   }
   ngOnInit(): void {
@@ -43,6 +45,7 @@ export class TutorDetailsComponent implements OnInit {
     } else {
       this.modoRegister = true;
       this.tutor.enderecos.push(new Endereco())
+      this.tutor.telefones.push(new Contato())
     }
   }
 
@@ -84,11 +87,16 @@ export class TutorDetailsComponent implements OnInit {
     });
   }
 
-  addTelefone(){}
+  addTelefone(){
+    this.tutor.telefones.push(new Contato())
+  }
   addEndereco(){
     this.tutor.enderecos.push(new Endereco())
   }
   removeEndereco(index: number){
     this.tutor.enderecos.splice(index, 1);
+  }
+  removeTelefone(index: number){
+    this.tutor.telefones.splice(index, 1);
   }
 }
