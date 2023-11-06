@@ -7,58 +7,66 @@
   -->
     <div class="row g-2 d-flex justify-content-end">
       <div class="col-md-6 text-right dados-pet text-align-center">
-        <h4 class="text-right">DADOS DO PET</h4>
-      </div>
+        <h3 class="heading">DADOS DO PET</h3>     
+       </div>
     </div>
     <div class="row g-2 d-flex justify-content-end">
       <div class="col-md-4">
-        <label for="inputNome" class="form-label">Nome</label>
+        <label for="inputNome" class="form-label">Nome<span style="color:red">*</span></label>
         <input type="email" class="form-control" id="inputNome">
       </div>
       <div class="col-md-2">
-        <label for="inputEmail4" class="form-label">Idade</label>
+        <label for="inputEmail4" class="form-label">Idade<span style="color:red">*</span></label>
         <input type="number" class="form-control" id="inputEmail4">
       </div>
     </div>
     <div class="row g-2 d-flex justify-content-end">
       <div class="col-md-4">
-        <label for="inputEmail4" class="form-label">Espécie</label>
+        <label for="inputEmail4" class="form-label">Espécie<span style="color:red">*</span></label>
         <input type="email" class="form-control" id="inputEmail4">
       </div>
       <div class="col-md-2">
-        <label for="inputEmail4" class="form-label">Raça</label>
+        <label for="inputEmail4" class="form-label">Raça<span style="color:red">*</span></label>
         <input type="email" class="form-control" id="inputEmail4">
       </div>
     </div>
     <div class="row g-2 d-flex justify-content-end">
       <div class="col-md-4">
-        <label for="inputEmail4" class="form-label">Pelagem</label>
+        <label for="inputEmail4" class="form-label">Pelagem<span style="color:red">*</span></label>
         <input type="email" class="form-control" id="inputEmail4">
       </div>
       <div class="col-md-2">
-        <label for="inputEmail4" class="form-label">Sexo</label>
+        <label for="inputEmail4" class="form-label">Sexo<span style="color:red">*</span></label>
         <input type="email" class="form-control" id="inputEmail4">
       </div>
+
+    
   
     <!-- <div class="col-md-20">
       <label for="inputEmail4" class="form-label">Tutor</label>
       <input type="email" class="form-control" id="inputEmail4" (click)="open(content)">
     </div> -->
     </div>
-     <div class="row align-items-center col-5 pt-4 pb-3">
-      <div class="col-md-4 ps-5">
+
+    
+
+    
+    <div class="col-md-20">
+   
+      <div class="col-md-20">
+        
         <h6 class="mb-0 form-label">Tutor<span style="color:red">*</span>:</h6>
       </div>
+
+
       <div class="col-md-8 pe-5 justify-content-between d-flex flex-row">
         <input type="text" [(ngModel)]="animal.tutorId" name="tutor"
           class="text-center form-control form-control-md input-hidden" required disabled />
         <p *ngIf="animal.tutorId" class="m-0 fw-bold pt-2">{{animal.tutorId.nome}}</p>
-        <button type="button" style="height: fit-content;" class="font-outfit btn btn-primary d-flex flex-row gap-3"
-          (click)="open(content)">Selecionar<bi class="search-btn" name="search">
-          </bi></button>
-
       </div>
+      <input type="email" class="form-control" id="inputEmail4" (click)="open(content)">
     </div>
+     
     <div class="col-12 d-flex justify-content-center py-5 ">
       <button type="submit" class="btn btn-primary btn-end">Finalizar</button>
     </div>
