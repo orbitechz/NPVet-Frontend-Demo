@@ -37,7 +37,7 @@ img{
     top: .7rem;
     left: 10rem;
 }
-#folder{
+#consultas{
     width: 180px;
     height: 180px;
 }
@@ -50,4 +50,29 @@ img{
 }
 .root{
     margin-left: 2.5rem;
+}
+#animais, #tutores, #consultas, #usuarios{
+    transition: 500ms;
+}
+.caixa:hover #animais{
+    transition: 500ms;
+    transform: rotate(10deg);
+    bottom: 7.5rem
+}
+.caixa:hover #tutores{
+    transition: 500ms;
+    transform: rotate(-10deg);
+    bottom: 7.5rem
+}
+.caixa:hover #usuarios{
+    transition: 500ms;
+    transform: rotate(10deg);
+    width: 175px;
+    height: 175px;
+}
+.caixa:hover #consultas{
+    transition: 500ms;
+    transform: rotate(10deg);
+    width: 185px;
+    height: 185px;
 }
