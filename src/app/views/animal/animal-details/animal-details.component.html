@@ -1,3 +1,4 @@
+<app-mensagem [isErro]="isErro" [mensagem]="mensagem"></app-mensagem>
 <div class="container">
   <form>
     <!--
@@ -13,31 +14,31 @@
     <div class="row g-2 d-flex justify-content-end">
       <div class="col-md-4">
         <label for="inputNome" class="form-label">Nome<span style="color:red">*</span></label>
-        <input type="email" class="form-control" id="inputNome">
+        <input type="email" class="form-control" id="inputNome" [(ngModel)]="animal.nome">
       </div>
       <div class="col-md-2">
         <label for="inputEmail4" class="form-label">Idade<span style="color:red">*</span></label>
-        <input type="number" class="form-control" id="inputEmail4">
+        <input type="number" class="form-control" id="inputEmail4" [(ngModel)]="animal.idade">
       </div>
     </div>
     <div class="row g-2 d-flex justify-content-end">
       <div class="col-md-4">
         <label for="inputEmail4" class="form-label">Espécie<span style="color:red">*</span></label>
-        <input type="email" class="form-control" id="inputEmail4">
+        <input type="email" class="form-control" id="inputEmail4" [(ngModel)]="animal.especie">
       </div>
       <div class="col-md-2">
         <label for="inputEmail4" class="form-label">Raça<span style="color:red">*</span></label>
-        <input type="email" class="form-control" id="inputEmail4">
+        <input type="email" class="form-control" id="inputEmail4" [(ngModel)]="animal.raca">
       </div>
     </div>
     <div class="row g-2 d-flex justify-content-end">
       <div class="col-md-4">
         <label for="inputEmail4" class="form-label">Pelagem<span style="color:red">*</span></label>
-        <input type="email" class="form-control" id="inputEmail4">
+        <input type="email" class="form-control" id="inputEmail4" [(ngModel)]="animal.pelagem">
       </div>
       <div class="col-md-2">
         <label for="inputEmail4" class="form-label">Sexo<span style="color:red">*</span></label>
-        <input type="email" class="form-control" id="inputEmail4">
+        <input type="email" class="form-control" id="inputEmail4" [(ngModel)]="animal.sexo">
       </div>
 
     
@@ -68,7 +69,7 @@
     </div>
      
     <div class="col-12 d-flex justify-content-center py-5 ">
-      <button type="submit" class="btn btn-primary btn-end">Finalizar</button>
+      <button type="submit" class="btn btn-primary btn-end" (click)="salvar()">Finalizar</button>
     </div>
   </form>
 </div>

@@ -22,10 +22,12 @@ import { AnimalService } from 'src/app/services/animal/animal.service';
 export class AnimalDetailsComponent implements OnInit {
   animalId: any;
 
-  @Input() animal: Animal = new Animal();
+  animal: Animal = new Animal();
   @Output() retorno = new EventEmitter<Animal>();
 
   service = inject(AnimalService);
+  isErro : boolean = false;
+  mensagem! : string;
 
 
   constructor(
@@ -46,9 +48,12 @@ export class AnimalDetailsComponent implements OnInit {
     this.service.save(this.animal).subscribe({
       next: async(animais) => {
         this.animal = animais;
+        this.mensagem = "Animal cadastrado com sucesso!";
       },
       error: (erro) => {
         console.log(erro.error);
+        this.isErro = true;
+        this.mensagem = (erro.error);
       }
     })
   }
@@ -63,6 +68,9 @@ export class AnimalDetailsComponent implements OnInit {
       }
     })
   }
+
+
+
   open(content: any) {
     this.modalService.open(content, { size: 'lg' });
   }
