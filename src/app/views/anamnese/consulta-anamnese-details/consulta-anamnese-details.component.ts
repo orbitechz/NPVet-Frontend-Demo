@@ -121,7 +121,7 @@ export class ConsultaAnamneseDetailsComponent implements OnInit {
           this.anamnese.tutorDTO = tutor;
           this.selectedGenero = tutor.genero;
           this.telefones = tutor.telefones;
-          this.endereco = tutor.endereco;
+          this.endereco = tutor.enderecos;
         },
         error: (err) => {
           this.isErro = true;

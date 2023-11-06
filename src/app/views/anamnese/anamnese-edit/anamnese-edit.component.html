@@ -114,10 +114,10 @@
       <div
         class="row mb-3"
         *ngIf="
-          anamnese.tutorDTO.endereco && anamnese.tutorDTO.endereco.length > 0
+          anamnese.tutorDTO.enderecos && anamnese.tutorDTO.enderecos.length > 0
         "
       >
-        <div *ngFor="let endereco of anamnese.tutorDTO.endereco; let i = index">
+        <div *ngFor="let endereco of anamnese.tutorDTO.enderecos; let i = index">
           <div class="col-4 form-group">
             <label for="cep{{ i }}" class="mb-1">CEP</label>
             <input

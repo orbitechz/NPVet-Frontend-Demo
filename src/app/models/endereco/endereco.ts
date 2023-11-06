@@ -1,19 +1,23 @@
-export class Endereco {
+import { AbstractEntity } from "../abstract-entity/abstract-entity"
+
+export class Endereco extends AbstractEntity {
     logradouro!: string
     cidade!: string
     estado!: string
+    bairro!: string
     pais!: string
     numero!: string
     cep!: string
     complemento!: string
-
-    constructor() {
-        this.logradouro = ''
-        this.cidade = ''
-        this.estado = ''
-        this.pais = ''
-        this.numero = ''
-        this.cep = ''
-        this.complemento = ''
-    }
+}
+export interface EnderecoInterface {
+    cep: string;
+    logradouro: string;
+    complemento: string;
+    bairro: string;
+    localidade: string;
+    uf: string;
+    unidade: string;
+    ibge: string;
+    gia: string;
 }

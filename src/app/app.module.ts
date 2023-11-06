@@ -18,7 +18,6 @@ import { UsuarioService } from './services/usuario/usuario.service';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { HeaderComponent } from './components/header/header.component';
 import { UsuarioListarComponent } from './views/usuario/usuario-listar/usuario-listar.component';
 import { UsuarioDetailsComponent } from './views/usuario/usuario-details/usuario-details.component';
@@ -31,8 +30,21 @@ import { RegisterBtnComponent } from './components/register-btn/register-btn.com
 import { IndexComponent } from './core/index/index.component';
 import { ExameListComponent } from './views/exame-fisico/exame-list/exame-list.component';
 import { ExameDetailsComponent } from './views/exame-fisico/exame-details/exame-details.component';
+import { MatOption } from '@angular/material/core';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatSelectModule } from '@angular/material/select';
+import {MatFormFieldModule } from '@angular/material/form-field';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatInputModule} from '@angular/material/input';
+import { AsyncPipe } from '@angular/common';
+import { NgxViacepModule } from '@brunoc/ngx-viacep';
+
+// import { MatSelectFilter } 
+
+// import { MatSelec};
 import { ConsultaAnamneseDetailsComponent } from './views/anamnese/consulta-anamnese-details/consulta-anamnese-details.component';
 import { AnamneseEditComponent } from './views/anamnese/anamnese-edit/anamnese-edit.component';
+import { MenuPrincipalComponent } from './views/menu-principal/menu-principal.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +72,7 @@ import { AnamneseEditComponent } from './views/anamnese/anamnese-edit/anamnese-e
     ExameDetailsComponent,
     ConsultaAnamneseDetailsComponent,
     AnamneseEditComponent,
+    MenuPrincipalComponent,
   ],
  imports: [
     BrowserModule,
@@ -73,6 +86,13 @@ import { AnamneseEditComponent } from './views/anamnese/anamnese-edit/anamnese-e
     NgxMaskPipe,
     MatSlideToggleModule,
     BrowserAnimationsModule,
+    MatSelectModule, 
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    AsyncPipe,
+    NgxViacepModule
+    // MatSelectFilterModule 
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent],
