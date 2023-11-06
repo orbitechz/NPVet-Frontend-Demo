@@ -1,4 +1,4 @@
-<div class="register-usuario container">
+<div class="register-usuario container w-80">
     <div class="registerForm">
       <app-mensagem [isErro]="isErro" [mensagem]="mensagem" class="w-50"></app-mensagem>
       <form
@@ -12,7 +12,7 @@
           <!-- Nome -->
           <div class="col-md-4">
             <div class="form-group">
-              <label for="nome" class="mb-1">Nome</label>
+              <label for="nome" class="mb-1">Nome<span style="color:red">*</span></label>
               <input
                 type="text"
                 id="nome"
@@ -26,7 +26,7 @@
           <!-- CPF -->
           <div class="col-md-4">
             <div class="form-group">
-              <label for="cpf" class="mb-1">CPF</label>
+              <label for="cpf" class="mb-1">CPF<span style="color:red">*</span></label>
               <input
                 type="text"
                 id="cpf"
@@ -43,7 +43,7 @@
           <!-- Tipo do Usuário -->
           <div class="col-md-4">
             <div class="form-group">
-              <label for="tipoUsuario" class="mb-1">Tipo do Usuário</label>
+              <label for="tipoUsuario" class="mb-1">Tipo do Usuário<span style="color:red">*</span></label>
               <select
                 id="tipoUsuario"
                 class="form-select"
@@ -68,7 +68,7 @@
           <!-- Username -->
           <div class="col-md-4">
             <div class="form-group">
-              <label for="username" class="mb-1">Username</label>
+              <label for="username" class="mb-1">Username<span style="color:red">*</span></label>
               <input
                 type="email"
                 id="username"
@@ -82,7 +82,7 @@
           <!-- Senha -->
           <div class="col-md-4 d-flex align-items-center justify-content-between">
             <div class="form-group pass">
-              <label for="senha" class="mb-1">Senha</label>
+              <label for="senha" class="mb-1">Senha<span style="color:red">*</span></label>
               <input
                 [type]="hide ? 'password' : 'text'"
                 id="senha"
@@ -99,7 +99,7 @@
           <!-- Confirmar Senha -->
           <div class="col-md-4 d-flex align-items-center justify-content-between">
             <div class="form-group pass">
-              <label for="confirmarSenha" class="mb-1">Confirmar Senha</label>
+              <label for="confirmarSenha" class="mb-1">Confirmar Senha<span style="color:red">*</span></label>
               <input
                 [type]="hide2 ? 'password' : 'text'"
                 id="confirmarSenha"
