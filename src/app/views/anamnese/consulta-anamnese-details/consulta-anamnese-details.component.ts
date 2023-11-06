@@ -5,13 +5,14 @@ import { TutorService } from 'src/app/services/tutor/tutor.service';
 import { Genero } from 'src/app/models/enums/genero';
 import { AnimalService } from 'src/app/services/animal/animal.service';
 import { Animal } from 'src/app/models/animal/animal';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AnamneseService } from 'src/app/services/anamnese/anamnese.service';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { ProgressoMedico } from 'src/app/models/progresso-medico/progresso-medico';
 import { Sexo } from 'src/app/models/enums/sexo';
 import { AnamnesePergunta } from 'src/app/models/anamnese-pergunta/anamnese-pergunta';
 import { Contato } from 'src/app/models/contato/contato';
+import { ConsultaService } from 'src/app/services/consulta/consulta.service';
 
 @Component({
   selector: 'app-consulta-anamnese-details',
@@ -41,19 +42,35 @@ export class ConsultaAnamneseDetailsComponent implements OnInit {
     private a: AnimalService,
     private u: UsuarioService,
     private router: Router,
-    private an: AnamneseService
+    private route: ActivatedRoute,
+    private an: AnamneseService,
+    private c: ConsultaService,
   ) { }
 
   ngOnInit(): void {
-    this.u.getById(1).subscribe({
-      next: (usuario) => {
-        this.anamnese.veterinarioDTO = usuario;
-      },
-      error: (err) => {
-        this.isErro = true;
-        this.mensagem = err.error;
-      },
-    });
+    // this.u.getById(1).subscribe({
+    //   next: (usuario) => {
+    //     this.anamnese.veterinarioDTO = usuario;
+    //   },
+    //   error: (err) => {
+    //     this.isErro = true;
+    //     this.mensagem = err.error;
+    //   },
+    // });
+
+    this.route.params.subscribe(params => {
+      const id = +params['id'];
+      this.c.getById(id).subscribe({
+        next: (an) => {
+          this.anamnese.animalDTO = an.animal;
+          this.anamnese.tutorDTO = an.tutor;
+          this.anamnese.veterinarioDTO = an.veterinario;
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+    });    
   }
 
   addNewRow() {
