@@ -38,6 +38,7 @@ import {MatFormFieldModule } from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import { AsyncPipe } from '@angular/common';
+import { NgxViacepModule } from '@brunoc/ngx-viacep';
 
 // import { MatSelectFilter } 
 
@@ -86,7 +87,7 @@ import { AsyncPipe } from '@angular/common';
     MatInputModule,
     MatAutocompleteModule,
     AsyncPipe,
-
+    NgxViacepModule
     // MatSelectFilterModule 
   ],
   providers: [UsuarioService],

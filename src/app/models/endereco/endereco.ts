@@ -10,3 +10,14 @@ export class Endereco extends AbstractEntity {
     cep!: string
     complemento!: string
 }
+export interface EnderecoInterface {
+    cep: string;
+    logradouro: string;
+    complemento: string;
+    bairro: string;
+    localidade: string;
+    uf: string;
+    unidade: string;
+    ibge: string;
+    gia: string;
+}

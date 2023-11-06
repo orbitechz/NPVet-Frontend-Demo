@@ -78,7 +78,7 @@
                                 </div>
                             </div>
                             <div class="col form-campo d-flex flex-column">
-                                <label for="tutor-endereco-cep">CEP</label><input [disabled]="disabled" class="form-control" ngClass="['disabled': disabled]" [(ngModel)]="tutor.enderecos[i].cep"
+                                <label for="tutor-endereco-cep">CEP</label><input [disabled]="disabled" class="form-control" (change)="pesquisaCep(i)" ngClass="['disabled': disabled]" [(ngModel)]="tutor.enderecos[i].cep"
                                     name="tutor-endereco-cep" id="tutor-endereco-cep" type="text">
                             </div>
                             <div class="col form-campo d-flex flex-column">
