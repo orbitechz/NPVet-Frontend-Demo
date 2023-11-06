@@ -63,6 +63,8 @@ export class ExameDetailsComponent implements OnInit {
       next: (u) => {
         this.mensagem = 'Cadastrado com sucesso!';
         this.isErro = false;
+        window.scrollTo(0, 0);
+
       },
       error: (err) => {
         this.mensagem = err.message;

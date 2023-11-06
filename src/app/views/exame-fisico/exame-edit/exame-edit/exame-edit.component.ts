@@ -58,6 +58,7 @@ export class ExameEditComponent {
       next: (u) => {
         this.mensagem = "Editado com sucesso!";
         this.isErro = false;
+        window.scrollTo(0, 0);
 
       },
       error: (err) => {
