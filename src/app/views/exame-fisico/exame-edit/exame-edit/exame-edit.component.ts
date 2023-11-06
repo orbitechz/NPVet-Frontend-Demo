@@ -56,7 +56,7 @@ export class ExameEditComponent {
   submit(){
     this.service.update(this.exameFisico).subscribe({
       next: (u) => {
-        this.mensagem = "Cadastrado com sucesso!";
+        this.mensagem = "Editado com sucesso!";
         this.isErro = false;
 
       },

@@ -1,11 +1,6 @@
 <div class="mt-3 register-usuario container">
     <div class="registerForm">
-      <div [ngClass]="{
-        'alert alert-success': !isErro,
-        'alert alert-danger': isErro
-      }" *ngIf="mensagem" role="alert">
-        {{mensagem}}
-      </div>
+      <app-mensagem [isErro]="isErro" [mensagem]="mensagem"></app-mensagem>
       <form
         action=""
         class="needs-validation"
