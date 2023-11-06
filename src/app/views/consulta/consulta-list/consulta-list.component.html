@@ -1,7 +1,7 @@
 <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center mt-5">
     <div class="w-75 h-100">
         <app-register-btn [text]="'Marcar nova Consulta'" (clickEvent)=modal(consulta)></app-register-btn>
-        <app-mensagem [isErro]="isErro" [mensagem]="mensagem"></app-mensagem>
+        <app-mensagem class="mt-3" [isErro]="isErro" [mensagem]="mensagem"></app-mensagem>
         <div class="d-flex justify-content-between mb-3">
         </div>
         <app-table [title]="'Consultas'" [headers]="callHeaders()" [apiUrl]="apiUrlPath()"
@@ -16,7 +16,7 @@
                 (click)="modal.dismiss('Cross click')"></button></div>
     </div>
     <div class="modal-body">
-        <app-consulta-details (confirmar)="confirmar($event)"></app-consulta-details>
+        <app-consulta-details (confirmarEvent)="confirmar($event)"></app-consulta-details>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-primary font-outfit" (click)="modal.close('Close click')">Fechar</button>

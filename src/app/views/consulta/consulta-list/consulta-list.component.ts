@@ -49,9 +49,11 @@ export class ConsultaListComponent {
   modal(template: any){
     this.modalService.open(template, {size: "lg", windowClass:"marcar-consulta"})
   }
-  confirmar(sucesso: boolean){
-    if(sucesso){
+  confirmar(consulta: Consulta){
+    if(consulta.id){
       this.modalService.dismissAll()
+      this.isErro = false
+      this.mensagem ="Consulta criada com sucesso!"
     }
   }
 }

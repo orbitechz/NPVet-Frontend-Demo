@@ -1,10 +1,11 @@
+import { AbstractEntity } from "../abstract-entity/abstract-entity";
 import { Anamnese } from "../anamnese/anamnese";
 import { Animal } from "../animal/animal";
 import { Status } from "../enums/status";
 import { Tutor } from "../tutor/tutor";
 import { Usuario } from "../usuario/usuario";
 
-export class Consulta {
+export class Consulta extends AbstractEntity {
     animal!: Animal;
     tutor!: Tutor;
     anamnese!: Anamnese;
