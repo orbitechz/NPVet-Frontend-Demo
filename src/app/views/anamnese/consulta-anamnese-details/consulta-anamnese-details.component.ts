@@ -72,7 +72,7 @@ export class ConsultaAnamneseDetailsComponent implements OnInit {
     this.showInputs = !this.showInputs;
 
     const newQuestion = new AnamnesePergunta();
-    newQuestion.perguntaDTO = '';
+    newQuestion.pergunta = '';
     newQuestion.resposta = '';
     this.anamnese.anamnesePerguntas.push(newQuestion);
 
@@ -116,21 +116,26 @@ export class ConsultaAnamneseDetailsComponent implements OnInit {
   }
 
   fetchTutor() {
-    if (this.anamnese.tutorDTO.cpf.length == 11) {
-      this.t.getByCpf(this.anamnese.tutorDTO.cpf).subscribe({
+      this.t.getByCpf(this.formatCpf(this.anamnese.tutorDTO.cpf)).subscribe({
         next: (tutor) => {
           this.anamnese.tutorDTO = tutor;
           this.selectedGenero = tutor.genero;
           this.telefones = tutor.telefones;
-          this.endereco = tutor.endereco;
+          this.endereco = tutor.enderecos;
         },
         error: (err) => {
           this.isErro = true;
           this.mensagem = err.error;
         },
       });
-    }
+
   }
+
+  formatCpf(cpf: string): string {
+    const unformattedCpf = cpf.replace(/[.-]/g, '');
+      return `${unformattedCpf.slice(0, 3)}.${unformattedCpf.slice(3, 6)}.${unformattedCpf.slice(6, 9)}-${unformattedCpf.slice(9)}`;
+  }
+  
 
   cadastrarAnamnese() {
     this.t.update(this.anamnese.tutorDTO.id, this.anamnese.tutorDTO).subscribe({
@@ -148,7 +153,7 @@ export class ConsultaAnamneseDetailsComponent implements OnInit {
       )
       .subscribe({
         next: (a) => {
-          this.a.update(this.anamnese.animalDTO).subscribe({
+          this.a.update(this.anamnese.animalDTO.id,this.anamnese.animalDTO).subscribe({
             next: (animal) => {
               this.anamnese.animalDTO = animal;
             },

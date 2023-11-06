@@ -28,7 +28,6 @@ import { ConsultaListComponent } from './views/consulta/consulta-list/consulta-l
 import { ConsultaDetailsComponent } from './views/consulta/consulta-details/consulta-details.component';
 import { RegisterBtnComponent } from './components/register-btn/register-btn.component';
 import { IndexComponent } from './core/index/index.component';
-import { ConsultaAnamneseDetailsComponent } from './views/anamnese/consulta-anamnese-details/consulta-anamnese-details.component';
 import { ExameListComponent } from './views/exame-fisico/exame-list/exame-list.component';
 import { ExameDetailsComponent } from './views/exame-fisico/exame-details/exame-details.component';
 import { MatOption } from '@angular/material/core';
@@ -39,10 +38,14 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import { AsyncPipe } from '@angular/common';
 import { ExameEditComponent } from './views/exame-fisico/exame-edit/exame-edit/exame-edit.component';
-
+import { NgxViacepModule } from '@brunoc/ngx-viacep';
+import {MatTooltipModule} from '@angular/material/tooltip';
 // import { MatSelectFilter } 
 
 // import { MatSelec};
+import { ConsultaAnamneseDetailsComponent } from './views/anamnese/consulta-anamnese-details/consulta-anamnese-details.component';
+import { AnamneseEditComponent } from './views/anamnese/anamnese-edit/anamnese-edit.component';
+import { MenuPrincipalComponent } from './views/menu-principal/menu-principal.component';
 
 @NgModule({
   declarations: [
@@ -70,14 +73,16 @@ import { ExameEditComponent } from './views/exame-fisico/exame-edit/exame-edit/e
     ExameDetailsComponent,
     ConsultaAnamneseDetailsComponent,
     ExameEditComponent,
-    ConsultaAnamneseDetailsComponent
+    ConsultaAnamneseDetailsComponent,
+    AnamneseEditComponent,
+    MenuPrincipalComponent,
   ],
  imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    ReactiveFormsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     IconsModule,
     NgxMaskDirective,
@@ -89,7 +94,8 @@ import { ExameEditComponent } from './views/exame-fisico/exame-edit/exame-edit/e
     MatInputModule,
     MatAutocompleteModule,
     AsyncPipe,
-
+    NgxViacepModule,
+    MatTooltipModule
     // MatSelectFilterModule 
   ],
   providers: [UsuarioService],

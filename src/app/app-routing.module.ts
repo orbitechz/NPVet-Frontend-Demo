@@ -12,6 +12,8 @@ import { IndexComponent } from './core/index/index.component';
 import { ConsultaAnamneseDetailsComponent } from './views/anamnese/consulta-anamnese-details/consulta-anamnese-details.component';
 import { ExameDetailsComponent } from './views/exame-fisico/exame-details/exame-details.component';
 import { ExameEditComponent } from './views/exame-fisico/exame-edit/exame-edit/exame-edit.component';
+import { AnamneseEditComponent } from './views/anamnese/anamnese-edit/anamnese-edit.component';
+import { MenuPrincipalComponent } from './views/menu-principal/menu-principal.component';
  
 
 const routes: Routes = [
@@ -20,6 +22,8 @@ const routes: Routes = [
     path: 'web',
     component: IndexComponent,
     children: [
+      { path: '', redirectTo: 'menu', pathMatch: 'full'  },
+      { path: 'menu', component: MenuPrincipalComponent },
       { path: 'tutores', component: TutorListComponent },
       { path: 'tutor/register', component: TutorDetailsComponent },
       { path: 'tutor/edit/:id', component: TutorDetailsComponent },
@@ -28,11 +32,13 @@ const routes: Routes = [
       { path: 'usuario/register', component: UsuarioDetailsComponent },
       { path: 'usuario/edit/:id', component: UsuarioEditComponent },
       { path: 'animais', component: AnimalListComponent },
-      { path: 'animal/cadastro', component: AnimalDetailsComponent },
+      { path: 'animal/register', component: AnimalDetailsComponent },
       { path: 'consultas', component: ConsultaListComponent },
       { path: 'consulta/exame/register', component: ExameDetailsComponent },
       { path: 'consulta/exame/edit/:id', component: ExameEditComponent },
       { path: 'anamnese/register/:id', component: ConsultaAnamneseDetailsComponent},
+      { path: 'anamnese/edit/:id', component: AnamneseEditComponent},
+      { path: 'exame/register', component: ExameDetailsComponent },
     ],
   },
 ];

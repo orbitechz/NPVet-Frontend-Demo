@@ -7,12 +7,26 @@
 .form-label{
   font-family: 'SimplyRounded' !important;
   color: #00003D;
+  
 }
 
-.dados-pet{
-  font-family: Outfit, 'sans serif';
-    font-weight: bold;
-    color:#BABABC;
+.heading{
+  color: var(--text-secondary);
+  font-family: Outfit;
+  font-weight: 800;
+}
+
+.btn-edit{
+    background-color: var(--primary);
+}
+.input-hidden{
+    display: none;
+    visibility: hidden
+}
+
+.search-btn{
+    width: 20px;
+    width: 20px;
 }
 
 .add-pic {
@@ -37,4 +51,11 @@
   border-radius: 5rem;
   width: 15rem;
   font-family: 'SimplyRounded' !important;
+}
+
+label{
+  font-size: 1.2rem;
+  position: relative;
+  top: 1.2rem;
+  left: .5rem;
 }

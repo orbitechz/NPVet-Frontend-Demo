@@ -1,0 +1,40 @@
+.sidebar{
+    position: fixed;
+    top: 20%;
+    height: 20rem;
+    width: 5rem;
+    background: #FFF;
+    border-radius: 0rem 8.1875rem 8.1875rem 0rem;
+    display: flex;
+    align-items: center;
+}
+.coluna{
+    display: flex;
+    height: 100%;
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem
+}
+.icon {
+    background-color: var(--text-secondary);
+    border-radius: 50px;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 500ms;
+    cursor: pointer;
+}
+.icon img{
+    width: 30px;
+    height: 30px;
+}
+.icon:hover{
+    transition: 500ms;
+    width: 55px;
+    // height: 50px;
+    background: #00003D;
+}

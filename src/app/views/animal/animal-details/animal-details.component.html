@@ -1,54 +1,86 @@
+<app-mensagem [isErro]="isErro" [mensagem]="mensagem"></app-mensagem>
 <div class="container">
-<form>
-  <!--
+  <form>
+    <!--
   <div class="row g-3 add-pic d-flex text-align-start ">
     <h4 id="btn-add-pic">+</h4>
   </div>
   -->
-  <div class="row g-2 d-flex justify-content-end">
-  <div class="col-md-6 text-right dados-pet text-align-center">
-    <h4 class="text-right">DADOS DO PET</h4>
-</div>
-</div>
-  <div class="row g-2 d-flex justify-content-end">
-  <div class="col-md-4">
-    <label for="inputEmail4" class="form-label">Nome</label>
-    <input type="email" class="form-control" id="inputEmail4">
-  </div>
-  <div class="col-md-2">
-    <label for="inputEmail4" class="form-label">Idade</label>
-    <input type="number" class="form-control" id="inputEmail4">
-  </div>
-</div>
-<div class="row g-2 d-flex justify-content-end">
-  <div class="col-md-4">
-    <label for="inputEmail4" class="form-label">Espécie</label>
-    <input type="email" class="form-control" id="inputEmail4">
-  </div>
-  <div class="col-md-2">
-    <label for="inputEmail4" class="form-label">Raça</label>
-    <input type="email" class="form-control" id="inputEmail4">
-  </div>
-</div>
-<div class="row g-2 d-flex justify-content-end">
-  <div class="col-md-4">
-    <label for="inputEmail4" class="form-label">Pelagem</label>
-    <input type="email" class="form-control" id="inputEmail4">
-  </div>
-  <div class="col-md-2">
-    <label for="inputEmail4" class="form-label">Sexo</label>
-    <input type="email" class="form-control" id="inputEmail4">
-  </div>
-</div>
-  <div class="col-md-20">
-    <label for="inputEmail4" class="form-label">Tutor</label>
-    <input type="email" class="form-control" id="inputEmail4">
-  </div>
+    <div class="row g-2 d-flex justify-content-end">
+      <div class="col-md-6 text-right dados-pet text-align-center">
+        <h3 class="heading">DADOS DO PET</h3>     
+       </div>
+    </div>
+    <div class="row g-2 d-flex justify-content-end">
+      <div class="col-md-4">
+        <label for="inputNome" class="form-label">Nome<span style="color:red">*</span></label>
+        <input type="email" class="form-control" id="inputNome" [(ngModel)]="animal.nome">
+      </div>
+      <div class="col-md-2">
+        <label for="inputEmail4" class="form-label">Idade<span style="color:red">*</span></label>
+        <input type="number" class="form-control" id="inputEmail4" [(ngModel)]="animal.idade">
+      </div>
+    </div>
+    <div class="row g-2 d-flex justify-content-end">
+      <div class="col-md-4">
+        <label for="inputEmail4" class="form-label">Espécie<span style="color:red">*</span></label>
+        <input type="email" class="form-control" id="inputEmail4" [(ngModel)]="animal.especie">
+      </div>
+      <div class="col-md-2">
+        <label for="inputEmail4" class="form-label">Raça<span style="color:red">*</span></label>
+        <input type="email" class="form-control" id="inputEmail4" [(ngModel)]="animal.raca">
+      </div>
+    </div>
+    <div class="row g-2 d-flex justify-content-end">
+      <div class="col-md-4">
+        <label for="inputEmail4" class="form-label">Pelagem<span style="color:red">*</span></label>
+        <input type="email" class="form-control" id="inputEmail4" [(ngModel)]="animal.pelagem">
+      </div>
+      <div class="col-md-2">
+        <label for="inputEmail4" class="form-label">Sexo<span style="color:red">*</span></label>
+        <input type="email" class="form-control" id="inputEmail4" [(ngModel)]="animal.sexo">
+      </div>
+
+    
+  
+    <!-- <div class="col-md-20">
+      <label for="inputEmail4" class="form-label">Tutor</label>
+      <input type="email" class="form-control" id="inputEmail4" (click)="open(content)">
+    </div> -->
+    </div>
+
+    
+
+    
+    <div class="col-md-20">
+   
+      <div class="col-md-20">
+        
+        <h6 class="mb-0 form-label">Tutor<span style="color:red">*</span>:</h6>
+      </div>
 
 
-
-  <div class="col-12 d-flex justify-content-center py-5 ">
-    <button type="submit" class="btn btn-primary btn-end">Finalizar</button>
-  </div>
-</form>
+      <div class="col-md-8 pe-5 justify-content-between d-flex flex-row">
+        <input type="text" [(ngModel)]="animal.tutorId" name="tutor"
+          class="text-center form-control form-control-md input-hidden" required disabled />
+        <p *ngIf="animal.tutorId" class="m-0 fw-bold pt-2">{{animal.tutorId.nome}}</p>
+      </div>
+      <input type="email" class="form-control" id="inputEmail4" (click)="open(content)">
+    </div>
+     
+    <div class="col-12 d-flex justify-content-center py-5 ">
+      <button type="submit" class="btn btn-primary btn-end" (click)="salvar()">Finalizar</button>
+    </div>
+  </form>
 </div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-body">
+    <app-table [title]="'Tutores'" [headers]="callHeadersTutor()"
+      [urlEspecifica]="'http://localhost:8080/tutor/all/ativos'" [entidade]="'Tutor'" [showToggle]="false"
+      [showEdit]="false" [isModal]="true" [showAtivoFilter]="false" (detailsClick)="selecionarTutor($event)"></app-table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary font-outfit" (click)="c('Close click')">Fechar</button>
+  </div>
+</ng-template>

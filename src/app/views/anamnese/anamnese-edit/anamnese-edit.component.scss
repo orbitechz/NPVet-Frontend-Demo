@@ -1,0 +1,48 @@
+.consulta-anamnese {
+    padding: 20px;
+}
+
+.title-form {
+    color: #BABABC;
+    font-family: 'Outfit';
+    font-size: 26px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+input,
+select {
+    width: calc(100% - 20px);
+    height: 45px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    background: #FFF;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+textarea{
+    border: 1px solid #ccc;
+    background: #FFF;
+    border-radius: 15px;
+}
+
+label {
+    color: #00003D;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.btn {
+    width: 190px;
+    height: 38px;
+    border: none;
+    border-radius: 25px;
+    background: #00003D;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}

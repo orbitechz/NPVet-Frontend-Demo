@@ -3,6 +3,6 @@ import { Anamnese } from "../anamnese/anamnese";
 import { Pergunta } from "../pergunta/pergunta";
 
 export class AnamnesePergunta extends AbstractEntity{
-    perguntaDTO!: string;
+    pergunta!: string;
     resposta!: string;
 }
