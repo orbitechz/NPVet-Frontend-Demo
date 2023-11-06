@@ -6,6 +6,7 @@ import { AnimalService } from 'src/app/services/animal/animal.service';
 import { Location } from '@angular/common';
 import { Header } from 'src/app/components/table/header';
 import { Tutor } from 'src/app/models/tutor/tutor';
+import { Sexo } from 'src/app/models/enums/sexo';
 
 @Component({
   selector: 'app-animal-edit',
@@ -20,6 +21,12 @@ export class AnimalEditComponent {
   service = inject(AnimalService);
   isErro : boolean = false;
   mensagem! : string;
+
+  disabled = false;
+
+  keys = Object.keys;
+  sexos = Sexo;
+
 
 
   constructor(
