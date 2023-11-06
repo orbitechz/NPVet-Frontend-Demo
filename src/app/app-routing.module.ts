@@ -40,7 +40,7 @@ const routes: Routes = [
       { path: 'consulta/exame/edit/:id', component: ExameEditComponent },
       { path: 'anamnese/register/:id', component: ConsultaAnamneseDetailsComponent},
       { path: 'anamnese/edit/:id', component: AnamneseEditComponent},
-      { path: 'exame/register', component: ExameDetailsComponent },
+      { path: 'exame/register/:id', component: ExameDetailsComponent },
     ],
   },
 ];

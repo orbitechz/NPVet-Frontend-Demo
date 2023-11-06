@@ -1,4 +1,4 @@
-<div class="register-usuario container">
+<div class="mt-3 register-usuario container">
     <div class="registerForm">
       <div [ngClass]="{
         'alert alert-success': !isErro,
@@ -241,23 +241,18 @@
             </div>
           </div>
 
-          <div class="col-md-4 ms-5">
+          <div class="col-md-5 ms-5">
             <div class="form-group">
               <label for="animal" class="mb-1">Animal</label>
-              <select
-                id="animal"
-                class="form-control"
-                name="animal"
-                [(ngModel)]="exameFisico.animal"
-                required
-              >
-                <option [ngValue]="null" disabled selected>
-                  Selecione um animal
-                </option>
-                <option *ngFor="let animal of animais" [ngValue]="animal">
-                  {{ "Animal: " + animal.nome + " | Tutor: " + animal.tutorId.nome + " | CPF: " + animal.tutorId.cpf }}                  </option>
-              </select>
-
+              <input
+              type="text"
+              id="animal"
+              class="form-control disabled input-hidden"
+              name="animal"
+              [(ngModel)]="exameFisico.animal"
+              required
+            />
+            <p class="animal-p font-outfit pt-2 pl-3">{{ exameFisico.animal.nome + " | Tutor: " + exameFisico.animal.tutorId.nome + " | CPF: " + exameFisico.animal.tutorId.cpf }}</p>
             </div>
           </div>
   

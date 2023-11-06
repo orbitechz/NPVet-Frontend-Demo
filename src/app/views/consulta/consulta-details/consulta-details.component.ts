@@ -93,6 +93,6 @@ export class ConsultaDetailsComponent implements OnInit {
   }
 
   exameFisico(){
-    
+    this.router.navigate(['/web/exame/register', this.consulta.id])
   }
 }
