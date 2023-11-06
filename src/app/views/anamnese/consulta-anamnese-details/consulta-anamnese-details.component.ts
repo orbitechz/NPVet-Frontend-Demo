@@ -153,7 +153,7 @@ export class ConsultaAnamneseDetailsComponent implements OnInit {
       )
       .subscribe({
         next: (a) => {
-          this.a.update(this.anamnese.animalDTO).subscribe({
+          this.a.update(this.anamnese.animalDTO.id,this.anamnese.animalDTO).subscribe({
             next: (animal) => {
               this.anamnese.animalDTO = animal;
             },

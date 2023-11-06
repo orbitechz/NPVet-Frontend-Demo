@@ -53,7 +53,7 @@ export class AnimalService {
     return this.http.post<Animal>(`${this.baseURL}/post`, animal);
   }
 
-  update(animal: Animal): Observable<Animal>{
+  update(id: number, animal: Animal): Observable<Animal>{
     return this.http.put<Animal>(`${this.baseURL}/update/${animal.id}`, animal);
   }
 
