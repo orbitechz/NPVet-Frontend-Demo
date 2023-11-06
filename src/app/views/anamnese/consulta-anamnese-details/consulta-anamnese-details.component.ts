@@ -197,10 +197,14 @@ export class ConsultaAnamneseDetailsComponent implements OnInit {
       next: (anamnese) => {
         this.isErro = false;
         this.mensagem = 'Anamnese cadastrada com sucesso!';
+        window.scrollTo(0, 0);
+
       },
       error: (err) => {
         this.isErro = true;
         this.mensagem = err.error;
+        window.scrollTo(0, 0);
+
       },
     });
   }
