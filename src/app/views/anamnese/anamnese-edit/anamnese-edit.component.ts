@@ -8,6 +8,7 @@ import { Genero } from 'src/app/models/enums/genero';
 import { Sexo } from 'src/app/models/enums/sexo';
 import { ProgressoMedico } from 'src/app/models/progresso-medico/progresso-medico';
 import { AnamneseService } from 'src/app/services/anamnese/anamnese.service';
+import { ConsultaService } from 'src/app/services/consulta/consulta.service';
 
 @Component({
   selector: 'app-anamnese-edit',
@@ -26,15 +27,34 @@ export class AnamneseEditComponent implements OnInit {
   showInputs: boolean = false;
   editing: boolean = false;
 
-  constructor(private an: AnamneseService, private route: ActivatedRoute,private router: Router) { }
+  constructor(
+    private an: AnamneseService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private c: ConsultaService
+  ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
+    this.route.params.subscribe((params) => {
       const id = +params['id'];
       this.an.getById(id).subscribe({
         next: (an) => {
-          console.log(an)
+          console.log(an);
           this.anamnese = an;
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+    });
+
+    this.route.params.subscribe((params) => {
+      const id = +params['id'];
+      this.c.getById(id).subscribe({
+        next: (an) => {
+          this.anamnese.animalDTO = an.animal;
+          this.anamnese.tutorDTO = an.tutor;
+          this.anamnese.veterinarioDTO = an.veterinario;
         },
         error: (err) => {
           console.log(err);
@@ -59,16 +79,14 @@ export class AnamneseEditComponent implements OnInit {
   }
 
   addNewRow() {
-    this.anamnese.historicoProgressoMedico.push(new ProgressoMedico(
-      '',
-      new Date()
-    ));
+    this.anamnese.historicoProgressoMedico.push(
+      new ProgressoMedico('', new Date())
+    );
   }
 
   removeRow(lista: any[], i: any) {
     lista.splice(i, 1);
   }
-
 
   addNewQuestion() {
     this.showInputs = !this.showInputs;
@@ -77,7 +95,6 @@ export class AnamneseEditComponent implements OnInit {
     newQuestion.pergunta = '';
     newQuestion.resposta = '';
     this.anamnese.anamnesePerguntas.push(newQuestion);
-
   }
 
   editAnamnese() {
@@ -89,17 +106,15 @@ export class AnamneseEditComponent implements OnInit {
     this.ngOnInit();
   }
 
-  salvarAnamnese() { 
-    this.an.update(this.anamnese.id,this.anamnese).subscribe({
+  salvarAnamnese() {
+    this.an.update(this.anamnese.id, this.anamnese).subscribe({
       next: (an) => {
         this.anamnese = an;
         this.router.navigate(['/web/consultas']);
-
       },
       error: (err) => {
         console.log(err);
       },
     });
   }
-
 }
