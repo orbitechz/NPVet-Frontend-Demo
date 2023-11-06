@@ -73,7 +73,13 @@ export class TutorDetailsComponent implements OnInit {
     });
   }
   confirmar() {
-    this.modoRegister ? this.register() : this.edit();
+    if(this.modoRegister){
+      this.register()
+    }else if(!this.disabled){
+      this.edit();
+    }else{
+      this.router.navigate(['/web/tutores'])
+    }
   }
   register() {
     console.log('ok');
@@ -120,7 +126,7 @@ export class TutorDetailsComponent implements OnInit {
     this.tutor.telefones.splice(index, 1);
   }
   removeAnimal(id: number){
-    
+
   }
   mensagemBtn(): string {
     if (this.modoRegister) {
