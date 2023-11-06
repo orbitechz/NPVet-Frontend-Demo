@@ -68,3 +68,36 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.modal-header {
+    padding-inline: 2rem;
+}
+.modal-content {
+    background: var(--body-bg) !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-header, .modal-footer, .modal-body{
+    width: 95%;
+}
+.modal-header button:focus,
+.modal-header button.btn-close:focus,
+.modal-header button:focus-visible {
+    border: none;
+    outline: 0;
+    box-shadow: none !important;
+}
+.modal-header .botao {
+    width: 2.8rem;
+    height: 2.5rem;
+    border-radius: 50px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-header button{
+    margin: 0 !important;
+}

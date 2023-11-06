@@ -47,7 +47,7 @@ export class ConsultaListComponent {
     return tableHeaders; 
   }
   modal(template: any){
-    this.modalService.open(template, {size: "lg"})
+    this.modalService.open(template, {size: "lg", windowClass:"marcar-consulta"})
   }
   confirmar(sucesso: boolean){
     if(sucesso){
