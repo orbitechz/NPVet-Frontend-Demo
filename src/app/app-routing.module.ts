@@ -12,6 +12,7 @@ import { IndexComponent } from './core/index/index.component';
 import { ConsultaAnamneseDetailsComponent } from './views/anamnese/consulta-anamnese-details/consulta-anamnese-details.component';
 import { ExameListComponent } from './views/exame-fisico/exame-list/exame-list.component';
 import { ExameDetailsComponent } from './views/exame-fisico/exame-details/exame-details.component';
+import { ExameEditComponent } from './views/exame-fisico/exame-edit/exame-edit/exame-edit.component';
  
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
       { path: 'animais', component: AnimalListComponent },
       { path: 'animal/cadastro', component: AnimalDetailsComponent },
       { path: 'consultas', component: ConsultaListComponent },
-      { path: 'exame/register', component: ExameDetailsComponent },
+      { path: 'consulta/exame/register', component: ExameDetailsComponent },
+      { path: 'consulta/exame/edit/:id', component: ExameEditComponent },
 
     ],
   },

@@ -38,6 +38,7 @@ import {MatFormFieldModule } from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import { AsyncPipe } from '@angular/common';
+import { ExameEditComponent } from './views/exame-fisico/exame-edit/exame-edit/exame-edit.component';
 
 // import { MatSelectFilter } 
 
@@ -68,6 +69,7 @@ import { AsyncPipe } from '@angular/common';
     ExameListComponent,
     ExameDetailsComponent,
     ConsultaAnamneseDetailsComponent,
+    ExameEditComponent,
   ],
  imports: [
     BrowserModule,

@@ -18,12 +18,7 @@ export class ExameDetailsComponent implements OnInit{
   isErro = true;
   mensagem = '';
 
-  filteredReturn!: ExameFisico[]
-
   exameFisico: ExameFisico = new ExameFisico();
-
-  myControl = new FormControl<string | Animal>('');
-  filteredOptions!: Observable<Animal[]>;
 
   animais!: Animal[];
   service = inject(ExameFisicoService)
@@ -33,29 +28,7 @@ export class ExameDetailsComponent implements OnInit{
 
   ngOnInit(){
     this.getAnimais();
-
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => {
-        const name = typeof value === 'string' ? value : value?.nome;
-        return name ? this._filter(name as string) : this.animais.slice();
-      }),
-    );
-
   }
-
-
-  displayFn(user: Animal): string {
-    return user && user.nome ? user.nome : '';
-  }
-
-  private _filter(value: string): Animal[] {
-    const filterValue = value.toLowerCase();
-
-    return this.animais.filter(option => option.nome.toLowerCase().includes(filterValue));
-  }
-
-
 
 
   getAnimais(){
