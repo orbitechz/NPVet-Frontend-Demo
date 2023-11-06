@@ -20,8 +20,10 @@ export class TutorDetailsComponent implements OnInit {
   id!: string;
   url!: string;
   isErro: boolean = false;
-  modoRegister = true;
+  modoRegister!: boolean;
+  disabled = false;
   mensagem!: string;
+
 
   router = inject(Router);
   service = inject(TutorService);
@@ -37,6 +39,11 @@ export class TutorDetailsComponent implements OnInit {
       this.id = this.route.snapshot.paramMap.get('id') as string;
       if (Number(this.id)) {
         this.getById(Number(this.id));
+        if(this.url.includes('edit')){
+          this.disabled = false
+        }else{
+          this.disabled = true
+        }
       } else {
         this.isErro = true;
         this.mensagem = 'ID informado é inválido!';
@@ -98,5 +105,14 @@ export class TutorDetailsComponent implements OnInit {
   }
   removeTelefone(index: number){
     this.tutor.telefones.splice(index, 1);
+  }
+  mensagemBtn(): string{
+    if(this.modoRegister){
+      return 'Cadastrar'
+    }else if(this.disabled){
+      return 'Voltar'
+    }else{
+      return 'Editar'
+    }
   }
 }
