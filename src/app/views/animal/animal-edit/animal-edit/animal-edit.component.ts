@@ -1,27 +1,21 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  inject,
-} from '@angular/core';
+import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
-import { Header } from 'src/app/components/table/header';
 import { Animal } from 'src/app/models/animal/animal';
-import { Tutor } from 'src/app/models/tutor/tutor';
 import { AnimalService } from 'src/app/services/animal/animal.service';
+import { Location } from '@angular/common';
+import { Header } from 'src/app/components/table/header';
+import { Tutor } from 'src/app/models/tutor/tutor';
 
 @Component({
-  selector: 'app-animal-details',
-  templateUrl: './animal-details.component.html',
-  styleUrls: ['./animal-details.component.scss'],
-  providers: [NgbModalConfig, NgbModal],
+  selector: 'app-animal-edit',
+  templateUrl: './animal-edit.component.html',
+  styleUrls: ['./animal-edit.component.scss']
 })
-export class AnimalDetailsComponent implements OnInit {
+export class AnimalEditComponent {
+  id: string;
+
   animal: Animal = new Animal();
-  @Output() retorno = new EventEmitter<Animal>();
 
   service = inject(AnimalService);
   isErro : boolean = false;
@@ -31,21 +25,37 @@ export class AnimalDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     config: NgbModalConfig,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private location: Location
   ) {
-    
+    const path = location.path();
+    const parts = path.split('/');
+    this.id = parts[parts.length - 1];
+    this.getAnimalById(this.id);
+
   }
 
   ngOnInit(): void {
   }
 
+  getAnimalById(id: string){
+    this.service.getById(Number(this.id)).subscribe({
+      next: async (animais) => {
+        this.animal = animais;
+      },
+      error: (erro) => {
+        console.log(erro.error);
+      }
+    });
+  }
+
   salvar() {
 
     console.log(this.animal)
-    this.service.save(this.animal).subscribe({
+    this.service.update(this.animal.id, this.animal).subscribe({
       next: animais => {
         this.animal = animais;
-        this.mensagem = "Animal cadastrado com sucesso!";
+        this.mensagem = "Animal editado com sucesso!";
       },
       error: (erro) => {
         console.log(erro.error);
@@ -54,6 +64,7 @@ export class AnimalDetailsComponent implements OnInit {
       }
     })
   }
+
 
   open(content: any) {
     this.modalService.open(content, { size: 'lg' });
@@ -71,3 +82,4 @@ export class AnimalDetailsComponent implements OnInit {
     this.modalService.dismissAll()
   }
 }
+

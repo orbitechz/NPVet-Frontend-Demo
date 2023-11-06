@@ -14,6 +14,7 @@ import { ExameDetailsComponent } from './views/exame-fisico/exame-details/exame-
 import { ExameEditComponent } from './views/exame-fisico/exame-edit/exame-edit/exame-edit.component';
 import { AnamneseEditComponent } from './views/anamnese/anamnese-edit/anamnese-edit.component';
 import { MenuPrincipalComponent } from './views/menu-principal/menu-principal.component';
+import { AnimalEditComponent } from './views/animal/animal-edit/animal-edit/animal-edit.component';
  
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
       { path: 'usuario/edit/:id', component: UsuarioEditComponent },
       { path: 'animais', component: AnimalListComponent },
       { path: 'animal/register', component: AnimalDetailsComponent },
+      { path: 'animal/edit/:id', component: AnimalEditComponent },
       { path: 'consultas', component: ConsultaListComponent },
       { path: 'consulta/exame/register', component: ExameDetailsComponent },
       { path: 'consulta/exame/edit/:id', component: ExameEditComponent },

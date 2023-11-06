@@ -46,6 +46,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { ConsultaAnamneseDetailsComponent } from './views/anamnese/consulta-anamnese-details/consulta-anamnese-details.component';
 import { AnamneseEditComponent } from './views/anamnese/anamnese-edit/anamnese-edit.component';
 import { MenuPrincipalComponent } from './views/menu-principal/menu-principal.component';
+import { AnimalEditComponent } from './views/animal/animal-edit/animal-edit/animal-edit.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { MenuPrincipalComponent } from './views/menu-principal/menu-principal.co
     ConsultaAnamneseDetailsComponent,
     AnamneseEditComponent,
     MenuPrincipalComponent,
+    AnimalEditComponent,
   ],
  imports: [
     BrowserModule,
