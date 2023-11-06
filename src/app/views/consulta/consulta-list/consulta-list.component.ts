@@ -17,6 +17,7 @@ export class ConsultaListComponent {
   service = inject(ConsultaService);
   modalService = inject(NgbModal)
   data: any[] = [];
+  consultaSelecionada!: Consulta
 
 
   constructor() {
@@ -46,7 +47,11 @@ export class ConsultaListComponent {
     tableHeaders.push(new Header('Data de Consulta','data'));    
     return tableHeaders; 
   }
-  modal(template: any){
+  modal(template: any, consulta?: Consulta){
+    if(consulta){
+      console.log(consulta)
+      this.consultaSelecionada = consulta
+    }
     this.modalService.open(template, {size: "lg", windowClass:"marcar-consulta"})
   }
   confirmar(consulta: Consulta){

@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Header } from 'src/app/components/table/header';
 import { Animal } from 'src/app/models/animal/animal';
@@ -12,8 +13,9 @@ import { ConsultaService } from 'src/app/services/consulta/consulta.service';
   templateUrl: './consulta-details.component.html',
   styleUrls: ['./consulta-details.component.scss'],
 })
-export class ConsultaDetailsComponent {
+export class ConsultaDetailsComponent implements OnInit {
   @Output() confirmarEvent = new EventEmitter<Consulta>();
+  @Input() consultaSelecionada!: Consulta
   keys = Object.keys;
   statuses = Status;
   isErro = false;
@@ -23,12 +25,18 @@ export class ConsultaDetailsComponent {
   modalService = inject(NgbModal);
   modalRef!: NgbModalRef;
   service = inject(ConsultaService);
-
+  router = inject(Router)
   constructor() {
-    this.consulta.animal = new Animal();
-    this.consulta.veterinario = new Usuario();
   }
-
+  ngOnInit(): void {
+    if(this.consultaSelecionada){
+      this.consulta = this.consultaSelecionada
+      this.disabled = true
+    }else{
+      this.consulta.animal = new Animal();
+      this.consulta.veterinario = new Usuario();
+    }
+  }
   abrirModal(template: any) {
     this.modalRef = this.modalService.open(template, {
       size: 'lg',
@@ -77,5 +85,14 @@ export class ConsultaDetailsComponent {
   }
   btnAcao() {
     return 'Confirmar';
+  }
+
+  anamnese(){
+    this.modalService.dismissAll()
+    this.router.navigate(['/web/anamnese/register', this.consulta.id])
+  }
+
+  exameFisico(){
+    
   }
 }
