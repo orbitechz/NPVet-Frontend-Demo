@@ -6,7 +6,7 @@ import {
   Output,
   inject,
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Header } from 'src/app/components/table/header';
 import { Animal } from 'src/app/models/animal/animal';
@@ -30,6 +30,9 @@ export class AnimalDetailsComponent implements OnInit {
   keys = Object.keys;
   sexos = Sexo;
   disabled = false;
+  router = inject(Router);
+  id!: string;
+  url!: string;
 
 
 
@@ -38,7 +41,7 @@ export class AnimalDetailsComponent implements OnInit {
     config: NgbModalConfig,
     private modalService: NgbModal
   ) {
-    
+    this.url = this.router.url;
   }
 
   ngOnInit(): void {
@@ -51,10 +54,13 @@ export class AnimalDetailsComponent implements OnInit {
       next: animais => {
         this.animal = animais;
         this.mensagem = "Animal cadastrado com sucesso!";
+        this.moveTo();
+        this.router.navigate(["['/web/animais']", this.animal.id]);
       },
       error: (erro) => {
         console.log(erro.error);
         this.isErro = true;
+        this.moveTo();
         this.mensagem = (erro.error);
       }
     })
@@ -74,5 +80,9 @@ export class AnimalDetailsComponent implements OnInit {
   selecionarTutor(tutor: Tutor){
     this.animal.tutorId = tutor
     this.modalService.dismissAll()
+  }
+
+  moveTo() {
+    window.scrollTo(0, 0);
   }
 }
