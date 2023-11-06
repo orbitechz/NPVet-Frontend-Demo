@@ -4,21 +4,21 @@
             <h3 class="heading">DASHBOARD</h3>
             <div class="mt-4 d-flex gap-4">
                 <div class="coluna d-flex flex-column gap-3">
-                    <div class="caixa superior">
+                    <div class="caixa superior" [routerLink]="['/web/animais']">
                         <h3>Animais</h3>
                         <img src="../../../assets/img/ursinho-animal-box-menu.png" alt="ursinho">
                     </div>
-                    <div class="caixa inferior">
+                    <div class="caixa inferior" [routerLink]="['/web/consultas']">
                         <h3>Consultas</h3>
                         <img src="../../../assets/img/doctors-folder.png" alt="pasta de documentos médicos" id="folder">
                     </div>
                 </div>
                 <div class="coluna d-flex flex-column gap-3">
-                    <div class="caixa superior">
+                    <div class="caixa superior" [routerLink]="['/web/tutores']">
                         <h3>Tutores</h3>
                         <img src="../../../assets/img/tutor-box-menu.png" alt="prancheta">
                     </div>
-                    <div class="caixa inferior">
+                    <div class="caixa inferior" [routerLink]="['/web/usuarios']">
                         <h3>Usuários</h3>
                         <img src="../../../assets/img/person-icon.png" alt="icone de pessoa">
                     </div>
