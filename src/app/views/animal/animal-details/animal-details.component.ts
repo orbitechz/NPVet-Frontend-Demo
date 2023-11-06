@@ -27,12 +27,13 @@ export class AnimalDetailsComponent implements OnInit {
 
   service = inject(AnimalService);
 
+
   constructor(
     private route: ActivatedRoute,
     config: NgbModalConfig,
     private modalService: NgbModal
   ) {
-    size: 'lg';
+    
   }
 
   ngOnInit(): void {
@@ -42,11 +43,25 @@ export class AnimalDetailsComponent implements OnInit {
   }
 
   salvar() {
-    if (this.animal.id != 0) {
-      this.service.save(this.animal).subscribe();
-    } else {
-      this.service.save(this.animal).subscribe();
-    }
+    this.service.save(this.animal).subscribe({
+      next: async(animais) => {
+        this.animal = animais;
+      },
+      error: (erro) => {
+        console.log(erro.error);
+      }
+    })
+  }
+
+  editar(id: number){
+    this.service.update(id, this.animal).subscribe({
+      next: async (animais) => {
+        this.animal = animais;
+      },
+      error: (erro) => {
+        console.log(erro.error);
+      }
+    })
   }
   open(content: any) {
     this.modalService.open(content, { size: 'lg' });
