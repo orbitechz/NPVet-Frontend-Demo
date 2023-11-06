@@ -15,7 +15,12 @@ export class HeaderComponent implements OnInit {
   constructor(private location: Location){}
   ngOnInit(): void {
     this.url = this.router.url.split('/')[2]
-    this.title = this.url.slice(0, 1).toUpperCase() + this.url.slice(1);
+    if(this.url == undefined){
+      this.title = "npvet"
+      console.log(this.title)
+    }else{
+      this.title = this.url.slice(0, 1).toUpperCase() + this.url.slice(1);
+    }
   }
   back(){
     this.location.back()
