@@ -8,6 +8,12 @@
     width: 20rem;
     height: 15rem;
     border-radius: 40px;
+    cursor: pointer;
+    transition: 500ms;
+}
+.caixa:hover{
+    transition: 500ms;
+    background: #00003dcb;
     
 }
 .caixa h3{
