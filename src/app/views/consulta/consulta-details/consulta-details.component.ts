@@ -89,7 +89,7 @@ export class ConsultaDetailsComponent implements OnInit {
 
   anamnese(){
     this.modalService.dismissAll()
-    this.router.navigate(['/web/anamnese/edit', this.consulta.id])
+    this.router.navigate(['/web/anamnese/register', this.consulta.id])
   }
 
   exameFisico(){
