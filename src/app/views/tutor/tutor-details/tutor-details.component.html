@@ -149,7 +149,7 @@
                 </div>
             </div>
             <hr class="w-100">
-            <div class="secao">
+            <div *ngIf="!modoRegister" class="secao">
                 <div class="w-100 container p-0 d-flex flex-column">
                     <app-table [title]="'Animais do Tutor'" [headers]="callHeaders()" [urlEspecifica]="getUrlAnimais()"
                         [detailsPath]="'web/animal'" [entidade]="'Animal'" [showToggle]="false" [showEdit]="false"
