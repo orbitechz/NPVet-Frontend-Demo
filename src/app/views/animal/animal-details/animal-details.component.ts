@@ -45,8 +45,10 @@ export class AnimalDetailsComponent implements OnInit {
   }
 
   salvar() {
+
+    console.log(this.animal)
     this.service.save(this.animal).subscribe({
-      next: async(animais) => {
+      next: animais => {
         this.animal = animais;
         this.mensagem = "Animal cadastrado com sucesso!";
       },
