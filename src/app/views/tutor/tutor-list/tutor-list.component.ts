@@ -1,4 +1,5 @@
 import { Component, Input, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { Header } from 'src/app/components/table/header';
 import { Tutor } from 'src/app/models/tutor/tutor';
 import { TutorService } from 'src/app/services/tutor/tutor.service';
@@ -15,7 +16,7 @@ export class TutorListComponent {
   title = 'Tutores';
   tutores: Tutor[] = [];
   service = inject(TutorService);
-
+  router = inject(Router)
 
   data: any[] = [];
 
@@ -44,5 +45,9 @@ export class TutorListComponent {
     tableHeaders.push(new Header('CPF', 'cpf'));
     tableHeaders.push(new Header('Data de Criação','createdAt'));    
     return tableHeaders;
+  }
+
+  register(){
+    this.router.navigate(['tutor/register'])
   }
 }

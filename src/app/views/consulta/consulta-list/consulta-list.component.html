@@ -1,0 +1,24 @@
+<div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center mt-5">
+    <div class="w-75 h-100">
+        <app-register-btn [text]="'Marcar nova Consulta'" (clickEvent)=modal(consulta)></app-register-btn>
+        <app-mensagem class="mt-3" [isErro]="isErro" [mensagem]="mensagem"></app-mensagem>
+        <div class="d-flex justify-content-between mb-3">
+        </div>
+        <app-table [isModal]="true" [title]="'Consultas'" [headers]="callHeaders()" [apiUrl]="apiUrlPath()"
+            [editPath]="'consulta/update'" [entidade]="'Consulta'" [showToggle]="true" (detailsClick)="modal(consulta, $event)"></app-table>
+    </div>
+</div>
+
+<ng-template #consulta let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title text-primary fw-bold font-outfit">Agendar Consulta</h4>
+        <div class="botao shadow"><button type="button" class="btn-close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')"></button></div>
+    </div>
+    <div class="modal-body">
+        <app-consulta-details [consultaSelecionada]="consultaSelecionada" (confirmarEvent)="confirmar($event)"></app-consulta-details>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary font-outfit" (click)="modal.close('Close click')">Fechar</button>
+    </div>
+</ng-template>

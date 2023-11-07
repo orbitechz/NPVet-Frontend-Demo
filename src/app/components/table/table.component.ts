@@ -25,12 +25,18 @@ import { map, startWith } from 'rxjs';
 export class TableComponent implements OnInit {
   @Input() headers: Header[] = [];
   @Input() apiUrl: string = '';
+  @Input() urlEspecifica!: string;
   @Input() editPath: string = '';
   @Input() detailsPath: string = '';
   @Input() entidade: string = '';
   @Input() title: string = 'Tabela';
+  @Input() softDelete: boolean = true;
   @Input() showToggle: boolean = true;
-  @Output() buttonClick = new EventEmitter<string>();
+  @Input() showEdit: boolean = true;
+  @Input() showAtivoFilter: boolean = true;
+  @Input() isModal: boolean = false
+  @Output() toggleClick = new EventEmitter<number>();
+  @Output() detailsClick = new EventEmitter<any>();
   switchEstado = new FormControl(false);
   filter = new FormControl('');
   dados: any[] = [];
@@ -49,6 +55,7 @@ export class TableComponent implements OnInit {
   async ngOnInit() {
     await this.getAll();
     this.carregando = false;
+    // this.switchEstado.setValue(true)
   }
 
   filtrarEstado() {
@@ -129,29 +136,52 @@ export class TableComponent implements OnInit {
     this.router.navigate([`/${this.editPath}`, id]);
   }
   onDetailsClick(entidade: any) {
-    this.router.navigate([`/${this.detailsPath}`, entidade.id]);
+    if(this.isModal){
+      this.detailsClick.emit(entidade)
+    }else{
+      this.router.navigate([`/${this.detailsPath}`, entidade.id]);
+    }
   }
   onToggleClick(template: any, toggleEntidade: number) {
-    this.toggleEntidade = toggleEntidade;
-    this.modalService.open(template, {
-      size: 'md',
-      centered: true,
-      windowClass: 'modal-principal',
-    });
+    if(this.softDelete){
+      this.toggleEntidade = toggleEntidade;
+      this.modalService.open(template, {
+        size: 'md',
+        centered: true,
+        windowClass: 'modal-principal',
+      });
+    }else{
+      this.toggleClick.emit(toggleEntidade)
+    }
   }
 
   // ====================== SERVICES ======================
   async getAll() {
-    this.http.get<any[]>(`${this.apiUrl}/all`).subscribe({
-      next: (entidades) => {
-        this.dados = entidades;
-        this.dadosFiltrados = entidades;
-      },
-      error: (error) => {
-        this.isErro = true;
-        this.mensagem = error.error;
-      },
-    });
+    if(!this.urlEspecifica){
+      this.http.get<any[]>(`${this.apiUrl}/all`).subscribe({
+        next: (entidades) => {
+          this.dados = entidades;
+          this.dadosFiltrados = entidades;
+        },
+        error: (error) => {
+          this.isErro = true;
+          this.mensagem = error.error;
+        },
+      });
+    }else{
+      this.http.get<any[]>(`${this.urlEspecifica}`).subscribe({
+        next: (entidades) => {
+          this.dados = entidades;
+          console.log(entidades)
+          this.dadosFiltrados = entidades;
+        },
+        error: (error) => {
+          this.isErro = true;
+          console.log(error)
+          this.mensagem = error.error;
+        },
+      });
+    }
   }
   toggleBtn(entidade: any) {
     if (!entidade.deletedAt) {

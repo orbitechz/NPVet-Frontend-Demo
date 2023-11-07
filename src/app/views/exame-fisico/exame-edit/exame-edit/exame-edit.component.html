@@ -1,0 +1,268 @@
+<div class="register-usuario container">
+    <div class="registerForm">
+      <app-mensagem [isErro]="isErro" [mensagem]="mensagem"></app-mensagem>
+
+  
+      <form
+        action=""
+        class="needs-validation"
+        #exameFisicoForm="ngForm"
+        novalidate
+      >
+        <div class="row mb-3">
+          <!-- Nível de Consciência -->
+          <div class="col-md-6 ms-3">
+            <div class="form-group">
+              <label for="nivelConsciencia" class="mb-1">Nível de Consciência</label>
+              <input
+                type="text"
+                id="nivelConsciencia"
+                class="form-control"
+                name="nivelConsciencia"
+                [(ngModel)]="exameFisico.nivelConsciencia"
+                required
+              />
+            </div>
+          </div>
+          <!-- Temperatura Retal -->
+          <div class="col-md-3 ms-5">
+            <div class="form-group">
+              <label class="mb-1">Temperatura Retal</label>
+              <input
+                type="number"
+                id="temperaturaRetal"
+                class="form-control"
+                name="temperaturaRetal"
+                [(ngModel)]="exameFisico.temperaturaRetal"
+                required
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+
+          <!-- Frequência Respiratória -->
+          <div class="col-md-6 ms-3">
+            <div class="form-group">
+              <label for="frequenciaRespiratoria" class="mb-1">Frequência Respiratória</label>
+              <input
+                type="number"
+                id="frequenciaRespiratoria"
+                class="form-control"
+                name="frequenciaRespiratoria"
+                [(ngModel)]="exameFisico.frequenciaRespiratoria"
+                required
+              />
+            </div>
+          </div>
+          <!-- Frequência Cardíaca -->
+          <div class="col-md-4  ms-5">
+            <div class="form-group">
+              <label for="frequenciaCardiaca" class="mb-1">Frequência Cardíaca</label>
+              <input
+                type="number"
+                id="frequenciaCardiaca"
+                class="form-control"
+                name="frequenciaCardiaca"
+                [(ngModel)]="exameFisico.frequenciaCardiaca"
+                required
+              />
+            </div>
+          </div>
+        </div>
+          <div class="row mb-3">
+
+          <!-- Tempo de Preenchimento Capilar -->
+          <div class="col-md-6 ms-3">
+            <div class="form-group">
+              <label for="tempoPreenchimentoCapilar" class="mb-1">Tempo de Preenchimento Capilar</label>
+              <input
+                type="time"
+                id="tempoPreenchimentoCapilar"
+                class="form-control"
+                name="tempoPreenchimentoCapilar"
+                [(ngModel)]="exameFisico.tempoPreenchimentoCapilar"
+                required
+              />
+            </div>
+          </div>
+          <!-- Pulso -->
+          <div class="col-md-4 ms-5">
+            <div class="form-group">
+              <label for="pulso" class="mb-1">Pulso</label>
+              <input
+                type="number"
+                id="pulso"
+                class="form-control"
+                name="pulso"
+                [(ngModel)]="exameFisico.pulso"
+                required
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <!-- Hidratação -->
+          <div class="col-md-6 ms-3">
+            <div class="form-group">
+              <label for="hidratacao" class="mb-1">Hidratação</label>
+              <input
+                type="text"
+                id="hidratacao"
+                class="form-control"
+                name="hidratacao"
+                [(ngModel)]="exameFisico.hidratacao"
+                required
+              />
+            </div>
+          </div>
+          <!-- Linf Submand -->
+          <div class="col-md-4 ms-5">
+            <div class="form-group">
+              <label for="linfSubmand" class="mb-1">Linf Submand</label>
+              <input
+                type="text"
+                id="linfSubmand"
+                class="form-control"
+                name="linfSubmand"
+                [(ngModel)]="exameFisico.linfSubmand"
+                required
+              />
+            </div>
+          </div>
+        </div>
+          <div class="row mb-3">
+
+          <!-- Linf PreEscapulares -->
+          <div class="col-md-6 ms-3">
+            <div class="form-group">
+              <label for="linfPreEscapulares" class="mb-1">Linf PreEscapulares</label>
+              <input
+                type="text"
+                id="linfPreEscapulares"
+                class="form-control"
+                name="linfPreEscapulares"
+                [(ngModel)]="exameFisico.linfPreEscapulares"
+                required
+              />
+            </div>
+          </div>
+          <!-- Linf Popliteos -->
+          <div class="col-md-4 ms-5">
+            <div class="form-group">
+              <label for="linfPopliteos" class="mb-1">Linf Popliteos</label>
+              <input
+                type="text"
+                id="linfPopliteos"
+                class="form-control"
+                name="linfPopliteos"
+                [(ngModel)]="exameFisico.linfPopliteos"
+                required
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+        <!-- Linf Inguinais -->
+        <div class="col-md-6 ms-3">
+          <div class="form-group">
+              <label for="linfInguinais" class="mb-1">Linf Inguinais</label>
+              <input
+                type="text"
+                id="linfInguinais"
+                class="form-control"
+                name="linfInguinais"
+                [(ngModel)]="exameFisico.linfInguinais"
+                required
+              />
+            </div>
+          </div>
+          <!-- Mucosa Ocular -->
+          <div class="col-md-4 ms-5">
+            <div class="form-group">
+              <label for="mucosaOcular" class="mb-1">Mucosa Ocular</label>
+              <input
+                type="text"
+                id="mucosaOcular"
+                class="form-control"
+                name="mucosaOcular"
+                [(ngModel)]="exameFisico.mucosaOcular"
+                required
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+        <!-- Mucosa Oral -->
+        <div class="col-md-6 ms-3">
+          <div class="form-group">
+              <label for="mucosaOral" class="mb-1">Mucosa Oral</label>
+              <input
+                type="text"
+                id="mucosaOral"
+                class="form-control"
+                name="mucosaOral"
+                [(ngModel)]="exameFisico.mucosaOral"
+                required
+              />
+            </div>
+          </div>
+          <!-- Mucosa Peniana -->
+          <div class="col-md-4 ms-5">
+            <div class="form-group">
+              <label for="mucosaPeniana" class="mb-1">Mucosa Peniana</label>
+              <input
+                type="text"
+                id="mucosaPeniana"
+                class="form-control"
+                name="mucosaPeniana"
+                [(ngModel)]="exameFisico.mucosaPeniana"
+                required
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+        <!-- Mucosa Anal -->
+        <div class="col-md-6 ms-3">
+          <div class="form-group">
+              <label for="mucosaAnal" class="mb-1">Mucosa Anal</label>
+              <input
+                type="text"
+                id="mucosaAnal"
+                class="form-control"
+                name="mucosaAnal"
+                [(ngModel)]="exameFisico.mucosaAnal"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="col-md-4 ms-5">
+            <div class="form-group">
+              <label for="animal" class="mb-1">Animal</label>
+              <select
+                id="animal"
+                class="form-control"
+                name="animal"
+                [(ngModel)]="exameFisico.animal"
+                required
+              >
+                <option [ngValue]="null" disabled selected>
+                  Selecione um animal
+                </option>
+                <option *ngFor="let animal of animais" [ngValue]="animal">
+                  {{ "Animal: " + animal.nome + " | Tutor: " + animal.tutorId.nome + " | CPF: " + animal.tutorId.cpf }}                  </option>
+              </select>
+
+            </div>
+          </div>
+  
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-sm btn-primary align-self-center cadastrar" (click)="submit()">Cadastrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

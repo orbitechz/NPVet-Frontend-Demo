@@ -1,0 +1,598 @@
+<div class="consulta-anamnese d-flex flex-column w-80 align-items-center">
+  <div class="register-form">
+    <app-mensagem
+      [isErro]="isErro"
+      [mensagem]="mensagem"
+      class="w-50"
+    ></app-mensagem>
+    <form action="">
+      <div class="row">
+        <div class="col-sm-2 form-group">
+          <label for="animal" class="mb-1">Data</label>
+          <input
+            type="text"
+            id="animal"
+            class="form-control"
+            name="data"
+            [value]="dateNow()"
+            style="text-align: center"
+            disabled
+          />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <p class="title-form">responsavel</p>
+        <div class="col-6 form-group">
+          <label for="cpf" class="mb-1">CPF<span style="color:red">*</span></label>
+          <input
+            type="text"
+            id="cpf"
+            class="form-control"
+            name="cpf"
+            [(ngModel)]="anamnese.tutorDTO.cpf"
+            maxlength="14"
+            mask="000.000.000-00"
+            [disabled]="!editing"
+            required
+          />
+        </div>
+        <div class="col-6 form-group">
+          <label for="nome" class="mb-1">Nome<span style="color:red">*</span></label>
+          <input
+            type="text"
+            id="nome"
+            class="form-control"
+            name="nome"
+            [(ngModel)]="anamnese.tutorDTO.nome"
+            [disabled]="!editing"
+            required
+          />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-6 form-group">
+          <label for="genero" class="mb-1">Gênero<span style="color:red">*</span></label>
+          <select
+            id="genero"
+            class="form-control"
+            name="genero"
+            [(ngModel)]="selectedGenero"
+            [disabled]="!editing"
+            required
+          >
+            <option [ngValue]="null" disabled selected>
+              Selecione um tipo
+            </option>
+            <option
+              *ngFor="let tipo of generoEnum | keyvalue"
+              [ngValue]="tipo.key"
+            >
+              {{ tipo.value }}
+            </option>
+          </select>
+        </div>
+        <div class="col-6 form-group">
+          <label for="rg" class="mb-1">RG<span style="color:red">*</span></label>
+          <input
+            type="text"
+            id="rg"
+            class="form-control"
+            name="rg"
+            [(ngModel)]="anamnese.tutorDTO.rg"
+            [disabled]="!editing"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="row mb-3" *ngIf="anamnese.tutorDTO.cpf">
+        <div
+          *ngFor="let telefone of anamnese.tutorDTO.telefones; let i = index"
+        >
+          <label for="celular{{ i + 1 }}" class="mb-1"
+            >Celular {{ i + 1 }}</label
+          >
+          <input
+            type="text"
+            id="celular{{ i + 1 }}"
+            class="form-control"
+            name="celular{{ i + 1 }}"
+            [(ngModel)]="telefone.telefone"
+            [disabled]="!editing"
+          />
+        </div>
+        <button
+          type="button"
+          class="btn btn-primary"
+          style="margin-left: auto; margin-right: 10px"
+          (click)="addTelefone()"
+        >
+          Add Another Phone
+        </button>
+      </div>
+
+      <div
+        class="row mb-3"
+        *ngIf="
+          anamnese.tutorDTO.enderecos && anamnese.tutorDTO.enderecos.length > 0
+        "
+      >
+        <div class="row mb-3" *ngFor="let endereco of anamnese.tutorDTO.enderecos; let i = index">
+          <div class="col-4 form-group">
+            <label for="cep{{ i }}" class="mb-1">CEP</label>
+            <input
+              type="text"
+              id="cep{{ i }}"
+              class="form-control"
+              name="cep{{ i }}"
+              [(ngModel)]="endereco.cep"
+              [disabled]="!editing"
+              required
+            />
+          </div>
+          <div class="col-4 form-group">
+            <label for="logradouro{{ i }}" class="mb-1">Logradouro</label>
+            <input
+              type="text"
+              id="logradouro{{ i }}"
+              class="form-control"
+              name="logradouro{{ i }}"
+              [(ngModel)]="endereco.logradouro"
+              [disabled]="!editing"
+              required
+            />
+          </div>
+          <div class="col-4 form-group">
+            <label for="numero{{ i }}" class="mb-1">Número</label>
+            <input
+              type="text"
+              id="numero{{ i }}"
+              class="form-control"
+              name="numero{{ i }}"
+              [(ngModel)]="endereco.numero"
+              [disabled]="!editing"
+              required
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <p class="title-form">animal</p>
+        <div class="col-6 form-group">
+          <label for="nomeAnimal" class="mb-1">Nome<span style="color:red">*</span></label>
+          <input
+            type="text"
+            id="nomeAnimal"
+            class="form-control"
+            name="nomeAnimal"
+            [(ngModel)]="anamnese.animalDTO.nome"
+            [disabled]="!editing"
+            required
+          />
+        </div>
+        <div class="col-6 form-group">
+          <label for="especie" class="mb-1">Espécie<span style="color:red">*</span></label>
+          <input
+            type="text"
+            id="especie"
+            class="form-control"
+            name="especie"
+            [(ngModel)]="anamnese.animalDTO.especie"
+            [disabled]="!editing"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-6 form-group">
+          <label for="raca" class="mb-1">Raça<span style="color:red">*</span></label>
+          <input
+            type="text"
+            id="raca"
+            class="form-control"
+            name="raca"
+            [(ngModel)]="anamnese.animalDTO.raca"
+            [disabled]="!editing"
+            required
+          />
+        </div>
+        <div class="col-4 form-group">
+          <label for="sexo" class="mb-1">Sexo<span style="color:red">*</span></label>
+          <select
+            id="sexo"
+            class="form-control"
+            name="sexo"
+            [(ngModel)]="selectedSexo"
+            [disabled]="!editing"
+            required
+          >
+            <option [ngValue]="null" disabled selected>Selecione</option>
+            <option
+              *ngFor="let tipo of sexoEnum | keyvalue"
+              [ngValue]="tipo.key"
+            >
+              {{ tipo.value }}
+            </option>
+          </select>
+        </div>
+        <div class="col-2 form-group">
+          <label for="idade" class="mb-1">Idade<span style="color:red">*</span></label>
+          <input
+            type="text"
+            id="idade"
+            class="form-control"
+            name="idade"
+            [(ngModel)]="anamnese.animalDTO.idade"
+            [disabled]="!editing"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-2 form-group">
+          <label for="peso" class="mb-1">Peso<span style="color:red">*</span></label>
+          <input
+            type="text"
+            id="peso"
+            class="form-control"
+            name="peso"
+            [(ngModel)]="anamnese.animalDTO.peso"
+            [disabled]="!editing"
+            required
+          />
+        </div>
+        <div class="col-6 form-group">
+          <label for="procedencia" class="mb-1">Procedencia</label>
+          <input
+            type="text"
+            id="procedencia"
+            class="form-control"
+            name="procedencia"
+            [(ngModel)]="anamnese.animalDTO.procedencia"
+            [disabled]="!editing"
+            required
+          />
+        </div>
+        <div class="col-4 form-group">
+          <label for="pelagem" class="mb-1">Pelagem</label>
+          <input
+            type="text"
+            id="pelagem"
+            class="form-control"
+            name="pelagem"
+            [(ngModel)]="anamnese.animalDTO.pelagem"
+            [disabled]="!editing"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="row mb-3 p-2">
+        <p class="title-form">hístorico médico</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Progresso Médico</th>
+              <th>Data Atualização</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let historico of anamnese.historicoProgressoMedico;
+                let i = index
+              "
+            >
+              <td>
+                <input
+                  type="text"
+                  [(ngModel)]="historico.progressoMedico"
+                  name="progressoMedico{{ i }}"
+                  [disabled]="!editing"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  [(ngModel)]="historico.createdAt"
+                  name="dataAtualizacao{{ i }}"
+                  [disabled]="!editing"
+                />
+              </td>
+              <td>
+                <div
+                  (click)="removeRow(anamnese.historicoProgressoMedico, i)"
+                  class="mb-2"
+                  style="cursor: pointer"
+                >
+                  <i class="bi bi-x-lg"></i>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="btn mt-2" style="width: 250px" (click)="addNewRow()">
+          Adicionar Novo Histórico
+        </button>
+      </div>
+
+      <div class="row mb-3">
+        <p class="title-form">anamnese geral</p>
+        <div class="col form-group">
+          <label for="queixaPrincipal">Queixa Principal</label>
+          <textarea
+            class="form-control"
+            id="queixaPrincipal"
+            name="queixaPrincipal"
+            [(ngModel)]="anamnese.queixaPrincipal"
+            [disabled]="!editing"
+            rows="2"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col form-group">
+          <label for="alimentacao">Alimentação</label>
+          <textarea
+            class="form-control"
+            id="alimentacao"
+            name="alimentacao"
+            [(ngModel)]="anamnese.alimentacao"
+            [disabled]="!editing"
+            rows="1"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-4 form-group">
+          <label for="contactantes">Contactantes</label>
+          <textarea
+            class="form-control"
+            id="contactantes"
+            name="contactantes"
+            [(ngModel)]="anamnese.contactantes"
+            [disabled]="!editing"
+            rows="2"
+          ></textarea>
+        </div>
+        <div class="col-4 form-group">
+          <label for="vermifugacao">Vermifugacao</label>
+          <textarea
+            class="form-control"
+            id="vermifugacao"
+            name="vermifugacao"
+            [(ngModel)]="anamnese.vermifugacao"
+            [disabled]="!editing"
+            rows="2"
+          ></textarea>
+        </div>
+        <div class="col-4 form-group">
+          <label for="ambiente">Ambiente que vive</label>
+          <textarea
+            class="form-control"
+            id="ambiente"
+            name="ambiente"
+            [(ngModel)]="anamnese.ambiente"
+            [disabled]="!editing"
+            rows="2"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <p class="title-form">anamnese especial</p>
+        <div class="col form-group">
+          <label for="sistemaRespiratorio"
+            >Sistema Respiratorio (secreção, tosse, espirro, cianose, dispnéia,
+            ruído na respiração, etc)</label
+          >
+          <textarea
+            class="form-control"
+            id="sistemaRespiratorio"
+            name="sistemaRespiratorio"
+            [(ngModel)]="anamnese.sistemaRespiratorio"
+            [disabled]="!editing"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col form-group">
+          <label for="sistemaCardiovascular"
+            >Sistema Cardiovascular (intolerância a exercícios, cansaço,
+            síncope, cianose, tosse etc)</label
+          >
+          <textarea
+            class="form-control"
+            id="sistemaCardiovascular"
+            name="sistemaCardiovascular"
+            [(ngModel)]="anamnese.sistemaCardiovascular"
+            [disabled]="!editing"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col form-group">
+          <label for="sistemaDigestorio"
+            >Sistema Digestório (apetite, vômito, diarréia)</label
+          >
+          <textarea
+            class="form-control"
+            id="sistemaDigestorio"
+            name="sistemaDigestorio"
+            [(ngModel)]="anamnese.sistemaDigestorio"
+            [disabled]="!editing"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col form-group">
+          <label for="sistemaUrinario"
+            >Sistema Urinário (ingestão de água, aspecto, volume e frequência da
+            urina, tenesmo vesical, disúria)</label
+          >
+          <textarea
+            class="form-control"
+            id="sistemaUrinario"
+            name="sistemaUrinario"
+            [(ngModel)]="anamnese.sistemaUrinario"
+            [disabled]="!editing"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col form-group">
+          <label for="sistemaReprodutor"
+            >Sistema Reprodutor (secreção, cio, anticoncepcional, prenhez,
+            filhotes, mamas, comportamento)</label
+          >
+          <textarea
+            class="form-control"
+            id="sistemaReprodutor"
+            name="sistemaReprodutor"
+            [(ngModel)]="anamnese.sistemaReprodutor"
+            [disabled]="!editing"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col form-group">
+          <label for="sistemaLocomotor"
+            >Sistema Locomotor (claudicação, trauma, aumento de volume, marcha,
+            impotência, exercícios)</label
+          >
+          <textarea
+            class="form-control"
+            id="sistemaLocomotor"
+            name="sistemaLocomotor"
+            [(ngModel)]="anamnese.sistemaLocomotor"
+            [disabled]="!editing"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col form-group">
+          <label for="sistemaNeurologico"
+            >Sistema Neurológico (convulsão, síncopes, déficits, deambulação,
+            audição, olfato, propriocepção, manias, deglutição, alteração,
+            latido/miado)</label
+          >
+          <textarea
+            class="form-control"
+            id="sistemaNeurologico"
+            name="sistemaNeurologico"
+            [(ngModel)]="anamnese.sistemaNeurologico"
+            [disabled]="!editing"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-6 form-group">
+          <label for="pele"
+            >Pele e anexos (higiene, secreção, alopecia, prurido, lesões,
+            descamação, parasitas, orelha)</label
+          >
+          <textarea
+            class="form-control"
+            id="pele"
+            name="pele"
+            [(ngModel)]="anamnese.pele"
+            [disabled]="!editing"
+            rows="3"
+          ></textarea>
+        </div>
+        <div class="col-6 form-group">
+          <label for="olhos"
+            >Olhos (secreção, olho vermelho, olho esbranquiçado, déficit visual,
+            blefaroepasmo, fotofobia, primeiro olho afetado)</label
+          >
+          <textarea
+            class="form-control"
+            id="olhos"
+            name="olhos"
+            [(ngModel)]="anamnese.olhos"
+            [disabled]="!editing"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="d-flex justify-content-between">
+          <p class="title-form">pergunta adicional</p>
+          <button class="btn btn-primary mt-2" (click)="addNewQuestion()">
+            Adiconar Pergunta
+          </button>
+        </div>
+        <div
+          class="row mb-3"
+          *ngFor="let p of anamnese.anamnesePerguntas; let i = index"
+        >
+          <div class="col-5 form-group">
+            <label for="pergunta"> Define uma Pergunta Adicional: </label>
+            <input
+              type="text"
+              id="pergunta"
+              class="form-control"
+              [(ngModel)]="p.pergunta"
+              [disabled]="!editing"
+              name="pergunta{{ i }}"
+              required
+            />
+          </div>
+          <div class="col-6 form-group">
+            <label for="resposta"> Define a Resposta: </label>
+            <input
+              type="text"
+              id="resposta"
+              class="form-control"
+              name="resposta{{ i }}"
+              [(ngModel)]="p.resposta"
+              [disabled]="!editing"
+              required
+            />
+          </div>
+          <div class="col-1 remove">
+            <div
+              (click)="removeRow(anamnese.anamnesePerguntas, i)"
+              class="mb-2"
+              style="cursor: pointer; margin-top: 30px"
+            >
+              <i class="bi bi-x-lg"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions d-flex justify-content-end gap-2">
+        <button type="submit" class="btn btn-primary" (click)="editAnamnese()">
+          Editar
+        </button>
+        <button type="button" class="btn btn-danger" (click)="cancel()">
+          Cancelar
+        </button>
+        <button type="button" class="btn btn-danger" (click)="salvarAnamnese()">
+          Salvar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

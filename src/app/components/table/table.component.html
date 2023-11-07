@@ -7,7 +7,7 @@
         </div>
         <div class="d-flex justify-content-between mb-3">
             <h3 class="text-primary font-outfit">{{title}}</h3>
-            <mat-slide-toggle class="w-25 pt-2" name="estadoAtivo" [formControl]="switchEstado" #estadoAtivo
+            <mat-slide-toggle *ngIf="showAtivoFilter" class="w-25 pt-2" name="estadoAtivo" [formControl]="switchEstado" #estadoAtivo
                 (change)="filtrarEstado()" color="primary">
                 <p class="m-0 text-primary switch"> Mostrar apenas ativos </p>
             </mat-slide-toggle>
@@ -17,23 +17,23 @@
         <table *ngIf="!carregando" class="tabela-principal d-grid">
             <thead class="d-grid container">
                 <tr class="row">
-                    <div class="row col-md-10 p-0">
+                    <div class="row col p-0">
                         <th class="col-md-1">Código</th>
                         <th class="col" *ngFor="let header of headers">{{ header.header }}</th>
                     </div>
-                    <div class="acoes col-md-2">
+                    <div *ngIf="showToggle || showEdit" class="acoes col-md-2">
                         <th class="col">Ações</th>
                     </div>
                 </tr>
             </thead>
             <tbody class="d-grid container">
                 <tr class="row" *ngFor="let entidade of dadosFiltrados">
-                    <div class="h-100 col-md-10 row linha hover" (click)="onDetailsClick(entidade)">
+                    <div class="h-100 col row linha hover" (click)="onDetailsClick(entidade)">
                         <th class="col-md-1">{{entidade["id"]}}</th>
                         <td *ngFor="let header of headers" class="col">{{retornarValor(header, entidade)}}</td>
                     </div>
-                    <td class="acoes col-md-2">
-                        <div class="acao hover" (click)="onEditClick(entidade)">
+                    <td *ngIf="showToggle || showEdit" class="acoes col-md-2">
+                        <div *ngIf="showEdit" class="acao hover" (click)="onEditClick(entidade)">
                             <bi class="icon" name="pen-fill"></bi>
                         </div>
                         <div *ngIf="showToggle" class="acao hover" (click)="onToggleClick(toggle, entidade)">
